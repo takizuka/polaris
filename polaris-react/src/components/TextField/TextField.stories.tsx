@@ -5,11 +5,14 @@ import {
   Card,
   ChoiceList,
   FormLayout,
+  Frame,
   InlineError,
+  Page,
   Select,
   Stack,
   Tag,
   TextField,
+  Toast,
 } from '@shopify/polaris';
 import {DeleteMinor} from '@shopify/polaris-icons';
 
@@ -432,6 +435,38 @@ export function WithClearButton() {
   );
 }
 
+export function WithBlurOnEnterKeyPress() {
+  const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
+  const [toastActive, setToastActive] = useState(false);
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  const handleTextFieldBlur = useCallback(() => setToastActive(true), []);
+
+  const toastMarkup = toastActive ? (
+    <Toast content="Message sent" onDismiss={() => setToastActive(false)} />
+  ) : null;
+
+  return (
+    <Frame>
+      <Page title="Blur on enter key press example">
+        <TextField
+          label="Store name"
+          value={textFieldValue}
+          onBlur={handleTextFieldBlur}
+          onChange={handleTextFieldChange}
+          blurOnEnterKeyPress
+          autoComplete="off"
+        />
+        {toastMarkup}
+      </Page>
+    </Frame>
+  );
+}
+
 export function WithMonospacedFont() {
   const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
 
@@ -442,6 +477,7 @@ export function WithMonospacedFont() {
 
   return (
     <TextField
+      autoComplete="off"
       label="Store name"
       value={textFieldValue}
       onChange={handleTextFieldChange}
@@ -460,6 +496,7 @@ export function WithValueSelectedOnFocus() {
 
   return (
     <TextField
+      autoComplete="off"
       label="Store name"
       value={textFieldValue}
       onChange={handleTextFieldChange}
@@ -567,6 +604,7 @@ export function WithInlineSuggestion() {
   return (
     <div onKeyDown={handleKeyDown}>
       <TextField
+        autoComplete="off"
         type="text"
         label="State"
         value={value}
