@@ -1,6 +1,6 @@
 ---
 title: Inclusive language
-description: Making commerce better for everyone involves creating inclusive content.
+description: Make commerce better for everyone by writing inclusively.
 icon: AccessibilityMajor
 keywords:
   - copy instructions
@@ -31,9 +31,9 @@ keywords:
   - inclusive content
 ---
 
-Participating in commerce is a global activity, for all humans. At Shopify, we aim to make commerce experiences better and more inclusive. Creating inclusive content is not just about reaching a global audience—it’s about ensuring each human being interacting with Shopify feels part of the experience.
+Participating in commerce is a global activity, for all humans. At Shopify, we aim to make commerce experiences better and more inclusive. Creating inclusive content is not just about reaching a global audience, and it’s more than avoiding a list of words. It’s about ensuring each human being interacting with Shopify feels part of the experience.
 
-Writing inclusively for commerce experiences is more than avoiding a list of words. Start by involving diverse perspectives in the planning process. Limit assumptions or biases by testing your content with a diverse audience. Recruit research participants from a variety of backgrounds, including historically excluded groups.
+Start by involving diverse perspectives in the planning process. Limit assumptions or biases by testing your content with a diverse audience. Recruit research participants from a variety of backgrounds, including historically-excluded groups.
 
 Be aware of your intrinsic bias and let those with lived experiences guide the way.
 
