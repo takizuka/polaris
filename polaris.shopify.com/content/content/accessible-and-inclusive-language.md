@@ -304,7 +304,7 @@ Don’t use language that associates roles, qualities, or objects with a specifi
 
 ---
 
-### Recommended reading
+## Recommended reading
 
 For more information about writing inclusively, check out these resources:
 
