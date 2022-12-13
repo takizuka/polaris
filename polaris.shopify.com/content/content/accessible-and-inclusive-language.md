@@ -49,7 +49,7 @@ Our language should reflect the diversity of Shopify merchants. Here are some pr
 
 ## Accessibility
 
-Ableism is discrimination or prejudice against those with disabilities. It can show up in product experiences and language, even if unintentional. Considering those with disabilities will make your content accessible and inclusive.
+Ableism is discrimination or prejudice against those with disabilities. It can show up in product experiences and language, even if unintentional. Considering those with disabilities will make your content accessible and more inclusive.
 
 To write accessible content:
 
@@ -158,7 +158,7 @@ Just put in your email address to get started
 
 ## Anti-racist content
 
-Depending on your lived experience, words can be harmful or triggering. Racist language expresses bias towards or against a particular race. Anti-racist language is free of bias and promotes inclusion of merchants’ lived experiences.
+Depending on your lived experience, words can be triggering and harmful. Racist language expresses bias towards or against a particular race. Anti-racist language is free of bias and promotes the diversity of merchants’ lived experiences.
 
 #### Tips
 
@@ -167,24 +167,6 @@ Depending on your lived experience, words can be harmful or triggering. Racist l
 - Avoid metaphors and idioms since they can have racist origins or interpretations
 
 ### Recommended language
-
-#### Grandfather in, grandfather clause
-
-Avoid using these phrases, as they come from laws meant to circumvent or disenfranchise Black people’s rights. These laws, or “grandfather clauses,” originated in the Reconstruction era in the American South.
-
-<!-- dodont -->
-
-#### Do
-
-- Legacy, legacied
-- Exempt
-
-#### Don’t
-
-- Grandfather in, grandfathered in
-- Grandfather clause
-
-<!-- end -->
 
 #### Black hat, white hat (hacking)
 
@@ -248,6 +230,24 @@ Add no-reply[at]shopify.com to your email provider’s whitelist.
 
 <!-- end -->
 
+#### Grandfather in, grandfather clause
+
+Avoid using these phrases, as they come from laws in the U.S. meant to circumvent or disenfranchise Black people’s rights.
+
+<!-- dodont -->
+
+#### Do
+
+- Legacy, legacied
+- Exempt
+
+#### Don’t
+
+- Grandfather in, grandfathered in
+- Grandfather clause
+
+<!-- end -->
+
 ---
 
 ## Ungendered content
@@ -256,7 +256,7 @@ Gender is an important part of many people’s identity. Stereotypes and assumpt
 
 ### Internationalization
 
-Many languages lack ungendered options, like the English “they.” When possible, write in a way that avoids gendered language. For example, write “you” instead of a third person pronoun. If you’re unsure, choose the clearest option.
+Many languages lack ungendered options, like the English “they.” When possible, write in a way that avoids gendered language. For example, write “you” instead of a third person pronoun. Always choose the clearest option.
 
 ### Recommended language
 
