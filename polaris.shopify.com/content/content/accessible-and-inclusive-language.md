@@ -33,7 +33,7 @@ keywords:
 
 Participating in commerce is a global activity, for all humans. At Shopify, we aim to make commerce experiences better and more inclusive for everyone. Creating inclusive content is not just about reaching a global audience, and it’s more than avoiding a list of words. It’s about ensuring each human being interacting with Shopify feels part of the experience.
 
-Start by involving diverse perspectives in the planning process. Limit assumptions or biases by testing your content with a diverse audience. Recruit research participants from a variety of backgrounds, including historically-excluded groups.
+Start by involving diverse perspectives in the planning process. Limit assumptions or biases by testing your content with a diverse audience. Recruit research participants from a variety of backgrounds, including historically excluded groups.
 
 Be aware of your intrinsic bias and let those with lived experiences guide the way.
 
@@ -254,7 +254,7 @@ Avoid using these phrases, as they come from laws in the U.S. meant to circumven
 
 #### Master
 
-Avoid using this term, as many associate it with the practice of slavery.
+Avoid using this term, as many associate it with the institution of slavery.
 
 <!-- dodont -->
 
@@ -275,7 +275,7 @@ Avoid using this term, as many associate it with the practice of slavery.
 
 ## Gender
 
-Gender is an important part of many people’s identity. Stereotypes and assumptions about gender can make its way into product experiences and leave people feeling excluded or misrepresented. When you do talk about gender, be intentional. Only use gendered language if it makes your content more inclusive and accurate.
+Gender is an important part of many people’s identity. Stereotypes and assumptions about gender can make their way into product experiences and leave people feeling excluded or misrepresented. When you do talk about gender, be intentional. Only use gendered language if it makes your content more inclusive and accurate.
 
 ### Internationalization
 
