@@ -31,7 +31,7 @@ keywords:
   - inclusive content
 ---
 
-Participating in commerce is a global activity, for all humans. At Shopify, we aim to make commerce experiences better and more inclusive. Creating inclusive content is not just about reaching a global audience, and it’s more than avoiding a list of words. It’s about ensuring each human being interacting with Shopify feels part of the experience.
+Participating in commerce is a global activity, for all humans. At Shopify, we aim to make commerce experiences better and more inclusive for everyone. Creating inclusive content is not just about reaching a global audience, and it’s more than avoiding a list of words. It’s about ensuring each human being interacting with Shopify feels part of the experience.
 
 Start by involving diverse perspectives in the planning process. Limit assumptions or biases by testing your content with a diverse audience. Recruit research participants from a variety of backgrounds, including historically-excluded groups.
 
@@ -47,9 +47,13 @@ Our language should reflect the diversity of Shopify merchants. Here are some pr
 - When talking **about people**, be descriptive only when necessary to the context, and use language preferred by the group being described
 - When talking **about things**, be clear and accurate, avoiding metaphors and idioms
 
-## Accessibility
+For more context on the etymology of terms mentioned in this guide, visit the EGAL [Inclusive Terms Glossary](https://www.egalresources.com/inclusive-terms-glossary).
 
-Ableism is discrimination or prejudice against those with disabilities. It can show up in product experiences and language, even if unintentional. Considering those with disabilities will make your content accessible and more inclusive.
+---
+
+## Disability
+
+As technology advances, it’s important to remember that we continue to design for all levels of ability. Considering those with disabilities will make your content accessible and more inclusive.
 
 To write accessible content:
 
@@ -156,9 +160,9 @@ Just put in your email address to get started
 
 ---
 
-## Anti-racist content
+## Race
 
-Depending on your lived experience, words can be triggering and harmful. Racist language expresses bias towards or against a particular race. Anti-racist language is free of bias and promotes the diversity of merchants’ lived experiences.
+We want all merchants to feel comfortable participating in commerce. Even if unintentional, language can exclude or harm people who have been historically marginalized due to their race, ethnicity, or culture. Consider the diversity of merchants’ lived experiences and be intentional about using language that is free of bias.
 
 #### Tips
 
@@ -248,11 +252,30 @@ Avoid using these phrases, as they come from laws in the U.S. meant to circumven
 
 <!-- end -->
 
+#### Master
+
+Avoid using this term, as many associate it with the practice of slavery.
+
+<!-- dodont -->
+
+#### Do
+
+- main
+- primary
+- source
+- expert
+
+#### Don’t
+
+- master
+
+<!-- end -->
+
 ---
 
-## Ungendered content
+## Gender
 
-Gender is an important part of many people’s identity. Stereotypes and assumptions about gender can bias your language and exclude others. When you do talk about gender, be intentional. Only use gendered language if it makes your content more inclusive and accurate.
+Gender is an important part of many people’s identity. Stereotypes and assumptions about gender can make its way into product experiences and leave people feeling excluded or misrepresented. When you do talk about gender, be intentional. Only use gendered language if it makes your content more inclusive and accurate.
 
 ### Internationalization
 
@@ -303,10 +326,3 @@ Don’t use language that associates roles, qualities, or objects with a specifi
 <!-- end -->
 
 ---
-
-## Recommended reading
-
-For more information about writing inclusively, check out these resources:
-
-- [Inclusive Terms Glossary](https://www.egalresources.com/inclusive-terms-glossary) from EGAL
-- [Building for Everyone](https://design.google/library/building-for-everyone/) by Annie Jean-Baptiste
