@@ -23,4 +23,11 @@ describe('<KeyboardKey />', () => {
     const keyboardKey = mountWithApp(<KeyboardKey />);
     expect(keyboardKey).toContainReactText('');
   });
+
+  it("renders small icon when variant is set to 'small'", () => {
+    const keyboardKey = mountWithApp(<KeyboardKey variant="small" />);
+    expect(keyboardKey).toContainReactComponent('kbd', {
+      className: 'KeyboardKey small',
+    });
+  });
 });
