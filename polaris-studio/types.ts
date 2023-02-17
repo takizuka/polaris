@@ -78,6 +78,7 @@ interface ActionPropValue {
 export enum AppActionType {
   Alert = 'ALERT',
   Navigate = 'NAVIGATE',
+  SetState = 'SET_STATE',
 }
 
 type AlertAppAction = {
@@ -90,7 +91,13 @@ type NavigateAppAction = {
   viewId: string;
 };
 
-type AppAction = AlertAppAction | NavigateAppAction;
+type SetStateAppAction = {
+  type: AppActionType.SetState;
+  key: string;
+  value: string;
+};
+
+type AppAction = AlertAppAction | NavigateAppAction | SetStateAppAction;
 
 // Grouping
 export interface GroupPropDefinition
@@ -144,6 +151,7 @@ export interface Layer {
   title: string;
   parent: LayerParent | null;
   component: ComponentName;
+  repeat: number;
   props: {
     [id: string]: PropValue;
   };
@@ -160,7 +168,7 @@ export interface AppState {
       name: string;
       rows: {
         value: string;
-        temporaryValue: string;
+        temporaryValue: string | null;
       }[];
     }[];
   }[];
@@ -218,6 +226,7 @@ type UpdateAppStateAction = {
   sheetId: string;
   columnIndex: number;
   rowIndex: number;
+  temporaryState: boolean;
   value: string;
 };
 

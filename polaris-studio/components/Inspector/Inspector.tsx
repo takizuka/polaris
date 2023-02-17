@@ -88,7 +88,8 @@ function InspectorFields({
   groupKeys: string[];
   layer: Layer;
 }) {
-  const {dispatch} = useContext(StateContext);
+  const {state, dispatch} = useContext(StateContext);
+  const {views} = state;
 
   let prevPropPath = `props`;
   if (groupKeys.length > 0) {
@@ -310,15 +311,99 @@ function InspectorFields({
                                   </button>
                                 </li>
                               );
+
                             case AppActionType.Navigate:
-                              return <li key={index}>Navigate</li>;
+                              return (
+                                <li key={index}>
+                                  <select
+                                    value={action.viewId}
+                                    onChange={(evt) => {
+                                      dispatch({
+                                        type: 'SET_PROP',
+                                        layerId: layer.id,
+                                        propPath,
+                                        propType: PropType.Action,
+                                        value: [
+                                          ...value.slice(0, index),
+                                          {
+                                            ...action,
+                                            viewId: evt.target.value,
+                                          },
+                                          ...value.slice(index + 1),
+                                        ],
+                                      });
+                                    }}
+                                  >
+                                    {Object.values(views)
+                                      .filter((view) => view.type === 'View')
+                                      .map((view) => (
+                                        <option key={view.id} value={view.id}>
+                                          {view.name}
+                                        </option>
+                                      ))}
+                                  </select>
+                                </li>
+                              );
+
+                            case AppActionType.SetState:
+                              return (
+                                <li key={index}>
+                                  <label>
+                                    key
+                                    <input
+                                      type="text"
+                                      onChange={(evt) => {
+                                        dispatch({
+                                          type: 'SET_PROP',
+                                          layerId: layer.id,
+                                          propPath,
+                                          propType: PropType.Action,
+                                          value: [
+                                            ...value.slice(0, index),
+                                            {
+                                              ...action,
+                                              key: evt.target.value,
+                                            },
+                                            ...value.slice(index + 1),
+                                          ],
+                                        });
+                                      }}
+                                      value={action.key}
+                                    />
+                                  </label>
+                                  <label>
+                                    value
+                                    <input
+                                      type="text"
+                                      onChange={(evt) => {
+                                        dispatch({
+                                          type: 'SET_PROP',
+                                          layerId: layer.id,
+                                          propPath,
+                                          propType: PropType.Action,
+                                          value: [
+                                            ...value.slice(0, index),
+                                            {
+                                              ...action,
+                                              value: evt.target.value,
+                                            },
+                                            ...value.slice(index + 1),
+                                          ],
+                                        });
+                                      }}
+                                      value={action.value}
+                                    />
+                                  </label>
+                                </li>
+                              );
                           }
                         })}
                       </ul>
                     )}
+
                     <select
                       onChange={(e) => {
-                        if (e.target.value === 'select an action') return;
+                        if (e.target.value === 'Select an action') return;
 
                         let newValue = [...value];
 
@@ -332,7 +417,15 @@ function InspectorFields({
                         if (e.target.value === AppActionType.Navigate) {
                           newValue.push({
                             type: AppActionType.Navigate,
-                            viewId: 'Details',
+                            viewId: Object.values(views)[0].id,
+                          });
+                        }
+
+                        if (e.target.value === AppActionType.SetState) {
+                          newValue.push({
+                            type: AppActionType.SetState,
+                            key: '',
+                            value: '',
                           });
                         }
 
@@ -343,11 +436,9 @@ function InspectorFields({
                           propType: PropType.Action,
                           value: newValue,
                         });
-
-                        e.target.value = 'select an action';
                       }}
                     >
-                      <option>select an action</option>
+                      <option>Select an action</option>
                       {Object.values(AppActionType).map((type) => (
                         <option>{type}</option>
                       ))}

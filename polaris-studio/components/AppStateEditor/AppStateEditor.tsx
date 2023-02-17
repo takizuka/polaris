@@ -36,10 +36,12 @@ function AppStateEditor({}: Props) {
                                 sheetId: sheet.id,
                                 columnIndex,
                                 rowIndex,
+                                temporaryState: false,
                                 value: evt.target.value,
                               })
                             }
                           />
+                          {row.temporaryValue}
                         </div>
                       ))}
                     </div>

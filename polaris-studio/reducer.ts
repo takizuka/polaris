@@ -27,6 +27,7 @@ export const reducer = (prevState: State, action: Action): State => {
         viewId: state.selectedViewId,
         parent: action.parent,
         title: 'AutoLayout',
+        repeat: 1,
         component: action.componentName,
         props: {...defaultProps},
       };
@@ -145,10 +146,17 @@ export const reducer = (prevState: State, action: Action): State => {
                       ...column,
                       rows: column.rows.map((row, rowIndex) => {
                         if (rowIndex === action.rowIndex) {
-                          return {
-                            ...row,
-                            temporaryValue: action.value,
-                          };
+                          if (action.temporaryState) {
+                            return {
+                              ...row,
+                              temporaryValue: action.value,
+                            };
+                          } else {
+                            return {
+                              ...row,
+                              value: action.value,
+                            };
+                          }
                         }
                         return row;
                       }),

@@ -117,13 +117,30 @@ function Canvas() {
   );
 }
 
+const sheetRegex = /{([A-Z]+):([0-9]+)}/g;
+
+const parseAppStateKey = (
+  text: string,
+): {sheetId: string | null; columnIndex: number; rowIndex: number} | null => {
+  const [col, row] = text.split(':').map((part) => part.trim());
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
+  const columnIndex = alphabet.indexOf(col);
+  const rowIndex = parseInt(row) - 1;
+
+  return {
+    sheetId: null,
+    columnIndex,
+    rowIndex,
+  };
+};
+
 const injectVariables = (state: State, text: string): string => {
-  return text.replace(/{([a-z]+):([0-9]+)}/gi, (match, col, row) => {
+  return text.replace(sheetRegex, (match, col, row) => {
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
     const colIndex = alphabet.indexOf(col);
-    const rowIndex = parseInt(row);
-    return state.appState.sheets[0].columns[colIndex].rows[rowIndex]
-      .temporaryValue;
+    const rowIndex = parseInt(row) - 1;
+    const value = state.appState.sheets[0].columns[colIndex].rows[rowIndex];
+    return value.temporaryValue || value.value;
   });
 };
 
@@ -202,10 +219,6 @@ const renderLayer = ({
 
   const reactComponent = components[component].reactComponent;
 
-  // if (children.length === 0 && props.children.type === PropType.String) {
-  //   children = [injectVariables(state, props.children.value)];
-  // }
-
   let reactProps: {[key: string]: any} = {};
 
   function recursivelyPrepareProps(
@@ -221,11 +234,14 @@ const renderLayer = ({
 
     Object.entries(props).forEach(([propKey, propValue]) => {
       switch (propValue.type) {
-        case PropType.String:
         case PropType.Boolean:
         case PropType.Enum:
         case PropType.Number:
           setProp(propKey, propValue.value);
+          break;
+
+        case PropType.String:
+          setProp(propKey, injectVariables(state, propValue.value));
           break;
 
         case PropType.ReactNode:
@@ -254,10 +270,25 @@ const renderLayer = ({
                 actions.push(() =>
                   dispatch({
                     type: 'SET_SELECTED_VIEW_ID',
-                    viewId: 'b',
+                    viewId: action.viewId,
                   }),
                 );
                 break;
+
+              case AppActionType.SetState:
+                actions.push(() => {
+                  const appStateKey = parseAppStateKey(action.key);
+                  if (appStateKey) {
+                    dispatch({
+                      type: 'UPDATE_APP_STATE',
+                      sheetId: state.appState.sheets[0].id,
+                      columnIndex: appStateKey.columnIndex,
+                      rowIndex: appStateKey.rowIndex,
+                      value: action.value,
+                      temporaryState: true,
+                    });
+                  }
+                });
             }
           });
           setProp(propKey, () => actions.forEach((action) => action()));

@@ -48,15 +48,15 @@ export const initialState: State = {
             rows: [
               {
                 value: 'Row 1',
-                temporaryValue: 'Row 1',
+                temporaryValue: null,
               },
               {
                 value: 'Row 2',
-                temporaryValue: 'Row 2',
+                temporaryValue: null,
               },
               {
                 value: 'Row 3',
-                temporaryValue: 'Row 3',
+                temporaryValue: null,
               },
             ],
           },
@@ -65,15 +65,15 @@ export const initialState: State = {
             rows: [
               {
                 value: 'Row 1',
-                temporaryValue: 'Row 1',
+                temporaryValue: null,
               },
               {
                 value: 'Row 2',
-                temporaryValue: 'Row 2',
+                temporaryValue: null,
               },
               {
                 value: 'Row 3',
-                temporaryValue: 'Row 3',
+                temporaryValue: null,
               },
             ],
           },
@@ -82,15 +82,15 @@ export const initialState: State = {
             rows: [
               {
                 value: 'Row 1',
-                temporaryValue: 'Row 1',
+                temporaryValue: null,
               },
               {
                 value: 'Row 2',
-                temporaryValue: 'Row 2',
+                temporaryValue: null,
               },
               {
                 value: 'Row 3',
-                temporaryValue: 'Row 3',
+                temporaryValue: null,
               },
             ],
           },
