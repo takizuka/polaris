@@ -9,7 +9,7 @@
     "lint": "next lint",
     "create-component": "generact --root components components/Template/Template.tsx",
     "app": "electron main.js",
-    "import-props": "tsc scripts/convertProps2.ts --resolveJsonModule --esModuleInterop && node scripts/convertProps2.js && rm scripts/convertProps2.js",
+    "import-props": "tsc scripts/convertProps.ts --resolveJsonModule --esModuleInterop && node scripts/convertProps.js && rm scripts/convertProps.js",
     "import-component-usage": "tsc scripts/importComponentUsage.ts --resolveJsonModule --esModuleInterop && node scripts/importComponentUsage.js && rm scripts/importComponentUsage.js"
   },
   "dependencies": {
