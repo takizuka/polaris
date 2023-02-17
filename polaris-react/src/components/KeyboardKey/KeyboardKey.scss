@@ -9,7 +9,7 @@ $medium-side-padding: 9.5px;
   margin: 0 var(--p-space-05) var(--p-space-05);
   padding: 0 $medium-side-padding;
   background: var(--p-surface-depressed);
-  box-shadow: 0px var(--p-space-025) 0px rgb(0 0 0 / 15%);
+  box-shadow: 0 var(--p-space-025) 0 var(--p-hint-from-direct-light);
   border-radius: var(--p-space-1);
   color: var(--p-text);
   font-family: var(--p-font-family-sans);
