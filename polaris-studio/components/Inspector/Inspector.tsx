@@ -1,16 +1,17 @@
-import { components } from "@/components";
+import {components} from '@/components';
 import {
   AppActionType,
   Layer,
   PropDefinition,
   PropType,
   PropValue,
-} from "@/types";
-import { useContext } from "react";
-import { StateContext } from "../App/App";
-import { Switch } from "@headlessui/react";
-import untypedComponentUsageSimplified from "../../data/componentsUsageSimplified.json";
-import styles from "./Inspector.module.scss";
+} from '@/types';
+import {Tooltip} from 'react-tooltip';
+import {ReactNode, useContext, useId} from 'react';
+import {StateContext} from '../App/App';
+import {Switch} from '@headlessui/react';
+import untypedComponentUsageSimplified from '../../data/componentsUsageSimplified.json';
+import styles from './Inspector.module.scss';
 
 const componentUsageSimplified = untypedComponentUsageSimplified as {
   [key: string]: {
@@ -28,13 +29,13 @@ const componentUsageSimplified = untypedComponentUsageSimplified as {
 interface Props {}
 
 function Inspector({}: Props) {
-  const { state } = useContext(StateContext);
-  const { layers, views, selectedViewId } = state;
+  const {state} = useContext(StateContext);
+  const {layers, views, selectedViewId} = state;
 
   const selectedView = views.find((view) => view.id === selectedViewId);
   if (!selectedView) return null;
 
-  const { selectedLayerId } = selectedView;
+  const {selectedLayerId} = selectedView;
   if (!selectedLayerId) return null;
 
   const selectedLayer = layers.find((layer) => layer.id === selectedLayerId);
@@ -45,10 +46,39 @@ function Inspector({}: Props) {
 
 function getValue<T>(object: any, path: string): T {
   return path
-    .replace(/\[/g, ".")
-    .replace(/\]/g, "")
-    .split(".")
+    .replace(/\[/g, '.')
+    .replace(/\]/g, '')
+    .split('.')
     .reduce((o, k) => (o || {})[k], object);
+}
+
+function LabelTooltip({
+  tooltipContent,
+  children,
+}: {
+  tooltipContent: string;
+  children: ReactNode;
+}) {
+  const id = useId();
+
+  return (
+    <>
+      <label id={id}>{children}</label>
+      <Tooltip
+        anchorId={id}
+        style={{
+          opacity: 1,
+          backgroundColor: 'white',
+          color: 'black',
+          maxWidth: 300,
+          textAlign: 'center',
+        }}
+        delayShow={500}
+      >
+        {tooltipContent}
+      </Tooltip>
+    </>
+  );
 }
 
 function InspectorFields({
@@ -58,21 +88,21 @@ function InspectorFields({
   groupKeys: string[];
   layer: Layer;
 }) {
-  const { dispatch } = useContext(StateContext);
+  const {dispatch} = useContext(StateContext);
 
   let prevPropPath = `props`;
   if (groupKeys.length > 0) {
-    prevPropPath = `${prevPropPath}.${groupKeys.join(".children.")}.children`;
+    prevPropPath = `${prevPropPath}.${groupKeys.join('.children.')}.children`;
   }
 
-  console.log({ prevPropPath });
+  // console.log({ prevPropPath });
 
-  const props = getValue<{ [key: string]: PropDefinition }>(
+  const props = getValue<{[key: string]: PropDefinition}>(
     components[layer.component],
-    prevPropPath
+    prevPropPath,
   );
 
-  console.log({ props });
+  // console.log({ props });
 
   return (
     <div className={styles.Inspector}>
@@ -107,7 +137,9 @@ function InspectorFields({
                     : propDefinition.defaultValue.value;
                 return (
                   <div key={key}>
-                    <label>{label}</label>
+                    <LabelTooltip tooltipContent={propDefinition.description}>
+                      {label}
+                    </LabelTooltip>
                     <input
                       type="text"
                       placeholder="Lorem ipsum dolor..."
@@ -116,7 +148,7 @@ function InspectorFields({
                         let value: string | number | boolean = evt.target.value;
 
                         dispatch({
-                          type: "SET_PROP",
+                          type: 'SET_PROP',
                           layerId: layer.id,
                           propType: PropType.String,
                           propPath,
@@ -135,7 +167,9 @@ function InspectorFields({
                     : propDefinition.defaultValue.value;
                 return (
                   <div key={key}>
-                    <label>{label}</label>
+                    <LabelTooltip tooltipContent={propDefinition.description}>
+                      {label}
+                    </LabelTooltip>
                     <input
                       type="number"
                       value={value.toString()}
@@ -143,7 +177,7 @@ function InspectorFields({
                         let value: number = parseInt(evt.target.value);
 
                         dispatch({
-                          type: "SET_PROP",
+                          type: 'SET_PROP',
                           layerId: layer.id,
                           propType: PropType.Number,
                           propPath,
@@ -163,19 +197,21 @@ function InspectorFields({
                 const checked = !!value;
                 return (
                   <div key={key}>
-                    {label}
+                    <LabelTooltip tooltipContent={propDefinition.description}>
+                      {label}
+                    </LabelTooltip>
                     <Switch
                       checked={checked}
                       onChange={(value: boolean) => {
                         dispatch({
-                          type: "SET_PROP",
+                          type: 'SET_PROP',
                           layerId: layer.id,
                           propType: PropType.Boolean,
                           propPath,
                           value,
                         });
                       }}
-                      className={`${checked ? styles.checked : ""} ${
+                      className={`${checked ? styles.checked : ''} ${
                         styles.Toggle
                       }`}
                     >
@@ -193,12 +229,14 @@ function InspectorFields({
                     : propDefinition.defaultValue.value;
                 return (
                   <div key={key}>
-                    {label}
+                    <LabelTooltip tooltipContent={propDefinition.description}>
+                      {label}
+                    </LabelTooltip>
                     <select
                       value={value}
                       onChange={(evt) => {
                         dispatch({
-                          type: "SET_PROP",
+                          type: 'SET_PROP',
                           layerId: layer.id,
                           propType: PropType.Enum,
                           propPath,
@@ -224,7 +262,9 @@ function InspectorFields({
 
                 return (
                   <div>
-                    {propKey}
+                    <LabelTooltip tooltipContent={propDefinition.description}>
+                      {label}
+                    </LabelTooltip>
                     {value.length > 0 && (
                       <ul>
                         {value.map((action, index) => {
@@ -237,7 +277,7 @@ function InspectorFields({
                                     value={action.message}
                                     onChange={(evt) => {
                                       dispatch({
-                                        type: "SET_PROP",
+                                        type: 'SET_PROP',
                                         layerId: layer.id,
                                         propPath,
                                         propType: PropType.Action,
@@ -255,7 +295,7 @@ function InspectorFields({
                                   <button
                                     onClick={() => {
                                       dispatch({
-                                        type: "SET_PROP",
+                                        type: 'SET_PROP',
                                         layerId: layer.id,
                                         propType: PropType.Action,
                                         propPath,
@@ -279,7 +319,7 @@ function InspectorFields({
                     <button
                       onClick={() =>
                         dispatch({
-                          type: "SET_PROP",
+                          type: 'SET_PROP',
                           layerId: layer.id,
                           propPath,
                           propType: PropType.Action,
@@ -287,7 +327,7 @@ function InspectorFields({
                             ...value,
                             {
                               type: AppActionType.Alert,
-                              message: "My message",
+                              message: 'My message',
                             },
                           ],
                         })
@@ -300,11 +340,6 @@ function InspectorFields({
               }
 
               case PropType.Group: {
-                const value =
-                  propValue && propValue.type === PropType.Group
-                    ? propValue.children
-                    : propDefinition.defaultValue.children;
-
                 return (
                   <li key={propKey}>
                     <>
