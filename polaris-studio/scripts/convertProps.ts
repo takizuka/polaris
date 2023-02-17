@@ -1,13 +1,13 @@
-import fs from "fs";
-import { createElement } from "react";
-import untypedPolarisTypes from "../polarisProps.json";
+import fs from 'fs';
+import {createElement} from 'react';
+import untypedPolarisTypes from '../polarisProps.json';
 import {
   ComponentMap,
   GroupPropDefinition,
   PropDefinition,
   PropType,
   PropValue,
-} from "../types";
+} from '../types';
 const types = untypedPolarisTypes as AllTypes;
 
 export type AllTypes = {
@@ -28,7 +28,7 @@ export type Type = {
   members?: Type[];
 };
 
-const NO_DESCRIPTION = "No description";
+const NO_DESCRIPTION = 'No description';
 
 const getTypeByKey = (key: string, currentFileName?: string): Type | null => {
   const match = types[key];
@@ -49,14 +49,14 @@ const getTypeByKey = (key: string, currentFileName?: string): Type | null => {
 
 const createPropDefinition = (
   key: string,
-  memberName?: string
+  memberName?: string,
 ): PropDefinition | null => {
   let type = getTypeByKey(key);
   if (!type) return null;
   if (memberName) {
     if (!type.members) return null;
     const matchingMember = type.members.find(
-      (member) => member.name === memberName
+      (member) => member.name === memberName,
     );
     if (!matchingMember) return null;
     type = matchingMember;
@@ -74,31 +74,31 @@ const createPropDefinition = (
       }
     }
 
-    if (type.syntaxKind === "MethodSignature") {
+    if (type.syntaxKind === 'MethodSignature') {
       return {
         type: PropType.Action,
         defaultValue: {
           type: PropType.Action,
           value: [],
         },
-        description: type.description || "No description",
+        description: type.description || 'No description',
       };
     }
 
     if (
-      value === "string" ||
-      value === "string[]" ||
-      value === "string | string[]"
+      value === 'string' ||
+      value === 'string[]' ||
+      value === 'string | string[]'
     ) {
       return {
         type: PropType.String,
         defaultValue: {
           type: PropType.String,
-          value: "",
+          value: '',
         },
         description: type.description || NO_DESCRIPTION,
       };
-    } else if (value === "boolean") {
+    } else if (value === 'boolean') {
       return {
         type: PropType.Boolean,
         defaultValue: {
@@ -107,7 +107,7 @@ const createPropDefinition = (
         },
         description: type.description || NO_DESCRIPTION,
       };
-    } else if (value === "number") {
+    } else if (value === 'number') {
       return {
         type: PropType.Number,
         defaultValue: {
@@ -117,19 +117,19 @@ const createPropDefinition = (
         description: type.description || NO_DESCRIPTION,
       };
     } else if (
-      type.value.toString() === "React.ReactNode" ||
-      type.value.toString() === "ReactNode" ||
-      type.value.toString() === "React.ReactElement"
+      type.value.toString() === 'React.ReactNode' ||
+      type.value.toString() === 'ReactNode' ||
+      type.value.toString() === 'React.ReactElement'
     ) {
       return {
         type: PropType.ReactNode,
         defaultValue: {
           type: PropType.ReactNode,
         },
-        description: type.description || "No description",
+        description: type.description || 'No description',
       };
-    } else if (type.value.toString().includes("|")) {
-      const parts = value.split("|").map((part) => part.trim());
+    } else if (type.value.toString().includes('|')) {
+      const parts = value.split('|').map((part) => part.trim());
       let allStrings = true;
       parts.forEach((part) => {
         const isString = part.replace(/'/g, '"').match(/^"[^"]+"$/gi) !== null;
@@ -138,7 +138,7 @@ const createPropDefinition = (
 
       if (allStrings) {
         const options = parts.map((part) =>
-          part.trim().replace(/"/g, "").replace(/'/g, "")
+          part.trim().replace(/"/g, '').replace(/'/g, ''),
         );
         return {
           type: PropType.Enum,
@@ -147,16 +147,16 @@ const createPropDefinition = (
             type: PropType.Enum,
             value: options[0],
           },
-          description: type.description || "No description",
+          description: type.description || 'No description',
         };
       } else {
         // Other enums that we can't parse
       }
-    } else if (value.includes("&")) {
+    } else if (value.includes('&')) {
       // We can handle simple unions like "Foo & Bar" where
       // both of them have members. In that case, we mash
       // their props together
-      const parts = value.split("&").map((part) => part.trim());
+      const parts = value.split('&').map((part) => part.trim());
       let allHaveMembers = true;
       parts.forEach((part) => {
         const type = getTypeByKey(part);
@@ -180,7 +180,7 @@ const createPropDefinition = (
               if (type) {
                 const memberDefinition = createPropDefinition(
                   type.name,
-                  member.name
+                  member.name,
                 );
                 if (memberDefinition) {
                   propDefinition.children = {
@@ -227,7 +227,7 @@ const createPropDefinition = (
 let result: any = {};
 
 Object.keys(types).forEach((key) => {
-  const isPropDefinition = key.endsWith("Props");
+  const isPropDefinition = key.endsWith('Props');
   if (isPropDefinition) {
     const propDefinition = createPropDefinition(key);
     if (propDefinition && propDefinition.type === PropType.Group) {
@@ -236,4 +236,4 @@ Object.keys(types).forEach((key) => {
   }
 });
 
-fs.writeFileSync("./componentProps.json", JSON.stringify(result, null, 2));
+fs.writeFileSync('./componentProps.json', JSON.stringify(result, null, 2));

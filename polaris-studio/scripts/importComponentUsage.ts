@@ -1,6 +1,6 @@
-import fs from "fs";
+import fs from 'fs';
 
-const sourceFile = fs.readFileSync("./data/componentUsage.json", "utf8");
+const sourceFile = fs.readFileSync('./data/componentUsage.json', 'utf8');
 let componentUsage = JSON.parse(sourceFile);
 
 Object.keys(componentUsage).forEach((key) => {
@@ -8,6 +8,6 @@ Object.keys(componentUsage).forEach((key) => {
 });
 
 fs.writeFileSync(
-  "./data/componentsUsageSimplified.json",
-  JSON.stringify(componentUsage, null, 2)
+  './data/componentsUsageSimplified.json',
+  JSON.stringify(componentUsage, null, 2),
 );

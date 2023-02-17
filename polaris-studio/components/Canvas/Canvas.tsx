@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import styles from "./Canvas.module.scss";
-import "@shopify/polaris/build/esm/styles.css";
-import { AppProvider } from "@shopify/polaris";
-import enTranslations from "@shopify/polaris/locales/en.json";
-import { Action, AppActionType, PropType, PropValue, State } from "@/types";
-import { components } from "@/components";
+import styles from './Canvas.module.scss';
+import '@shopify/polaris/build/esm/styles.css';
+import {AppProvider} from '@shopify/polaris';
+import enTranslations from '@shopify/polaris/locales/en.json';
+import {Action, AppActionType, PropType, PropValue, State} from '@/types';
+import {components} from '@/components';
 import React, {
   createElement,
   Dispatch,
   MouseEventHandler,
   useEffect,
   useState,
-} from "react";
-import { useIframeCommunication } from "@/utils";
-import set from "lodash.set";
+} from 'react';
+import {useIframeCommunication} from '@/utils';
+import set from 'lodash.set';
 
 const getLayerHTMLId = (id: string): string => {
   return `rendered-layer-${id}`;
@@ -37,9 +37,8 @@ function Canvas() {
     const hoveredElementId = document.querySelector(id) as HTMLElement;
     if (!hoveredElementId) return;
 
-    const { top, left, width, height } =
-      hoveredElementId.getBoundingClientRect();
-    setCalloutPosition({ top, left, width, height });
+    const {top, left, width, height} = hoveredElementId.getBoundingClientRect();
+    setCalloutPosition({top, left, width, height});
   }, [state.hoveredLayerId, state.layers]);
 
   return (
@@ -59,7 +58,7 @@ function Canvas() {
       <AppProvider i18n={enTranslations}>
         <div className={styles.Views}>
           {Object.values(state.views)
-            .filter((view) => view.type === "View")
+            .filter((view) => view.type === 'View')
             .map((view) => {
               return (
                 <div
@@ -67,7 +66,7 @@ function Canvas() {
                   className={styles.View}
                   onClick={() =>
                     dispatch({
-                      type: "SET_SELECTED_VIEW_ID",
+                      type: 'SET_SELECTED_VIEW_ID',
                       viewId: view.id,
                     })
                   }
@@ -78,10 +77,10 @@ function Canvas() {
                     data-is-selected={state.selectedViewId === view.id}
                   >
                     {Object.values(state.layers)
-                      .filter(({ viewId }) => viewId === view.id)
-                      .filter(({ parent }) => parent === null)
-                      .map(({ id }) =>
-                        renderLayer({ layerId: id, state, dispatch })
+                      .filter(({viewId}) => viewId === view.id)
+                      .filter(({parent}) => parent === null)
+                      .map(({id}) =>
+                        renderLayer({layerId: id, state, dispatch}),
                       )}
                   </div>
                 </div>
@@ -119,7 +118,7 @@ function Canvas() {
 
 const injectVariables = (state: State, text: string): string => {
   return text.replace(/{([a-z]+):([0-9]+)}/gi, (match, col, row) => {
-    const alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
     const colIndex = alphabet.indexOf(col);
     const rowIndex = parseInt(row);
     return state.appState.sheets[0].columns[colIndex].rows[rowIndex]
@@ -138,7 +137,7 @@ const renderLayer = ({
 }): React.ReactNode => {
   const layer = state.layers.find((layer) => layer.id === layerId);
   if (!layer) return null;
-  const { component, props } = layer;
+  const {component, props} = layer;
 
   // const childLayers = state.layers.filter(
   //   (layer) => layer.parent?.layerId === layerId && layer.parent?.type
@@ -206,16 +205,16 @@ const renderLayer = ({
   //   children = [injectVariables(state, props.children.value)];
   // }
 
-  let reactProps: { [key: string]: any } = {};
+  let reactProps: {[key: string]: any} = {};
 
   function recursivelyPrepareProps(
-    props: { [id: string]: PropValue },
-    prevPropPath: string[] = []
+    props: {[id: string]: PropValue},
+    prevPropPath: string[] = [],
   ) {
     function setProp(key: string, value: any) {
       reactProps = {
         ...reactProps,
-        ...set(reactProps, [...prevPropPath, key].join("."), value),
+        ...set(reactProps, [...prevPropPath, key].join('.'), value),
       };
     }
 
@@ -232,11 +231,11 @@ const renderLayer = ({
           const childLayers = state.layers.filter(
             (layer) =>
               layer.parent?.layerId === layerId &&
-              layer.parent?.propPath === `props.${propKey}`
+              layer.parent?.propPath === `props.${propKey}`,
           );
           setProp(propKey, [
             childLayers.map((layer) =>
-              renderLayer({ layerId: layer.id, state, dispatch })
+              renderLayer({layerId: layer.id, state, dispatch}),
             ),
           ]);
           // TODO
@@ -251,7 +250,7 @@ const renderLayer = ({
                 break;
 
               case AppActionType.Navigate:
-                actions.push(() => alert("TODO: Implement navigate action"));
+                actions.push(() => alert('TODO: Implement navigate action'));
                 break;
             }
           });
@@ -260,7 +259,7 @@ const renderLayer = ({
 
         case PropType.Group: {
           Object.entries(propValue.children).forEach(
-            ([subKey, subValue]) => {}
+            ([subKey, subValue]) => {},
           );
           recursivelyPrepareProps(propValue.children, [
             ...prevPropPath,
@@ -281,7 +280,7 @@ const renderLayer = ({
   //   children = [props.children.value];
   // }
 
-  console.log({ log: "createElement", reactComponent, reactProps });
+  console.log({log: 'createElement', reactComponent, reactProps});
 
   return createElement(reactComponent, reactProps);
 };

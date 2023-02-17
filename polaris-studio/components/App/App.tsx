@@ -1,153 +1,153 @@
-"use client";
+'use client';
 
-import { useEffect, useReducer, createContext, Dispatch } from "react";
-import { Action, MessageFromIframe, MessageToIframe, State } from "@/types";
-import { reducer } from "@/reducer";
-import Inspector from "../Inspector";
-import LayerList from "../LayerList";
-import styles from "./App.module.scss";
-import AppStateEditor from "../AppStateEditor";
-import LayerAdder from "../LayerAdder";
-import "react-tooltip/dist/react-tooltip.css";
+import {useEffect, useReducer, createContext, Dispatch} from 'react';
+import {Action, MessageFromIframe, MessageToIframe, State} from '@/types';
+import {reducer} from '@/reducer';
+import Inspector from '../Inspector';
+import LayerList from '../LayerList';
+import styles from './App.module.scss';
+import AppStateEditor from '../AppStateEditor';
+import LayerAdder from '../LayerAdder';
+import 'react-tooltip/dist/react-tooltip.css';
 
-const CANVAS_IFRAME_ID = "canvas";
+const CANVAS_IFRAME_ID = 'canvas';
 
 export const initialState: State = {
   hoveredLayerId: null,
   layers: [],
   views: [
     {
-      id: "a",
-      name: "Index",
+      id: 'a',
+      name: 'Index',
       selectedLayerId: null,
-      type: "View",
+      type: 'View',
     },
     {
-      id: "b",
-      name: "Details",
+      id: 'b',
+      name: 'Details',
       selectedLayerId: null,
-      type: "View",
+      type: 'View',
     },
     {
-      id: "c",
-      name: "Custom component",
+      id: 'c',
+      name: 'Custom component',
       selectedLayerId: null,
-      type: "CustomComponent",
+      type: 'CustomComponent',
     },
   ],
-  selectedViewId: "a",
+  selectedViewId: 'a',
   layerAdderVisibility: false,
   appState: {
     sheets: [
       {
-        id: "a",
-        name: "Products",
+        id: 'a',
+        name: 'Products',
         columns: [
           {
-            name: "Column 1",
+            name: 'Column 1',
             rows: [
               {
-                value: "Row 1",
-                temporaryValue: "Row 1",
+                value: 'Row 1',
+                temporaryValue: 'Row 1',
               },
               {
-                value: "Row 2",
-                temporaryValue: "Row 2",
+                value: 'Row 2',
+                temporaryValue: 'Row 2',
               },
               {
-                value: "Row 3",
-                temporaryValue: "Row 3",
+                value: 'Row 3',
+                temporaryValue: 'Row 3',
               },
             ],
           },
           {
-            name: "Column 2",
+            name: 'Column 2',
             rows: [
               {
-                value: "Row 1",
-                temporaryValue: "Row 1",
+                value: 'Row 1',
+                temporaryValue: 'Row 1',
               },
               {
-                value: "Row 2",
-                temporaryValue: "Row 2",
+                value: 'Row 2',
+                temporaryValue: 'Row 2',
               },
               {
-                value: "Row 3",
-                temporaryValue: "Row 3",
+                value: 'Row 3',
+                temporaryValue: 'Row 3',
               },
             ],
           },
           {
-            name: "Column 3",
+            name: 'Column 3',
             rows: [
               {
-                value: "Row 1",
-                temporaryValue: "Row 1",
+                value: 'Row 1',
+                temporaryValue: 'Row 1',
               },
               {
-                value: "Row 2",
-                temporaryValue: "Row 2",
+                value: 'Row 2',
+                temporaryValue: 'Row 2',
               },
               {
-                value: "Row 3",
-                temporaryValue: "Row 3",
+                value: 'Row 3',
+                temporaryValue: 'Row 3',
               },
             ],
           },
         ],
       },
       {
-        id: "b",
-        name: "Orders",
+        id: 'b',
+        name: 'Orders',
         columns: [
           {
-            name: "Column 4",
+            name: 'Column 4',
             rows: [
               {
-                value: "Row 1",
-                temporaryValue: "Row 1",
+                value: 'Row 1',
+                temporaryValue: 'Row 1',
               },
               {
-                value: "Row 2",
-                temporaryValue: "Row 2",
+                value: 'Row 2',
+                temporaryValue: 'Row 2',
               },
               {
-                value: "Row 3",
-                temporaryValue: "Row 3",
+                value: 'Row 3',
+                temporaryValue: 'Row 3',
               },
             ],
           },
           {
-            name: "Column 5",
+            name: 'Column 5',
             rows: [
               {
-                value: "Row 1",
-                temporaryValue: "Row 1",
+                value: 'Row 1',
+                temporaryValue: 'Row 1',
               },
               {
-                value: "Row 2",
-                temporaryValue: "Row 2",
+                value: 'Row 2',
+                temporaryValue: 'Row 2',
               },
               {
-                value: "Row 3",
-                temporaryValue: "Row 3",
+                value: 'Row 3',
+                temporaryValue: 'Row 3',
               },
             ],
           },
           {
-            name: "Column 6",
+            name: 'Column 6',
             rows: [
               {
-                value: "Row 1",
-                temporaryValue: "Row 1",
+                value: 'Row 1',
+                temporaryValue: 'Row 1',
               },
               {
-                value: "Row 2",
-                temporaryValue: "Row 2",
+                value: 'Row 2',
+                temporaryValue: 'Row 2',
               },
               {
-                value: "Row 3",
-                temporaryValue: "Row 3",
+                value: 'Row 3',
+                temporaryValue: 'Row 3',
               },
             ],
           },
@@ -170,30 +170,30 @@ export default function App() {
 
   useEffect(() => {
     const listener = (event: MessageEvent<MessageFromIframe>) => {
-      const { source, action } = event.data;
-      if (source !== "polaris-studio") return;
-      console.log({ log: "App recieved a message...", action });
+      const {source, action} = event.data;
+      if (source !== 'polaris-studio') return;
+      console.log({log: 'App recieved a message...', action});
       dispatch(action);
     };
 
-    window.addEventListener("message", listener, false);
-    console.log({ log: "App is listening for messages..." });
-    return () => window.removeEventListener("message", listener);
+    window.addEventListener('message', listener, false);
+    console.log({log: 'App is listening for messages...'});
+    return () => window.removeEventListener('message', listener);
   }, []);
 
   useEffect(() => {
     const iframe = document.querySelector<HTMLIFrameElement>(
-      `#${CANVAS_IFRAME_ID}`
+      `#${CANVAS_IFRAME_ID}`,
     );
     if (!iframe) return;
 
-    const message: MessageToIframe = { source: "polaris-studio", state };
+    const message: MessageToIframe = {source: 'polaris-studio', state};
     iframe.contentWindow?.postMessage(message);
-    console.log({ log: "App is sending a message...", message });
+    console.log({log: 'App is sending a message...', message});
   }, [state]);
 
   return (
-    <StateContext.Provider value={{ state, dispatch }}>
+    <StateContext.Provider value={{state, dispatch}}>
       <div className={styles.Loading}>
         <Logo />
         <div className={styles.ProgressBar}>

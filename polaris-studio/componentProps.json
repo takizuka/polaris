@@ -1191,10 +1191,7 @@
     },
     "translate": {
       "type": "enum",
-      "options": [
-        "yes",
-        "no"
-      ],
+      "options": ["yes", "no"],
       "defaultValue": {
         "type": "enum",
         "value": "yes"
@@ -1355,10 +1352,7 @@
     },
     "unselectable": {
       "type": "enum",
-      "options": [
-        "on",
-        "off"
-      ],
+      "options": ["on", "off"],
       "defaultValue": {
         "type": "enum",
         "value": "on"
@@ -1401,12 +1395,7 @@
     },
     "aria-autocomplete": {
       "type": "enum",
-      "options": [
-        "none",
-        "list",
-        "inline",
-        "both"
-      ],
+      "options": ["none", "list", "inline", "both"],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -1463,14 +1452,7 @@
     },
     "aria-dropeffect": {
       "type": "enum",
-      "options": [
-        "none",
-        "link",
-        "copy",
-        "execute",
-        "move",
-        "popup"
-      ],
+      "options": ["none", "link", "copy", "execute", "move", "popup"],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -1527,11 +1509,7 @@
     },
     "aria-live": {
       "type": "enum",
-      "options": [
-        "off",
-        "assertive",
-        "polite"
-      ],
+      "options": ["off", "assertive", "polite"],
       "defaultValue": {
         "type": "enum",
         "value": "off"
@@ -1540,10 +1518,7 @@
     },
     "aria-orientation": {
       "type": "enum",
-      "options": [
-        "horizontal",
-        "vertical"
-      ],
+      "options": ["horizontal", "vertical"],
       "defaultValue": {
         "type": "enum",
         "value": "horizontal"
@@ -1636,12 +1611,7 @@
     },
     "aria-sort": {
       "type": "enum",
-      "options": [
-        "ascending",
-        "descending",
-        "none",
-        "other"
-      ],
+      "options": ["ascending", "descending", "none", "other"],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -1868,10 +1838,7 @@
     },
     "background": {
       "type": "enum",
-      "options": [
-        "surface",
-        "surface-subdued"
-      ],
+      "options": ["surface", "surface-subdued"],
       "defaultValue": {
         "type": "enum",
         "value": "surface"
@@ -1880,13 +1847,7 @@
     },
     "roundedAbove": {
       "type": "enum",
-      "options": [
-        "xs",
-        "sm",
-        "md",
-        "lg",
-        "xl"
-      ],
+      "options": ["xs", "sm", "md", "lg", "xl"],
       "defaultValue": {
         "type": "enum",
         "value": "xs"
@@ -1971,11 +1932,7 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": [
-        "above",
-        "below",
-        "mostSpace"
-      ],
+      "options": ["above", "below", "mostSpace"],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -2041,10 +1998,7 @@
   "AvatarProps": {
     "shape": {
       "type": "enum",
-      "options": [
-        "square",
-        "round"
-      ],
+      "options": ["square", "round"],
       "defaultValue": {
         "type": "enum",
         "value": "square"
@@ -2145,12 +2099,7 @@
     },
     "status": {
       "type": "enum",
-      "options": [
-        "success",
-        "info",
-        "warning",
-        "critical"
-      ],
+      "options": ["success", "info", "warning", "critical"],
       "defaultValue": {
         "type": "enum",
         "value": "success"
@@ -2364,18 +2313,7 @@
     },
     "borderRadius": {
       "type": "enum",
-      "options": [
-        "05",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "base",
-        "large",
-        "half"
-      ],
+      "options": ["05", "1", "2", "3", "4", "5", "6", "base", "large", "half"],
       "defaultValue": {
         "type": "enum",
         "value": "05"
@@ -2384,18 +2322,7 @@
     },
     "borderRadiusEndStart": {
       "type": "enum",
-      "options": [
-        "05",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "base",
-        "large",
-        "half"
-      ],
+      "options": ["05", "1", "2", "3", "4", "5", "6", "base", "large", "half"],
       "defaultValue": {
         "type": "enum",
         "value": "05"
@@ -2404,18 +2331,7 @@
     },
     "borderRadiusEndEnd": {
       "type": "enum",
-      "options": [
-        "05",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "base",
-        "large",
-        "half"
-      ],
+      "options": ["05", "1", "2", "3", "4", "5", "6", "base", "large", "half"],
       "defaultValue": {
         "type": "enum",
         "value": "05"
@@ -2424,18 +2340,7 @@
     },
     "borderRadiusStartStart": {
       "type": "enum",
-      "options": [
-        "05",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "base",
-        "large",
-        "half"
-      ],
+      "options": ["05", "1", "2", "3", "4", "5", "6", "base", "large", "half"],
       "defaultValue": {
         "type": "enum",
         "value": "05"
@@ -2444,18 +2349,7 @@
     },
     "borderRadiusStartEnd": {
       "type": "enum",
-      "options": [
-        "05",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "base",
-        "large",
-        "half"
-      ],
+      "options": ["05", "1", "2", "3", "4", "5", "6", "base", "large", "half"],
       "defaultValue": {
         "type": "enum",
         "value": "05"
@@ -2464,13 +2358,7 @@
     },
     "borderWidth": {
       "type": "enum",
-      "options": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
+      "options": ["1", "2", "3", "4", "5"],
       "defaultValue": {
         "type": "enum",
         "value": "1"
@@ -2479,13 +2367,7 @@
     },
     "borderBlockStartWidth": {
       "type": "enum",
-      "options": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
+      "options": ["1", "2", "3", "4", "5"],
       "defaultValue": {
         "type": "enum",
         "value": "1"
@@ -2494,13 +2376,7 @@
     },
     "borderBlockEndWidth": {
       "type": "enum",
-      "options": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
+      "options": ["1", "2", "3", "4", "5"],
       "defaultValue": {
         "type": "enum",
         "value": "1"
@@ -2509,13 +2385,7 @@
     },
     "borderInlineStartWidth": {
       "type": "enum",
-      "options": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
+      "options": ["1", "2", "3", "4", "5"],
       "defaultValue": {
         "type": "enum",
         "value": "1"
@@ -2524,13 +2394,7 @@
     },
     "borderInlineEndWidth": {
       "type": "enum",
-      "options": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5"
-      ],
+      "options": ["1", "2", "3", "4", "5"],
       "defaultValue": {
         "type": "enum",
         "value": "1"
@@ -2596,10 +2460,7 @@
     },
     "overflowX": {
       "type": "enum",
-      "options": [
-        "hidden",
-        "scroll"
-      ],
+      "options": ["hidden", "scroll"],
       "defaultValue": {
         "type": "enum",
         "value": "hidden"
@@ -2608,10 +2469,7 @@
     },
     "overflowY": {
       "type": "enum",
-      "options": [
-        "hidden",
-        "scroll"
-      ],
+      "options": ["hidden", "scroll"],
       "defaultValue": {
         "type": "enum",
         "value": "hidden"
@@ -2757,11 +2615,7 @@
     },
     "size": {
       "type": "enum",
-      "options": [
-        "medium",
-        "large",
-        "slim"
-      ],
+      "options": ["medium", "large", "slim"],
       "defaultValue": {
         "type": "enum",
         "value": "medium"
@@ -2770,13 +2624,7 @@
     },
     "textAlign": {
       "type": "enum",
-      "options": [
-        "start",
-        "end",
-        "center",
-        "left",
-        "right"
-      ],
+      "options": ["start", "end", "center", "left", "right"],
       "defaultValue": {
         "type": "enum",
         "value": "start"
@@ -2955,10 +2803,7 @@
     },
     "ariaChecked": {
       "type": "enum",
-      "options": [
-        "false",
-        "true"
-      ],
+      "options": ["false", "true"],
       "defaultValue": {
         "type": "enum",
         "value": "false"
@@ -3433,10 +3278,7 @@
     },
     "footerActionAlignment": {
       "type": "enum",
-      "options": [
-        "left",
-        "right"
-      ],
+      "options": ["left", "right"],
       "defaultValue": {
         "type": "enum",
         "value": "left"
@@ -3487,10 +3329,7 @@
     },
     "ariaLive": {
       "type": "enum",
-      "options": [
-        "off",
-        "polite"
-      ],
+      "options": ["off", "polite"],
       "defaultValue": {
         "type": "enum",
         "value": "off"
@@ -3729,11 +3568,7 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": [
-        "above",
-        "below",
-        "mostSpace"
-      ],
+      "options": ["above", "below", "mostSpace"],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -3823,12 +3658,7 @@
     },
     "verticalAlign": {
       "type": "enum",
-      "options": [
-        "top",
-        "bottom",
-        "middle",
-        "baseline"
-      ],
+      "options": ["top", "bottom", "middle", "baseline"],
       "defaultValue": {
         "type": "enum",
         "value": "top"
@@ -3845,11 +3675,7 @@
     },
     "defaultSortDirection": {
       "type": "enum",
-      "options": [
-        "ascending",
-        "descending",
-        "none"
-      ],
+      "options": ["ascending", "descending", "none"],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -3998,10 +3824,7 @@
   "DescriptionListProps": {
     "spacing": {
       "type": "enum",
-      "options": [
-        "tight",
-        "loose"
-      ],
+      "options": ["tight", "loose"],
       "defaultValue": {
         "type": "enum",
         "value": "tight"
@@ -4012,15 +3835,7 @@
   "DisplayTextProps": {
     "element": {
       "type": "enum",
-      "options": [
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "p"
-      ],
+      "options": ["h1", "h2", "h3", "h4", "h5", "h6", "p"],
       "defaultValue": {
         "type": "enum",
         "value": "h1"
@@ -4144,11 +3959,7 @@
     },
     "type": {
       "type": "enum",
-      "options": [
-        "file",
-        "image",
-        "video"
-      ],
+      "options": ["file", "image", "video"],
       "defaultValue": {
         "type": "enum",
         "value": "file"
@@ -4343,11 +4154,7 @@
     },
     "type": {
       "type": "enum",
-      "options": [
-        "file",
-        "image",
-        "video"
-      ],
+      "options": ["file", "image", "video"],
       "defaultValue": {
         "type": "enum",
         "value": "file"
@@ -4960,11 +4767,7 @@
     },
     "method": {
       "type": "enum",
-      "options": [
-        "post",
-        "get",
-        "action"
-      ],
+      "options": ["post", "get", "action"],
       "defaultValue": {
         "type": "enum",
         "value": "post"
@@ -5146,15 +4949,7 @@
   "HeadingProps": {
     "element": {
       "type": "enum",
-      "options": [
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "p"
-      ],
+      "options": ["h1", "h2", "h3", "h4", "h5", "h6", "p"],
       "defaultValue": {
         "type": "enum",
         "value": "h1"
@@ -5277,10 +5072,7 @@
     },
     "defaultSortDirection": {
       "type": "enum",
-      "options": [
-        "ascending",
-        "descending"
-      ],
+      "options": ["ascending", "descending"],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -5289,10 +5081,7 @@
     },
     "sortDirection": {
       "type": "enum",
-      "options": [
-        "ascending",
-        "descending"
-      ],
+      "options": ["ascending", "descending"],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -5373,10 +5162,7 @@
     },
     "defaultSortDirection": {
       "type": "enum",
-      "options": [
-        "ascending",
-        "descending"
-      ],
+      "options": ["ascending", "descending"],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -5385,10 +5171,7 @@
     },
     "sortDirection": {
       "type": "enum",
-      "options": [
-        "ascending",
-        "descending"
-      ],
+      "options": ["ascending", "descending"],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -5481,13 +5264,7 @@
     },
     "blockAlign": {
       "type": "enum",
-      "options": [
-        "start",
-        "center",
-        "end",
-        "baseline",
-        "stretch"
-      ],
+      "options": ["start", "center", "end", "baseline", "stretch"],
       "defaultValue": {
         "type": "enum",
         "value": "start"
@@ -6774,11 +6551,7 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": [
-        "above",
-        "below",
-        "mostSpace"
-      ],
+      "options": ["above", "below", "mostSpace"],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -6787,11 +6560,7 @@
     },
     "preferredAlignment": {
       "type": "enum",
-      "options": [
-        "left",
-        "center",
-        "right"
-      ],
+      "options": ["left", "center", "right"],
       "defaultValue": {
         "type": "enum",
         "value": "left"
@@ -6903,11 +6672,7 @@
     },
     "autofocusTarget": {
       "type": "enum",
-      "options": [
-        "none",
-        "first-node",
-        "container"
-      ],
+      "options": ["none", "first-node", "container"],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -6984,11 +6749,7 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": [
-        "above",
-        "below",
-        "mostSpace"
-      ],
+      "options": ["above", "below", "mostSpace"],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -6997,11 +6758,7 @@
     },
     "preferredAlignment": {
       "type": "enum",
-      "options": [
-        "left",
-        "center",
-        "right"
-      ],
+      "options": ["left", "center", "right"],
       "defaultValue": {
         "type": "enum",
         "value": "left"
@@ -8080,15 +7837,7 @@
   "SubheadingProps": {
     "element": {
       "type": "enum",
-      "options": [
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "p"
-      ],
+      "options": ["h1", "h2", "h3", "h4", "h5", "h6", "p"],
       "defaultValue": {
         "type": "enum",
         "value": "h1"
@@ -8162,12 +7911,7 @@
     },
     "fontWeight": {
       "type": "enum",
-      "options": [
-        "regular",
-        "medium",
-        "semibold",
-        "bold"
-      ],
+      "options": ["regular", "medium", "semibold", "bold"],
       "defaultValue": {
         "type": "enum",
         "value": "regular"
@@ -8313,11 +8057,7 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": [
-        "above",
-        "below",
-        "mostSpace"
-      ],
+      "options": ["above", "below", "mostSpace"],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -8573,10 +8313,7 @@
     },
     "ariaChecked": {
       "type": "enum",
-      "options": [
-        "false",
-        "true"
-      ],
+      "options": ["false", "true"],
       "defaultValue": {
         "type": "enum",
         "value": "false"
@@ -9546,10 +9283,7 @@
     },
     "translate": {
       "type": "enum",
-      "options": [
-        "yes",
-        "no"
-      ],
+      "options": ["yes", "no"],
       "defaultValue": {
         "type": "enum",
         "value": "yes"
@@ -9710,10 +9444,7 @@
     },
     "unselectable": {
       "type": "enum",
-      "options": [
-        "on",
-        "off"
-      ],
+      "options": ["on", "off"],
       "defaultValue": {
         "type": "enum",
         "value": "on"
@@ -9756,12 +9487,7 @@
     },
     "aria-autocomplete": {
       "type": "enum",
-      "options": [
-        "none",
-        "list",
-        "inline",
-        "both"
-      ],
+      "options": ["none", "list", "inline", "both"],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -9818,14 +9544,7 @@
     },
     "aria-dropeffect": {
       "type": "enum",
-      "options": [
-        "none",
-        "link",
-        "copy",
-        "execute",
-        "move",
-        "popup"
-      ],
+      "options": ["none", "link", "copy", "execute", "move", "popup"],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -9882,11 +9601,7 @@
     },
     "aria-live": {
       "type": "enum",
-      "options": [
-        "off",
-        "assertive",
-        "polite"
-      ],
+      "options": ["off", "assertive", "polite"],
       "defaultValue": {
         "type": "enum",
         "value": "off"
@@ -9895,10 +9610,7 @@
     },
     "aria-orientation": {
       "type": "enum",
-      "options": [
-        "horizontal",
-        "vertical"
-      ],
+      "options": ["horizontal", "vertical"],
       "defaultValue": {
         "type": "enum",
         "value": "horizontal"
@@ -9991,12 +9703,7 @@
     },
     "aria-sort": {
       "type": "enum",
-      "options": [
-        "ascending",
-        "descending",
-        "none",
-        "other"
-      ],
+      "options": ["ascending", "descending", "none", "other"],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -10197,11 +9904,7 @@
   "PipProps": {
     "progress": {
       "type": "enum",
-      "options": [
-        "incomplete",
-        "partiallyComplete",
-        "complete"
-      ],
+      "options": ["incomplete", "partiallyComplete", "complete"],
       "defaultValue": {
         "type": "enum",
         "value": "incomplete"
@@ -10781,10 +10484,7 @@
     },
     "status": {
       "type": "enum",
-      "options": [
-        "success",
-        "subdued"
-      ],
+      "options": ["success", "subdued"],
       "defaultValue": {
         "type": "enum",
         "value": "success"
@@ -11252,11 +10952,7 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": [
-        "above",
-        "below",
-        "mostSpace"
-      ],
+      "options": ["above", "below", "mostSpace"],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -11265,11 +10961,7 @@
     },
     "preferredAlignment": {
       "type": "enum",
-      "options": [
-        "left",
-        "center",
-        "right"
-      ],
+      "options": ["left", "center", "right"],
       "defaultValue": {
         "type": "enum",
         "value": "left"
@@ -11342,11 +11034,7 @@
     },
     "autofocusTarget": {
       "type": "enum",
-      "options": [
-        "none",
-        "first-node",
-        "container"
-      ],
+      "options": ["none", "first-node", "container"],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -11963,11 +11651,7 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": [
-        "above",
-        "below",
-        "mostSpace"
-      ],
+      "options": ["above", "below", "mostSpace"],
       "defaultValue": {
         "type": "enum",
         "value": "above"

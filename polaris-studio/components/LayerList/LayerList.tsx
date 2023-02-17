@@ -1,21 +1,21 @@
-import { components } from "@/components";
-import { PropDefinition, PropType } from "@/types";
-import { useContext } from "react";
-import { StateContext } from "../App/App";
-import styles from "./LayerList.module.scss";
-import { Tooltip } from "react-tooltip";
-import get from "lodash.get";
+import {components} from '@/components';
+import {PropDefinition, PropType} from '@/types';
+import {useContext} from 'react';
+import {StateContext} from '../App/App';
+import styles from './LayerList.module.scss';
+import {Tooltip} from 'react-tooltip';
+import get from 'lodash.get';
 
 interface Props {}
 
 function LayerList({}: Props) {
   const {
-    state: { layers, selectedViewId },
+    state: {layers, selectedViewId},
     dispatch,
   } = useContext(StateContext);
   const topLevelLayers = layers
-    .filter(({ viewId }) => viewId === selectedViewId)
-    .filter(({ parent }) => parent === null);
+    .filter(({viewId}) => viewId === selectedViewId)
+    .filter(({parent}) => parent === null);
 
   return (
     <div className={styles.LayerList}>
@@ -25,7 +25,7 @@ function LayerList({}: Props) {
       <button
         onClick={() =>
           dispatch({
-            type: "SHOW_LAYER_ADDER",
+            type: 'SHOW_LAYER_ADDER',
             parent: null,
           })
         }
@@ -37,9 +37,7 @@ function LayerList({}: Props) {
 }
 
 // TODO: Support nested children
-function getPropsThatCanHaveChildren(props: {
-  [key: string]: PropDefinition;
-}): {
+function getPropsThatCanHaveChildren(props: {[key: string]: PropDefinition}): {
   path: string;
 }[] {
   let propsThatCanHaveChildren: {
@@ -48,35 +46,35 @@ function getPropsThatCanHaveChildren(props: {
 
   Object.entries(props).forEach(([key, prop]) => {
     if (prop.type === PropType.ReactNode) {
-      propsThatCanHaveChildren.push({ path: key });
+      propsThatCanHaveChildren.push({path: key});
     }
   });
 
   return propsThatCanHaveChildren;
 }
 
-function Item({ id }: { id: string }) {
+function Item({id}: {id: string}) {
   const {
-    state: { layers, views, selectedViewId, hoveredLayerId },
+    state: {layers, views, selectedViewId, hoveredLayerId},
     dispatch,
   } = useContext(StateContext);
 
   const layer = layers.find((layer) => layer.id === id);
   if (!layer) return null;
 
-  const selectedView = views.find(({ id }) => id === selectedViewId);
+  const selectedView = views.find(({id}) => id === selectedViewId);
   if (!selectedView) return null;
 
   const selectedLayer = layers.find(
-    ({ id }) => id === selectedView.selectedLayerId
+    ({id}) => id === selectedView.selectedLayerId,
   );
   const isSelected = !!(selectedLayer && selectedLayer.id === layer.id);
 
   let layerName = layer.component || layer.id;
 
-  const { component } = layer;
+  const {component} = layer;
   const propsWithChildren = getPropsThatCanHaveChildren(
-    components[component].props
+    components[component].props,
   );
 
   return (
@@ -88,16 +86,16 @@ function Item({ id }: { id: string }) {
       <span
         onClick={() =>
           dispatch({
-            type: "SELECT_LAYER",
+            type: 'SELECT_LAYER',
             layerId: layer.id,
           })
         }
         onMouseEnter={() =>
-          dispatch({ type: "SET_HOVERED_LAYER_ID", layerId: layer.id })
+          dispatch({type: 'SET_HOVERED_LAYER_ID', layerId: layer.id})
         }
         onMouseLeave={() =>
           dispatch({
-            type: "SET_HOVERED_LAYER_ID",
+            type: 'SET_HOVERED_LAYER_ID',
             layerId: null,
           })
         }
@@ -107,17 +105,17 @@ function Item({ id }: { id: string }) {
 
       {propsWithChildren.length > 0 && (
         <ul className={styles.Children}>
-          {propsWithChildren.map(({ path }) => {
+          {propsWithChildren.map(({path}) => {
             const childLayersForProp = layers.filter(
               (thisLayer) =>
                 thisLayer.parent !== null &&
                 thisLayer.parent.layerId === layer.id &&
-                thisLayer.parent.propPath === `props.${path}`
+                thisLayer.parent.propPath === `props.${path}`,
             );
             const tooltipId = `add-layer-${layer.id}-${path}`;
             return (
               <li key={path}>
-                {path}{" "}
+                {path}{' '}
                 {childLayersForProp.map((layer) => (
                   <Item key={layer.id} id={layer.id} />
                 ))}
@@ -127,7 +125,7 @@ function Item({ id }: { id: string }) {
                       className={styles.AddChild}
                       onClick={() => {
                         dispatch({
-                          type: "SHOW_LAYER_ADDER",
+                          type: 'SHOW_LAYER_ADDER',
                           parent: {
                             layerId: layer.id,
                             propPath: `props.${path}`,
@@ -142,10 +140,10 @@ function Item({ id }: { id: string }) {
                       anchorId={tooltipId}
                       style={{
                         opacity: 1,
-                        backgroundColor: "white",
-                        color: "black",
+                        backgroundColor: 'white',
+                        color: 'black',
                         maxWidth: 300,
-                        textAlign: "center",
+                        textAlign: 'center',
                       }}
                       delayShow={500}
                     >

@@ -1,12 +1,12 @@
-import { Tab } from "@headlessui/react";
-import { useContext } from "react";
-import { StateContext } from "../App/App";
-import styles from "./AppStateEditor.module.scss";
+import {Tab} from '@headlessui/react';
+import {useContext} from 'react';
+import {StateContext} from '../App/App';
+import styles from './AppStateEditor.module.scss';
 
 interface Props {}
 
 function AppStateEditor({}: Props) {
-  const { state, dispatch } = useContext(StateContext);
+  const {state, dispatch} = useContext(StateContext);
 
   return (
     <div className={styles.AppStateEditor}>
@@ -32,7 +32,7 @@ function AppStateEditor({}: Props) {
                             value={row.value}
                             onChange={(evt) =>
                               dispatch({
-                                type: "UPDATE_APP_STATE",
+                                type: 'UPDATE_APP_STATE',
                                 sheetId: sheet.id,
                                 columnIndex,
                                 rowIndex,

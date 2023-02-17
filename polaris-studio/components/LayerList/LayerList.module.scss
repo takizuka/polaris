@@ -7,15 +7,15 @@
     overflow: hidden;
     margin-bottom: 0.25rem;
 
-    &[data-is-hovered="true"] > span {
+    &[data-is-hovered='true'] > span {
       background: rgba(255, 255, 255, 0.1);
     }
 
-    &[data-is-selected="true"] {
+    &[data-is-selected='true'] {
       background: rgba(102, 0, 255, 0.339);
     }
 
-    &[data-is-selected="true"][data-is-hovered="true"] > span {
+    &[data-is-selected='true'][data-is-hovered='true'] > span {
       background: rgba(255, 255, 255, 0.1);
     }
 

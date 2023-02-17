@@ -46,7 +46,7 @@
     padding: 0.5rem 0.75rem;
     border-radius: 4px 4px 0 0;
 
-    &[aria-selected="true"] {
+    &[aria-selected='true'] {
       background: var(--border-color);
     }
   }

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import PolarisComponentPreview from "@/components/PolarisComponentPreview";
+import PolarisComponentPreview from '@/components/PolarisComponentPreview';
 
 export default function CanvasPage({
-  params: { componentName },
+  params: {componentName},
 }: {
-  params: { componentName: string };
+  params: {componentName: string};
 }) {
   return <PolarisComponentPreview componentName={componentName} />;
 }

@@ -1,23 +1,23 @@
-import { Action, Layer, PropType, PropValue, State } from "./types";
-import { nanoid } from "nanoid";
-import { components } from "./components";
-import set from "lodash.set";
+import {Action, Layer, PropType, PropValue, State} from './types';
+import {nanoid} from 'nanoid';
+import {components} from './components';
+import set from 'lodash.set';
 
 export const reducer = (prevState: State, action: Action): State => {
-  let state = { ...prevState };
-  console.log({ log: "Reducer recieved an action...", action });
+  let state = {...prevState};
+  console.log({log: 'Reducer recieved an action...', action});
 
   switch (action.type) {
-    case "ADD_LAYER": {
+    case 'ADD_LAYER': {
       const id = nanoid();
 
       const component = components[action.componentName];
       if (!component) {
         throw new Error(
-          `Could not create Polaris component layer. Component "${action.componentName}" not found.`
+          `Could not create Polaris component layer. Component "${action.componentName}" not found.`,
         );
       }
-      let defaultProps: { [key: string]: any } = {};
+      let defaultProps: {[key: string]: any} = {};
       Object.entries(component.props).forEach(([key, value]) => {
         defaultProps[key] = value.defaultValue;
       });
@@ -26,9 +26,9 @@ export const reducer = (prevState: State, action: Action): State => {
         id,
         viewId: state.selectedViewId,
         parent: action.parent,
-        title: "AutoLayout",
+        title: 'AutoLayout',
         component: action.componentName,
-        props: { ...defaultProps },
+        props: {...defaultProps},
       };
 
       state = {
@@ -50,7 +50,7 @@ export const reducer = (prevState: State, action: Action): State => {
       break;
     }
 
-    case "SELECT_LAYER": {
+    case 'SELECT_LAYER': {
       state = {
         ...state,
         views: [
@@ -68,7 +68,7 @@ export const reducer = (prevState: State, action: Action): State => {
       break;
     }
 
-    case "SET_HOVERED_LAYER_ID": {
+    case 'SET_HOVERED_LAYER_ID': {
       state = {
         ...state,
         hoveredLayerId: action.layerId,
@@ -76,7 +76,7 @@ export const reducer = (prevState: State, action: Action): State => {
       break;
     }
 
-    case "SET_SELECTED_VIEW_ID": {
+    case 'SET_SELECTED_VIEW_ID': {
       state = {
         ...state,
         selectedViewId: action.viewId,
@@ -84,16 +84,16 @@ export const reducer = (prevState: State, action: Action): State => {
       break;
     }
 
-    case "SET_PROP": {
+    case 'SET_PROP': {
       state = {
         ...state,
         layers: [
           ...state.layers.map((layer) => {
             if (layer.id === action.layerId) {
               const path = `${action.propPath
-                .split(".")
+                .split('.')
                 .slice(1) // Remove prop. from key
-                .join(".")}`;
+                .join('.')}`;
 
               // TODO: Type this to be a PropValue
               const propValue = {
@@ -114,7 +114,7 @@ export const reducer = (prevState: State, action: Action): State => {
       break;
     }
 
-    case "SHOW_LAYER_ADDER": {
+    case 'SHOW_LAYER_ADDER': {
       state = {
         ...state,
         layerAdderVisibility: action.parent,
@@ -122,7 +122,7 @@ export const reducer = (prevState: State, action: Action): State => {
       break;
     }
 
-    case "HIDE_LAYER_ADDER": {
+    case 'HIDE_LAYER_ADDER': {
       state = {
         ...state,
         layerAdderVisibility: false,
@@ -130,7 +130,7 @@ export const reducer = (prevState: State, action: Action): State => {
       break;
     }
 
-    case "UPDATE_APP_STATE": {
+    case 'UPDATE_APP_STATE': {
       state = {
         ...state,
         appState: {
@@ -165,7 +165,7 @@ export const reducer = (prevState: State, action: Action): State => {
     }
   }
 
-  console.log({ log: "Reducer is returning a new state...", state });
+  console.log({log: 'Reducer is returning a new state...', state});
 
   return state;
 };

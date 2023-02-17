@@ -42,7 +42,7 @@
     min-height: 500px;
     border-radius: 2px;
     padding: 2rem;
-    &[data-is-selected="true"] {
+    &[data-is-selected='true'] {
       box-shadow: 0 0 0 2px #8514ee;
     }
 

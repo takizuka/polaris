@@ -5,13 +5,13 @@ interface BasePropDefinition<T> {
 }
 
 export enum PropType {
-  String = "string",
-  Boolean = "boolean",
-  Enum = "enum",
-  ReactNode = "ReactNode",
-  Number = "number",
-  Action = "action",
-  Group = "group",
+  String = 'string',
+  Boolean = 'boolean',
+  Enum = 'enum',
+  ReactNode = 'ReactNode',
+  Number = 'number',
+  Action = 'action',
+  Group = 'group',
 }
 
 // Strings
@@ -76,8 +76,8 @@ interface ActionPropValue {
 }
 
 export enum AppActionType {
-  Alert = "ALERT",
-  Navigate = "NAVIGATE",
+  Alert = 'ALERT',
+  Navigate = 'NAVIGATE',
 }
 
 type AlertAppAction = {
@@ -130,7 +130,7 @@ export interface View {
   id: string;
   name: string;
   selectedLayerId: string | null;
-  type: "CustomComponent" | "View";
+  type: 'CustomComponent' | 'View';
 }
 
 type LayerParent = {
@@ -176,28 +176,28 @@ export interface State {
 }
 
 type AddLayerAction = {
-  type: "ADD_LAYER";
+  type: 'ADD_LAYER';
   parent: LayerParent | null;
   componentName: ComponentName;
 };
 
 type SelectLayerAction = {
-  type: "SELECT_LAYER";
+  type: 'SELECT_LAYER';
   layerId: string;
 };
 
 type SetHoveredLayerIdAction = {
-  type: "SET_HOVERED_LAYER_ID";
+  type: 'SET_HOVERED_LAYER_ID';
   layerId: string | null;
 };
 
 type SetSelectedViewIdAction = {
-  type: "SET_SELECTED_VIEW_ID";
+  type: 'SET_SELECTED_VIEW_ID';
   viewId: string;
 };
 
 type SetPropAction = {
-  type: "SET_PROP";
+  type: 'SET_PROP';
   layerId: string;
   propType: PropType;
   propPath: string;
@@ -205,16 +205,16 @@ type SetPropAction = {
 };
 
 type ShowLayerAdderAction = {
-  type: "SHOW_LAYER_ADDER";
+  type: 'SHOW_LAYER_ADDER';
   parent: LayerParent | null;
 };
 
 type HideLayerAdderAction = {
-  type: "HIDE_LAYER_ADDER";
+  type: 'HIDE_LAYER_ADDER';
 };
 
 type UpdateAppStateAction = {
-  type: "UPDATE_APP_STATE";
+  type: 'UPDATE_APP_STATE';
   sheetId: string;
   columnIndex: number;
   rowIndex: number;
@@ -232,7 +232,7 @@ export type Action =
   | UpdateAppStateAction;
 
 export type BaseMessage = {
-  source: "polaris-studio";
+  source: 'polaris-studio';
 };
 
 export interface MessageFromIframe extends BaseMessage {
