@@ -113,6 +113,7 @@
       "variants": 338
     },
     "properties": {
+      "children": 2000,
       "onClick": 1280,
       "disabled": 400,
       "primary": 291,
