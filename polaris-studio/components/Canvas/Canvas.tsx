@@ -61,17 +61,18 @@ function Canvas() {
             .filter((view) => view.type === 'View')
             .map((view) => {
               return (
-                <div
-                  key={view.id}
-                  className={styles.View}
-                  onClick={() =>
-                    dispatch({
-                      type: 'SET_SELECTED_VIEW_ID',
-                      viewId: view.id,
-                    })
-                  }
-                >
-                  <div className={styles.ViewLabel}>{view.name}</div>
+                <div key={view.id} className={styles.View}>
+                  <div
+                    className={styles.ViewLabel}
+                    onClick={() =>
+                      dispatch({
+                        type: 'SET_SELECTED_VIEW_ID',
+                        viewId: view.id,
+                      })
+                    }
+                  >
+                    {view.name}
+                  </div>
                   <div
                     className={styles.ViewContent}
                     data-is-selected={state.selectedViewId === view.id}
@@ -250,7 +251,12 @@ const renderLayer = ({
                 break;
 
               case AppActionType.Navigate:
-                actions.push(() => alert('TODO: Implement navigate action'));
+                actions.push(() =>
+                  dispatch({
+                    type: 'SET_SELECTED_VIEW_ID',
+                    viewId: 'b',
+                  }),
+                );
                 break;
             }
           });

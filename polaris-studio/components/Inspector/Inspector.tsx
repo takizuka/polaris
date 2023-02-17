@@ -316,25 +316,42 @@ function InspectorFields({
                         })}
                       </ul>
                     )}
-                    <button
-                      onClick={() =>
+                    <select
+                      onChange={(e) => {
+                        if (e.target.value === 'select an action') return;
+
+                        let newValue = [...value];
+
+                        if (e.target.value === AppActionType.Alert) {
+                          newValue.push({
+                            type: AppActionType.Alert,
+                            message: 'My message',
+                          });
+                        }
+
+                        if (e.target.value === AppActionType.Navigate) {
+                          newValue.push({
+                            type: AppActionType.Navigate,
+                            viewId: 'Details',
+                          });
+                        }
+
                         dispatch({
                           type: 'SET_PROP',
                           layerId: layer.id,
                           propPath,
                           propType: PropType.Action,
-                          value: [
-                            ...value,
-                            {
-                              type: AppActionType.Alert,
-                              message: 'My message',
-                            },
-                          ],
-                        })
-                      }
+                          value: newValue,
+                        });
+
+                        e.target.value = 'select an action';
+                      }}
                     >
-                      Add action
-                    </button>
+                      <option>select an action</option>
+                      {Object.values(AppActionType).map((type) => (
+                        <option>{type}</option>
+                      ))}
+                    </select>
                   </div>
                 );
               }
