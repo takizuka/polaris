@@ -8,6 +8,7 @@ import {
   PropType,
   PropValue,
 } from '../types';
+import * as polaris from '@shopify/polaris';
 const types = untypedPolarisTypes as AllTypes;
 
 export type AllTypes = {
@@ -52,6 +53,9 @@ const createPropDefinition = (
   memberName?: string,
 ): PropDefinition | null => {
   let type = getTypeByKey(key);
+
+  const initialTypeName = type?.name;
+
   if (!type) return null;
   if (memberName) {
     if (!type.members) return null;
@@ -68,8 +72,17 @@ const createPropDefinition = (
 
     if (value.match(pascalCaseRegex)) {
       const resolvedType = getTypeByKey(value, type.filePath);
+
       if (resolvedType) {
         const propDefinition = createPropDefinition(resolvedType.name);
+        if (initialTypeName === 'ColorPickerProps') {
+          console.log({
+            typeName: type.name,
+            memberName,
+            resolvedType,
+            propDefinition, // Hmm, null
+          });
+        }
         return propDefinition;
       }
     }
@@ -209,6 +222,7 @@ const createPropDefinition = (
       type.members.forEach((member) => {
         if (type) {
           const memberDefinition = createPropDefinition(type.name, member.name);
+
           if (memberDefinition) {
             propDefinition.children = {
               ...propDefinition.children,
@@ -226,10 +240,39 @@ const createPropDefinition = (
 
 let result: any = {};
 
+// Handle child components like IndexTable.Cell
 Object.keys(types).forEach((key) => {
   const isPropDefinition = key.endsWith('Props');
   if (isPropDefinition) {
+    const filePaths = Object.values(types[key]);
+
+    filePaths.forEach(({filePath}) => {
+      const regex =
+        /src\/components\/([a-z]+)\/components\/([a-z]+)\/([a-z]+\.tsx)/gi;
+      let match;
+
+      while ((match = regex.exec(filePath)) !== null) {
+        const [, component, subComponent] = match;
+        if (polaris[component] && polaris[component][subComponent]) {
+          const newName = `${component}.${subComponent}Props`;
+          types[newName] = {
+            [filePath]: {
+              ...types[key][filePath],
+              name: newName,
+            },
+          };
+        }
+      }
+    });
+  }
+});
+
+Object.keys(types).forEach((key) => {
+  const isPropDefinition = key.endsWith('Props');
+
+  if (isPropDefinition) {
     const propDefinition = createPropDefinition(key);
+
     if (propDefinition && propDefinition.type === PropType.Group) {
       result[key] = propDefinition.children;
     }
