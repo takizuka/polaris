@@ -1191,7 +1191,10 @@
     },
     "translate": {
       "type": "enum",
-      "options": ["yes", "no"],
+      "options": [
+        "yes",
+        "no"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "yes"
@@ -1352,7 +1355,10 @@
     },
     "unselectable": {
       "type": "enum",
-      "options": ["on", "off"],
+      "options": [
+        "on",
+        "off"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "on"
@@ -1395,7 +1401,12 @@
     },
     "aria-autocomplete": {
       "type": "enum",
-      "options": ["none", "list", "inline", "both"],
+      "options": [
+        "none",
+        "list",
+        "inline",
+        "both"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -1452,7 +1463,14 @@
     },
     "aria-dropeffect": {
       "type": "enum",
-      "options": ["none", "link", "copy", "execute", "move", "popup"],
+      "options": [
+        "none",
+        "link",
+        "copy",
+        "execute",
+        "move",
+        "popup"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -1509,7 +1527,11 @@
     },
     "aria-live": {
       "type": "enum",
-      "options": ["off", "assertive", "polite"],
+      "options": [
+        "off",
+        "assertive",
+        "polite"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "off"
@@ -1518,7 +1540,10 @@
     },
     "aria-orientation": {
       "type": "enum",
-      "options": ["horizontal", "vertical"],
+      "options": [
+        "horizontal",
+        "vertical"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "horizontal"
@@ -1611,7 +1636,12 @@
     },
     "aria-sort": {
       "type": "enum",
-      "options": ["ascending", "descending", "none", "other"],
+      "options": [
+        "ascending",
+        "descending",
+        "none",
+        "other"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -1838,7 +1868,10 @@
     },
     "background": {
       "type": "enum",
-      "options": ["surface", "surface-subdued"],
+      "options": [
+        "surface",
+        "surface-subdued"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "surface"
@@ -1847,7 +1880,13 @@
     },
     "roundedAbove": {
       "type": "enum",
-      "options": ["xs", "sm", "md", "lg", "xl"],
+      "options": [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "xs"
@@ -1860,6 +1899,33 @@
       "type": "ReactNode",
       "defaultValue": {
         "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "as": {
+      "type": "enum",
+      "options": [
+        "div",
+        "ul",
+        "ol",
+        "fieldset"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "div"
+      },
+      "description": "No description"
+    },
+    "align": {
+      "type": "enum",
+      "options": [
+        "start",
+        "end",
+        "center"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "start"
       },
       "description": "No description"
     },
@@ -1932,7 +1998,11 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": ["above", "below", "mostSpace"],
+      "options": [
+        "above",
+        "below",
+        "mostSpace"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -1996,9 +2066,26 @@
     }
   },
   "AvatarProps": {
+    "size": {
+      "type": "enum",
+      "options": [
+        "extraSmall",
+        "small",
+        "medium",
+        "large"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "extraSmall"
+      },
+      "description": "No description"
+    },
     "shape": {
       "type": "enum",
-      "options": ["square", "round"],
+      "options": [
+        "square",
+        "round"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "square"
@@ -2099,7 +2186,12 @@
     },
     "status": {
       "type": "enum",
-      "options": ["success", "info", "warning", "critical"],
+      "options": [
+        "success",
+        "info",
+        "warning",
+        "critical"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "success"
@@ -2311,9 +2403,111 @@
       },
       "description": "No description"
     },
+    "as": {
+      "type": "enum",
+      "options": [
+        "div",
+        "span",
+        "section",
+        "legend",
+        "ul",
+        "li"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "div"
+      },
+      "description": "No description"
+    },
+    "border": {
+      "type": "enum",
+      "options": [
+        "base",
+        "dark",
+        "divider",
+        "divider-on-dark",
+        "transparent"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "base"
+      },
+      "description": "No description"
+    },
+    "borderBlockEnd": {
+      "type": "enum",
+      "options": [
+        "base",
+        "dark",
+        "divider",
+        "divider-on-dark",
+        "transparent"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "base"
+      },
+      "description": "No description"
+    },
+    "borderInlineStart": {
+      "type": "enum",
+      "options": [
+        "base",
+        "dark",
+        "divider",
+        "divider-on-dark",
+        "transparent"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "base"
+      },
+      "description": "No description"
+    },
+    "borderInlineEnd": {
+      "type": "enum",
+      "options": [
+        "base",
+        "dark",
+        "divider",
+        "divider-on-dark",
+        "transparent"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "base"
+      },
+      "description": "No description"
+    },
+    "borderBlockStart": {
+      "type": "enum",
+      "options": [
+        "base",
+        "dark",
+        "divider",
+        "divider-on-dark",
+        "transparent"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "base"
+      },
+      "description": "No description"
+    },
     "borderRadius": {
       "type": "enum",
-      "options": ["05", "1", "2", "3", "4", "5", "6", "base", "large", "half"],
+      "options": [
+        "05",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "base",
+        "large",
+        "half"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "05"
@@ -2322,7 +2516,18 @@
     },
     "borderRadiusEndStart": {
       "type": "enum",
-      "options": ["05", "1", "2", "3", "4", "5", "6", "base", "large", "half"],
+      "options": [
+        "05",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "base",
+        "large",
+        "half"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "05"
@@ -2331,7 +2536,18 @@
     },
     "borderRadiusEndEnd": {
       "type": "enum",
-      "options": ["05", "1", "2", "3", "4", "5", "6", "base", "large", "half"],
+      "options": [
+        "05",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "base",
+        "large",
+        "half"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "05"
@@ -2340,7 +2556,18 @@
     },
     "borderRadiusStartStart": {
       "type": "enum",
-      "options": ["05", "1", "2", "3", "4", "5", "6", "base", "large", "half"],
+      "options": [
+        "05",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "base",
+        "large",
+        "half"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "05"
@@ -2349,7 +2576,18 @@
     },
     "borderRadiusStartEnd": {
       "type": "enum",
-      "options": ["05", "1", "2", "3", "4", "5", "6", "base", "large", "half"],
+      "options": [
+        "05",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "base",
+        "large",
+        "half"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "05"
@@ -2358,7 +2596,13 @@
     },
     "borderWidth": {
       "type": "enum",
-      "options": ["1", "2", "3", "4", "5"],
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "1"
@@ -2367,7 +2611,13 @@
     },
     "borderBlockStartWidth": {
       "type": "enum",
-      "options": ["1", "2", "3", "4", "5"],
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "1"
@@ -2376,7 +2626,13 @@
     },
     "borderBlockEndWidth": {
       "type": "enum",
-      "options": ["1", "2", "3", "4", "5"],
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "1"
@@ -2385,7 +2641,13 @@
     },
     "borderInlineStartWidth": {
       "type": "enum",
-      "options": ["1", "2", "3", "4", "5"],
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "1"
@@ -2394,7 +2656,13 @@
     },
     "borderInlineEndWidth": {
       "type": "enum",
-      "options": ["1", "2", "3", "4", "5"],
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "1"
@@ -2460,7 +2728,10 @@
     },
     "overflowX": {
       "type": "enum",
-      "options": ["hidden", "scroll"],
+      "options": [
+        "hidden",
+        "scroll"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "hidden"
@@ -2469,7 +2740,10 @@
     },
     "overflowY": {
       "type": "enum",
-      "options": ["hidden", "scroll"],
+      "options": [
+        "hidden",
+        "scroll"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "hidden"
@@ -2504,6 +2778,20 @@
       },
       "description": "Width of container"
     },
+    "position": {
+      "type": "enum",
+      "options": [
+        "relative",
+        "absolute",
+        "fixed",
+        "sticky"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "relative"
+      },
+      "description": "No description"
+    },
     "opacity": {
       "type": "string",
       "defaultValue": {
@@ -2511,6 +2799,21 @@
         "value": ""
       },
       "description": "Opacity of box"
+    },
+    "outline": {
+      "type": "enum",
+      "options": [
+        "base",
+        "dark",
+        "divider",
+        "divider-on-dark",
+        "transparent"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "base"
+      },
+      "description": "No description"
     },
     "printHidden": {
       "type": "boolean",
@@ -2615,7 +2918,11 @@
     },
     "size": {
       "type": "enum",
-      "options": ["medium", "large", "slim"],
+      "options": [
+        "medium",
+        "large",
+        "slim"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "medium"
@@ -2624,7 +2931,13 @@
     },
     "textAlign": {
       "type": "enum",
-      "options": ["start", "end", "center", "left", "right"],
+      "options": [
+        "start",
+        "end",
+        "center",
+        "left",
+        "right"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "start"
@@ -2803,7 +3116,10 @@
     },
     "ariaChecked": {
       "type": "enum",
-      "options": ["false", "true"],
+      "options": [
+        "false",
+        "true"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "false"
@@ -2902,6 +3218,19 @@
     }
   },
   "ButtonGroupProps": {
+    "spacing": {
+      "type": "enum",
+      "options": [
+        "extraTight",
+        "tight",
+        "loose"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "extraTight"
+      },
+      "description": "No description"
+    },
     "segmented": {
       "type": "boolean",
       "defaultValue": {
@@ -3278,7 +3607,10 @@
     },
     "footerActionAlignment": {
       "type": "enum",
-      "options": ["left", "right"],
+      "options": [
+        "left",
+        "right"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "left"
@@ -3329,7 +3661,10 @@
     },
     "ariaLive": {
       "type": "enum",
-      "options": ["off", "polite"],
+      "options": [
+        "off",
+        "polite"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "off"
@@ -3523,6 +3858,48 @@
       },
       "description": "ID for the element"
     },
+    "color": {
+      "type": "group",
+      "defaultValue": {
+        "type": "group",
+        "children": {}
+      },
+      "description": "No description",
+      "children": {
+        "alpha": {
+          "type": "number",
+          "defaultValue": {
+            "type": "number",
+            "value": 0
+          },
+          "description": "Level of transparency"
+        },
+        "brightness": {
+          "type": "number",
+          "defaultValue": {
+            "type": "number",
+            "value": 0
+          },
+          "description": "Brightness of the color"
+        },
+        "hue": {
+          "type": "number",
+          "defaultValue": {
+            "type": "number",
+            "value": 0
+          },
+          "description": "The color"
+        },
+        "saturation": {
+          "type": "number",
+          "defaultValue": {
+            "type": "number",
+            "value": 0
+          },
+          "description": "Saturation of the color"
+        }
+      }
+    },
     "allowAlpha": {
       "type": "boolean",
       "defaultValue": {
@@ -3568,7 +3945,11 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": ["above", "below", "mostSpace"],
+      "options": [
+        "above",
+        "below",
+        "mostSpace"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -3658,7 +4039,12 @@
     },
     "verticalAlign": {
       "type": "enum",
-      "options": ["top", "bottom", "middle", "baseline"],
+      "options": [
+        "top",
+        "bottom",
+        "middle",
+        "baseline"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "top"
@@ -3675,7 +4061,11 @@
     },
     "defaultSortDirection": {
       "type": "enum",
-      "options": ["ascending", "descending", "none"],
+      "options": [
+        "ascending",
+        "descending",
+        "none"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -3824,7 +4214,10 @@
   "DescriptionListProps": {
     "spacing": {
       "type": "enum",
-      "options": ["tight", "loose"],
+      "options": [
+        "tight",
+        "loose"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "tight"
@@ -3835,10 +4228,32 @@
   "DisplayTextProps": {
     "element": {
       "type": "enum",
-      "options": ["h1", "h2", "h3", "h4", "h5", "h6", "p"],
+      "options": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "h1"
+      },
+      "description": "No description"
+    },
+    "size": {
+      "type": "enum",
+      "options": [
+        "small",
+        "medium",
+        "large",
+        "extraLarge"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "small"
       },
       "description": "No description"
     },
@@ -3850,7 +4265,23 @@
       "description": "Content to display"
     }
   },
-  "DividerProps": {},
+  "DividerProps": {
+    "borderStyle": {
+      "type": "enum",
+      "options": [
+        "base",
+        "dark",
+        "divider",
+        "divider-on-dark",
+        "transparent"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "base"
+      },
+      "description": "No description"
+    }
+  },
   "DropZoneProps": {
     "label": {
       "type": "ReactNode",
@@ -3959,7 +4390,11 @@
     },
     "type": {
       "type": "enum",
-      "options": ["file", "image", "video"],
+      "options": [
+        "file",
+        "image",
+        "video"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "file"
@@ -4154,7 +4589,11 @@
     },
     "type": {
       "type": "enum",
-      "options": ["file", "image", "video"],
+      "options": [
+        "file",
+        "image",
+        "video"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "file"
@@ -4767,7 +5206,11 @@
     },
     "method": {
       "type": "enum",
-      "options": ["post", "get", "action"],
+      "options": [
+        "post",
+        "get",
+        "action"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "post"
@@ -4949,7 +5392,15 @@
   "HeadingProps": {
     "element": {
       "type": "enum",
-      "options": ["h1", "h2", "h3", "h4", "h5", "h6", "p"],
+      "options": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "h1"
@@ -4973,6 +5424,24 @@
     }
   },
   "IconProps": {
+    "color": {
+      "type": "enum",
+      "options": [
+        "base",
+        "subdued",
+        "critical",
+        "interactive",
+        "warning",
+        "highlight",
+        "success",
+        "primary"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "base"
+      },
+      "description": "No description"
+    },
     "backdrop": {
       "type": "boolean",
       "defaultValue": {
@@ -5072,7 +5541,10 @@
     },
     "defaultSortDirection": {
       "type": "enum",
-      "options": ["ascending", "descending"],
+      "options": [
+        "ascending",
+        "descending"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -5081,7 +5553,10 @@
     },
     "sortDirection": {
       "type": "enum",
-      "options": ["ascending", "descending"],
+      "options": [
+        "ascending",
+        "descending"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -5162,7 +5637,10 @@
     },
     "defaultSortDirection": {
       "type": "enum",
-      "options": ["ascending", "descending"],
+      "options": [
+        "ascending",
+        "descending"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -5171,7 +5649,10 @@
     },
     "sortDirection": {
       "type": "enum",
-      "options": ["ascending", "descending"],
+      "options": [
+        "ascending",
+        "descending"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -5262,9 +5743,31 @@
       },
       "description": "No description"
     },
+    "align": {
+      "type": "enum",
+      "options": [
+        "start",
+        "center",
+        "end",
+        "space-around",
+        "space-between",
+        "space-evenly"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "start"
+      },
+      "description": "No description"
+    },
     "blockAlign": {
       "type": "enum",
-      "options": ["start", "center", "end", "baseline", "stretch"],
+      "options": [
+        "start",
+        "center",
+        "end",
+        "baseline",
+        "stretch"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "start"
@@ -5870,6 +6373,18 @@
         "value": false
       },
       "description": "Whether or not card content should be laid out vertically"
+    },
+    "size": {
+      "type": "enum",
+      "options": [
+        "small",
+        "medium"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "small"
+      },
+      "description": "No description"
     }
   },
   "MessageIndicatorProps": {
@@ -6195,6 +6710,19 @@
         "value": false
       },
       "description": "Allow more than one option to be selected"
+    },
+    "verticalAlign": {
+      "type": "enum",
+      "options": [
+        "top",
+        "center",
+        "bottom"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "top"
+      },
+      "description": "No description"
     },
     "onChange": {
       "type": "action",
@@ -6551,7 +7079,11 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": ["above", "below", "mostSpace"],
+      "options": [
+        "above",
+        "below",
+        "mostSpace"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -6560,7 +7092,11 @@
     },
     "preferredAlignment": {
       "type": "enum",
-      "options": ["left", "center", "right"],
+      "options": [
+        "left",
+        "center",
+        "right"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "left"
@@ -6672,7 +7208,11 @@
     },
     "autofocusTarget": {
       "type": "enum",
-      "options": ["none", "first-node", "container"],
+      "options": [
+        "none",
+        "first-node",
+        "container"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -6749,7 +7289,11 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": ["above", "below", "mostSpace"],
+      "options": [
+        "above",
+        "below",
+        "mostSpace"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -6758,7 +7302,11 @@
     },
     "preferredAlignment": {
       "type": "enum",
-      "options": ["left", "center", "right"],
+      "options": [
+        "left",
+        "center",
+        "right"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "left"
@@ -6830,6 +7378,33 @@
         "value": 0
       },
       "description": "The progression of certain tasks"
+    },
+    "size": {
+      "type": "enum",
+      "options": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "small"
+      },
+      "description": "No description"
+    },
+    "color": {
+      "type": "enum",
+      "options": [
+        "highlight",
+        "primary",
+        "success",
+        "critical"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "highlight"
+      },
+      "description": "No description"
     },
     "animated": {
       "type": "boolean",
@@ -7031,6 +7606,21 @@
         "type": "ReactNode"
       },
       "description": "Content for the details area"
+    },
+    "verticalAlignment": {
+      "type": "enum",
+      "options": [
+        "leading",
+        "trailing",
+        "center",
+        "fill",
+        "baseline"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "leading"
+      },
+      "description": "No description"
     },
     "dataHref": {
       "type": "string",
@@ -7732,7 +8322,22 @@
       "description": "Number of lines to display"
     }
   },
-  "SkeletonDisplayTextProps": {},
+  "SkeletonDisplayTextProps": {
+    "size": {
+      "type": "enum",
+      "options": [
+        "small",
+        "medium",
+        "large",
+        "extraLarge"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "small"
+      },
+      "description": "No description"
+    }
+  },
   "SkeletonPageProps": {
     "title": {
       "type": "string",
@@ -7792,7 +8397,22 @@
       "description": "No description"
     }
   },
-  "SkeletonThumbnailProps": {},
+  "SkeletonThumbnailProps": {
+    "size": {
+      "type": "enum",
+      "options": [
+        "extraSmall",
+        "small",
+        "medium",
+        "large"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "extraSmall"
+      },
+      "description": "No description"
+    }
+  },
   "StackProps": {
     "children": {
       "type": "ReactNode",
@@ -7817,6 +8437,37 @@
       },
       "description": "Stack the elements vertically"
     },
+    "spacing": {
+      "type": "enum",
+      "options": [
+        "extraTight",
+        "tight",
+        "baseTight",
+        "loose",
+        "extraLoose",
+        "none"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "extraTight"
+      },
+      "description": "No description"
+    },
+    "alignment": {
+      "type": "enum",
+      "options": [
+        "leading",
+        "trailing",
+        "center",
+        "fill",
+        "baseline"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "leading"
+      },
+      "description": "No description"
+    },
     "distribution": {
       "type": "enum",
       "options": [
@@ -7837,7 +8488,15 @@
   "SubheadingProps": {
     "element": {
       "type": "enum",
-      "options": ["h1", "h2", "h3", "h4", "h5", "h6", "p"],
+      "options": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "h1"
@@ -7894,6 +8553,39 @@
     }
   },
   "TextProps": {
+    "alignment": {
+      "type": "enum",
+      "options": [
+        "start",
+        "center",
+        "end",
+        "justify"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "start"
+      },
+      "description": "No description"
+    },
+    "as": {
+      "type": "enum",
+      "options": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "p",
+        "span",
+        "legend"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "h1"
+      },
+      "description": "No description"
+    },
     "breakWord": {
       "type": "boolean",
       "defaultValue": {
@@ -7909,9 +8601,29 @@
       },
       "description": "Text to display"
     },
+    "color": {
+      "type": "enum",
+      "options": [
+        "success",
+        "critical",
+        "warning",
+        "subdued",
+        "text-inverse"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "success"
+      },
+      "description": "No description"
+    },
     "fontWeight": {
       "type": "enum",
-      "options": ["regular", "medium", "semibold", "bold"],
+      "options": [
+        "regular",
+        "medium",
+        "semibold",
+        "bold"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "regular"
@@ -7965,6 +8677,18 @@
     }
   },
   "TextContainerProps": {
+    "spacing": {
+      "type": "enum",
+      "options": [
+        "tight",
+        "loose"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "tight"
+      },
+      "description": "No description"
+    },
     "children": {
       "type": "ReactNode",
       "defaultValue": {
@@ -7999,6 +8723,20 @@
     }
   },
   "ThumbnailProps": {
+    "size": {
+      "type": "enum",
+      "options": [
+        "extraSmall",
+        "small",
+        "medium",
+        "large"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "extraSmall"
+      },
+      "description": "No description"
+    },
     "alt": {
       "type": "string",
       "defaultValue": {
@@ -8057,7 +8795,11 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": ["above", "below", "mostSpace"],
+      "options": [
+        "above",
+        "below",
+        "mostSpace"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -8313,7 +9055,10 @@
     },
     "ariaChecked": {
       "type": "enum",
-      "options": ["false", "true"],
+      "options": [
+        "false",
+        "true"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "false"
@@ -9283,7 +10028,10 @@
     },
     "translate": {
       "type": "enum",
-      "options": ["yes", "no"],
+      "options": [
+        "yes",
+        "no"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "yes"
@@ -9444,7 +10192,10 @@
     },
     "unselectable": {
       "type": "enum",
-      "options": ["on", "off"],
+      "options": [
+        "on",
+        "off"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "on"
@@ -9487,7 +10238,12 @@
     },
     "aria-autocomplete": {
       "type": "enum",
-      "options": ["none", "list", "inline", "both"],
+      "options": [
+        "none",
+        "list",
+        "inline",
+        "both"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -9544,7 +10300,14 @@
     },
     "aria-dropeffect": {
       "type": "enum",
-      "options": ["none", "link", "copy", "execute", "move", "popup"],
+      "options": [
+        "none",
+        "link",
+        "copy",
+        "execute",
+        "move",
+        "popup"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -9601,7 +10364,11 @@
     },
     "aria-live": {
       "type": "enum",
-      "options": ["off", "assertive", "polite"],
+      "options": [
+        "off",
+        "assertive",
+        "polite"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "off"
@@ -9610,7 +10377,10 @@
     },
     "aria-orientation": {
       "type": "enum",
-      "options": ["horizontal", "vertical"],
+      "options": [
+        "horizontal",
+        "vertical"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "horizontal"
@@ -9703,7 +10473,12 @@
     },
     "aria-sort": {
       "type": "enum",
-      "options": ["ascending", "descending", "none", "other"],
+      "options": [
+        "ascending",
+        "descending",
+        "none",
+        "other"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "ascending"
@@ -9904,7 +10679,11 @@
   "PipProps": {
     "progress": {
       "type": "enum",
-      "options": ["incomplete", "partiallyComplete", "complete"],
+      "options": [
+        "incomplete",
+        "partiallyComplete",
+        "complete"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "incomplete"
@@ -10484,7 +11263,10 @@
     },
     "status": {
       "type": "enum",
-      "options": ["success", "subdued"],
+      "options": [
+        "success",
+        "subdued"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "success"
@@ -10952,7 +11734,11 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": ["above", "below", "mostSpace"],
+      "options": [
+        "above",
+        "below",
+        "mostSpace"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -10961,7 +11747,11 @@
     },
     "preferredAlignment": {
       "type": "enum",
-      "options": ["left", "center", "right"],
+      "options": [
+        "left",
+        "center",
+        "right"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "left"
@@ -11034,7 +11824,11 @@
     },
     "autofocusTarget": {
       "type": "enum",
-      "options": ["none", "first-node", "container"],
+      "options": [
+        "none",
+        "first-node",
+        "container"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "none"
@@ -11651,7 +12445,11 @@
     },
     "preferredPosition": {
       "type": "enum",
-      "options": ["above", "below", "mostSpace"],
+      "options": [
+        "above",
+        "below",
+        "mostSpace"
+      ],
       "defaultValue": {
         "type": "enum",
         "value": "above"
@@ -12040,6 +12838,1278 @@
         "value": ""
       },
       "description": "No description"
+    }
+  },
+  "Listbox.LoadingProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "accessibilityLabel": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    }
+  },
+  "ActionList.ItemProps": {
+    "accessibilityLabel": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "Visually hidden text for screen readers"
+    },
+    "helpText": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "Additional hint text to display with item"
+    },
+    "image": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "prefix": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "Prefix source"
+    },
+    "suffix": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "Suffix source"
+    },
+    "ellipsis": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Add an ellipsis suffix to action content"
+    },
+    "active": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Whether the action is active or not"
+    },
+    "role": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "Defines a role for the action"
+    },
+    "disabled": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Whether or not the action is disabled"
+    },
+    "id": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "A unique identifier for the action"
+    },
+    "content": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "Content the action displays"
+    },
+    "url": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "A destination to link to, rendered in the action"
+    },
+    "external": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Forces url to open in a new tab"
+    },
+    "onAction": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "Callback when an action takes place"
+    },
+    "onMouseEnter": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "Callback when mouse enter"
+    },
+    "onTouchStart": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "Callback when element is touched"
+    },
+    "destructive": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Destructive action"
+    }
+  },
+  "List.ItemProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "Content to display inside the item"
+    }
+  },
+  "Navigation.ItemProps": {
+    "badge": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "label": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "disabled": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "accessibilityLabel": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "selected": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "exactMatch": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "new": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "secondaryAction": {
+      "type": "group",
+      "defaultValue": {
+        "type": "group",
+        "children": {}
+      },
+      "description": "No description",
+      "children": {
+        "url": {
+          "type": "string",
+          "defaultValue": {
+            "type": "string",
+            "value": ""
+          },
+          "description": "No description"
+        },
+        "accessibilityLabel": {
+          "type": "string",
+          "defaultValue": {
+            "type": "string",
+            "value": ""
+          },
+          "description": "No description"
+        },
+        "onClick": {
+          "type": "action",
+          "defaultValue": {
+            "type": "action",
+            "value": []
+          },
+          "description": "No description"
+        },
+        "tooltip": {
+          "type": "group",
+          "defaultValue": {
+            "type": "group",
+            "children": {}
+          },
+          "description": "No description",
+          "children": {
+            "children": {
+              "type": "ReactNode",
+              "defaultValue": {
+                "type": "ReactNode"
+              },
+              "description": "The element that will activate to tooltip"
+            },
+            "content": {
+              "type": "ReactNode",
+              "defaultValue": {
+                "type": "ReactNode"
+              },
+              "description": "The content to display within the tooltip"
+            },
+            "active": {
+              "type": "boolean",
+              "defaultValue": {
+                "type": "boolean",
+                "value": false
+              },
+              "description": "Toggle whether the tooltip is visible"
+            },
+            "hoverDelay": {
+              "type": "number",
+              "defaultValue": {
+                "type": "number",
+                "value": 0
+              },
+              "description": "Delay in milliseconds while hovering over an element before the tooltip is visible"
+            },
+            "dismissOnMouseOut": {
+              "type": "boolean",
+              "defaultValue": {
+                "type": "boolean",
+                "value": false
+              },
+              "description": "Dismiss tooltip when not interacting with its children"
+            },
+            "preferredPosition": {
+              "type": "enum",
+              "options": [
+                "above",
+                "below",
+                "mostSpace"
+              ],
+              "defaultValue": {
+                "type": "enum",
+                "value": "above"
+              },
+              "description": "No description"
+            },
+            "activatorWrapper": {
+              "type": "string",
+              "defaultValue": {
+                "type": "string",
+                "value": ""
+              },
+              "description": "The element type to wrap the activator in"
+            },
+            "accessibilityLabel": {
+              "type": "string",
+              "defaultValue": {
+                "type": "string",
+                "value": ""
+              },
+              "description": "Visually hidden text for screen readers"
+            },
+            "onOpen": {
+              "type": "action",
+              "defaultValue": {
+                "type": "action",
+                "value": []
+              },
+              "description": "No description"
+            },
+            "onClose": {
+              "type": "action",
+              "defaultValue": {
+                "type": "action",
+                "value": []
+              },
+              "description": "No description"
+            }
+          }
+        }
+      }
+    },
+    "onClick": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "No description"
+    },
+    "onToggleExpandedState": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "No description"
+    },
+    "expanded": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "shouldResizeIcon": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "truncateText": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "url": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "matches": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "matchPaths": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "excludePaths": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "external": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    }
+  },
+  "Stack.ItemProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "Elements to display inside item"
+    },
+    "fill": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Fill the remaining horizontal space in the stack with the item"
+    }
+  },
+  "Layout.SectionProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "secondary": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "fullWidth": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "oneHalf": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "oneThird": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    }
+  },
+  "Listbox.SectionProps": {
+    "divider": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "title": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    }
+  },
+  "Modal.SectionProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "flush": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "subdued": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "titleHidden": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    }
+  },
+  "Navigation.SectionProps": {
+    "title": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "fill": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "separator": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    }
+  },
+  "Popover.SectionProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    }
+  },
+  "Badge.PipProps": {
+    "progress": {
+      "type": "enum",
+      "options": [
+        "incomplete",
+        "partiallyComplete",
+        "complete"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "incomplete"
+      },
+      "description": "No description"
+    },
+    "accessibilityLabelOverride": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    }
+  },
+  "Card.HeaderProps": {
+    "title": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    }
+  },
+  "Card.SectionProps": {
+    "title": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "subdued": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "flush": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "fullWidth": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "hideOnPrint": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Allow the card to be hidden when printing"
+    }
+  },
+  "Card.SubsectionProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    }
+  },
+  "Grid.CellProps": {
+    "area": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "columnSpan": {
+      "type": "group",
+      "defaultValue": {
+        "type": "group",
+        "children": {}
+      },
+      "description": "No description",
+      "children": {}
+    },
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    }
+  },
+  "IndexTable.CellProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "className": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "flush": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    }
+  },
+  "DropZone.FileUploadProps": {
+    "actionTitle": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "actionHint": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    }
+  },
+  "FormLayout.GroupProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "condensed": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "title": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "helpText": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    }
+  },
+  "IndexTable.RowProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "id": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "selected": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "position": {
+      "type": "number",
+      "defaultValue": {
+        "type": "number",
+        "value": 0
+      },
+      "description": "No description"
+    },
+    "subdued": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "status": {
+      "type": "enum",
+      "options": [
+        "success",
+        "subdued"
+      ],
+      "defaultValue": {
+        "type": "enum",
+        "value": "success"
+      },
+      "description": "No description"
+    },
+    "disabled": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "onNavigation": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "No description"
+    },
+    "onClick": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "No description"
+    }
+  },
+  "Layout.AnnotatedSectionProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "title": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "description": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "id": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    }
+  },
+  "Listbox.ActionProps": {
+    "value": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "accessibilityLabel": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "selected": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "disabled": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "divider": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    }
+  },
+  "Listbox.HeaderProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    }
+  },
+  "Listbox.OptionProps": {
+    "value": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "accessibilityLabel": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "No description"
+    },
+    "selected": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "disabled": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "divider": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    }
+  },
+  "Listbox.TextOptionProps": {
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "No description"
+    },
+    "selected": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    },
+    "disabled": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "No description"
+    }
+  },
+  "Popover.PaneProps": {
+    "fixed": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Fix the pane to the top of the popover"
+    },
+    "sectioned": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Automatically wrap children in padded sections"
+    },
+    "children": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "The pane content"
+    },
+    "height": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "Sets a fixed height and max-height on the Scrollable"
+    },
+    "onScrolledToBottom": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "Callback when the bottom of the popover is reached by mouse or keyboard"
+    },
+    "captureOverscroll": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Prevents page scrolling when the end of the scrollable Popover content is reached"
+    }
+  },
+  "TopBar.MenuProps": {
+    "activatorContent": {
+      "type": "ReactNode",
+      "defaultValue": {
+        "type": "ReactNode"
+      },
+      "description": "Accepts an activator component that renders inside of a button that opens the menu"
+    },
+    "message": {
+      "type": "group",
+      "defaultValue": {
+        "type": "group",
+        "children": {}
+      },
+      "description": "No description",
+      "children": {
+        "title": {
+          "type": "string",
+          "defaultValue": {
+            "type": "string",
+            "value": ""
+          },
+          "description": "No description"
+        },
+        "description": {
+          "type": "string",
+          "defaultValue": {
+            "type": "string",
+            "value": ""
+          },
+          "description": "No description"
+        }
+      }
+    },
+    "open": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "A boolean property indicating whether the menu is currently open"
+    },
+    "onOpen": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "A callback function to handle opening the menu popover"
+    },
+    "onClose": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "A callback function to handle closing the menu popover"
+    },
+    "accessibilityLabel": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "A string that provides the accessibility labeling"
+    }
+  },
+  "TopBar.SearchFieldProps": {
+    "value": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "Initial value for the input"
+    },
+    "placeholder": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "Hint text to display"
+    },
+    "focused": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Force the focus state on the input"
+    },
+    "active": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Force a state where search is active but the text field component is not focused"
+    },
+    "onChange": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "Callback when value is changed"
+    },
+    "onFocus": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "Callback when input is focused"
+    },
+    "onBlur": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "Callback when focus is removed"
+    },
+    "onCancel": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "Callback when search field cancel button is clicked"
+    },
+    "showFocusBorder": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "Show a border when the search field is focused"
+    }
+  },
+  "TopBar.UserMenuProps": {
+    "message": {
+      "type": "group",
+      "defaultValue": {
+        "type": "group",
+        "children": {}
+      },
+      "description": "No description",
+      "children": {
+        "title": {
+          "type": "string",
+          "defaultValue": {
+            "type": "string",
+            "value": ""
+          },
+          "description": "No description"
+        },
+        "description": {
+          "type": "string",
+          "defaultValue": {
+            "type": "string",
+            "value": ""
+          },
+          "description": "No description"
+        }
+      }
+    },
+    "name": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "A string detailing the merchant’s full name to be displayed in the user menu"
+    },
+    "detail": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "A string allowing further detail on the merchant’s name displayed in the user menu"
+    },
+    "accessibilityLabel": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "A string that provides the accessibility labeling"
+    },
+    "initials": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "The merchant’s initials, rendered in place of an avatar image when not provided"
+    },
+    "avatar": {
+      "type": "string",
+      "defaultValue": {
+        "type": "string",
+        "value": ""
+      },
+      "description": "An avatar image representing the merchant"
+    },
+    "open": {
+      "type": "boolean",
+      "defaultValue": {
+        "type": "boolean",
+        "value": false
+      },
+      "description": "A boolean property indicating whether the user menu is currently open"
+    },
+    "onToggle": {
+      "type": "action",
+      "defaultValue": {
+        "type": "action",
+        "value": []
+      },
+      "description": "A callback function to handle opening and closing the user menu"
     }
   }
 }
