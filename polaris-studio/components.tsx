@@ -2,6 +2,7 @@ import * as polaris from '@shopify/polaris';
 import {ComponentMap, PropDefinition, PropType} from './types';
 import untypedComponents from './componentProps.json';
 import {createElement} from 'react';
+import get from 'lodash.get';
 
 interface PropMap {
   [reactPropsName: string]: {
@@ -11,33 +12,17 @@ interface PropMap {
 
 let importedProps = untypedComponents as PropMap;
 
-const allowedComponents = [
-  'Button',
-  'Banner',
-  'Avatar',
-  'Card',
-  'Page',
-  'Layout',
-  'Box',
-  'IndexTable',
-  'IndexTable.Row',
-  'IndexTable.Cell',
-  'Text',
-  'Badge',
-  'Stack',
-  'Checkbox',
-  'ContextualSaveBar',
-  'RangeSlider',
-  'KeyboardKey',
-  'Spinner',
-];
-
 export let components: ComponentMap = {};
 
 Object.entries(importedProps).forEach(([reactPropsName, props]) => {
   const componentName = reactPropsName.replace('Props', '');
-  const polarisReactComponent = polaris[componentName as keyof typeof polaris];
-  if (!allowedComponents.includes(componentName) || !polarisReactComponent) {
+
+  const polarisReactComponent = get(
+    polaris,
+    componentName as keyof typeof polaris,
+  );
+
+  if (!polarisReactComponent) {
     delete components[componentName];
   } else {
     components[componentName] = {
@@ -48,8 +33,6 @@ Object.entries(importedProps).forEach(([reactPropsName, props]) => {
     };
   }
 });
-
-console.log({components});
 
 components['p'] = {
   reactComponent: (props: any) => createElement('p', props),
