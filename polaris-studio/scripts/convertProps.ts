@@ -1,13 +1,6 @@
 import fs from 'fs';
-import {createElement} from 'react';
 import untypedPolarisTypes from '../polarisProps.json';
-import {
-  ComponentMap,
-  GroupPropDefinition,
-  PropDefinition,
-  PropType,
-  PropValue,
-} from '../types';
+import {GroupPropDefinition, PropDefinition, PropType} from '../types';
 import * as polaris from '@shopify/polaris';
 const types = untypedPolarisTypes as AllTypes;
 
@@ -49,11 +42,9 @@ const getTypeByKey = (key: string, currentFileName?: string): Type | null => {
 };
 
 const createPropDefinition = (
-  key: string,
+  type: Type,
   memberName?: string,
 ): PropDefinition | null => {
-  let type = getTypeByKey(key);
-
   const initialTypeName = type?.name;
 
   if (!type) return null;
@@ -74,15 +65,7 @@ const createPropDefinition = (
       const resolvedType = getTypeByKey(value, type.filePath);
 
       if (resolvedType) {
-        const propDefinition = createPropDefinition(resolvedType.name);
-        if (initialTypeName === 'ColorPickerProps') {
-          console.log({
-            typeName: type.name,
-            memberName,
-            resolvedType,
-            propDefinition, // Hmm, null
-          });
-        }
+        const propDefinition = createPropDefinition(resolvedType);
         return propDefinition;
       }
     }
@@ -192,7 +175,7 @@ const createPropDefinition = (
             type.members?.forEach((member) => {
               if (type) {
                 const memberDefinition = createPropDefinition(
-                  type.name,
+                  type,
                   member.name,
                 );
                 if (memberDefinition) {
@@ -221,7 +204,7 @@ const createPropDefinition = (
       };
       type.members.forEach((member) => {
         if (type) {
-          const memberDefinition = createPropDefinition(type.name, member.name);
+          const memberDefinition = createPropDefinition(type, member.name);
 
           if (memberDefinition) {
             propDefinition.children = {
@@ -269,9 +252,10 @@ Object.keys(types).forEach((key) => {
 
 Object.keys(types).forEach((key) => {
   const isPropDefinition = key.endsWith('Props');
+  const type = getTypeByKey(key);
 
-  if (isPropDefinition) {
-    const propDefinition = createPropDefinition(key);
+  if (isPropDefinition && type) {
+    const propDefinition = createPropDefinition(type);
 
     if (propDefinition && propDefinition.type === PropType.Group) {
       result[key] = propDefinition.children;
@@ -279,4 +263,4 @@ Object.keys(types).forEach((key) => {
   }
 });
 
-fs.writeFileSync('./componentProps.json', JSON.stringify(result, null, 2));
+fs.writeFileSync('../../componentProps.json', JSON.stringify(result, null, 2));
