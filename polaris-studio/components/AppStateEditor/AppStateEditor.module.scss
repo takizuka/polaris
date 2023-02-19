@@ -1,8 +1,12 @@
 .AppStateEditor {
-  min-height: 20vh;
+  min-height: 30vh;
+  max-height: 30vh;
+  overflow: hidden;
+  position: relative;
 
   .Columns {
     display: flex;
+    overflow: auto;
 
     .ColumnHeader {
       padding: 0.5rem;
@@ -14,7 +18,7 @@
       background: transparent;
       border: none;
       color: #999;
-
+      text-overflow: ellipsis;
       &:focus {
         outline: none;
         color: white;
@@ -28,10 +32,35 @@
     &:last-child {
       border-right: none;
     }
+
+    .ColumnHeader span {
+      color: #aaa;
+      border: 1px solid var(--border-color);
+      padding: 0.125rem 0.33rem;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+      font-weight: 500;
+    }
   }
 
   .Row {
+    position: relative;
     border-top: 1px solid var(--border-color);
+    min-width: 20rem;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .TemporaryValue {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0.5rem;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      color: #7171ff;
+    }
   }
 }
 
@@ -50,4 +79,17 @@
       background: var(--border-color);
     }
   }
+}
+
+.MockData {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background: rgb(48, 0, 152);
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  z-index: 1;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 100px;
 }

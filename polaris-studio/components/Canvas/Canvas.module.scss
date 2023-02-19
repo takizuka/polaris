@@ -5,6 +5,9 @@
   &::-webkit-scrollbar {
     display: none;
   }
+  img {
+    max-width: 100%;
+  }
 }
 
 .Callout {
@@ -29,10 +32,11 @@
   .ViewLabel {
     display: inline-block;
     margin-bottom: 0.5rem;
-    background: #50009b;
+    background: #dd5408;
     color: white;
     padding: 0.125rem 0.33rem;
     border-radius: 6px;
+    cursor: pointer;
   }
 
   .ViewContent {
@@ -40,14 +44,17 @@
     min-width: 400px;
     max-width: 400px;
     min-height: 500px;
+    max-height: 70vh;
+    overflow: auto;
     border-radius: 2px;
     padding: 2rem;
+
     &[data-is-selected='true'] {
-      box-shadow: 0 0 0 2px #8514ee;
+      box-shadow: 0 0 0 3px #dd5408;
     }
 
     &:hover * {
-      box-shadow: inset 0 0 0 1px rgb(0 0 0 / 50%);
+      // box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0%);
     }
   }
 }

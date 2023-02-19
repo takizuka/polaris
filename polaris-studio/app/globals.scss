@@ -11,7 +11,7 @@ body {
 }
 
 body {
-  --border-color: rgba(255, 255, 255, 0.15);
+  --border-color: rgba(255, 255, 255, 0.1);
   background: #111;
   color: #ddd;
   font-size: 13px;
@@ -32,11 +32,16 @@ body {
   line-height: inherit;
   font-family: inherit;
   -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 
   &:where(button) {
     cursor: pointer;
     outline: none;
     font-family: inherit;
+  }
+
+  &:where(input) {
+    outline: none;
   }
 }
 
