@@ -20,6 +20,15 @@ export const reducer = (prevState: State, action: Action): State => {
       let defaultProps: {[key: string]: any} = {};
       Object.entries(component.props).forEach(([key, value]) => {
         defaultProps[key] = value.defaultValue;
+
+        // TODO: This only works for one level of nesting.
+        // We need to make this recursive.
+        if (value.type === PropType.Group) {
+          defaultProps[key].children = {};
+          Object.entries(value.children).forEach(([childKey, childValue]) => {
+            defaultProps[key].children[childKey] = childValue.defaultValue;
+          });
+        }
       });
 
       const newLayer: Layer = {
@@ -81,6 +90,24 @@ export const reducer = (prevState: State, action: Action): State => {
       state = {
         ...state,
         selectedViewId: action.viewId,
+      };
+      break;
+    }
+
+    case 'SET_LAYER_REPEAT': {
+      state = {
+        ...state,
+        layers: [
+          ...state.layers.map((layer) => {
+            if (layer.id === action.layerId) {
+              return {
+                ...layer,
+                repeat: action.repeat,
+              };
+            }
+            return layer;
+          }),
+        ],
       };
       break;
     }
@@ -170,6 +197,43 @@ export const reducer = (prevState: State, action: Action): State => {
           }),
         },
       };
+      break;
+    }
+
+    case 'ADD_APP_STATE_SHEET': {
+      const rows: {value: string; temporaryValue: string | null}[] = [];
+
+      for (let i = 0; i < 100; i++) {
+        rows.push({
+          value: '',
+          temporaryValue: null,
+        });
+      }
+
+      const columns: {name: string; rows: typeof rows}[] = [];
+
+      for (let i = 0; i < 10; i++) {
+        columns.push({
+          name: '',
+          rows,
+        });
+      }
+
+      state = {
+        ...state,
+        appState: {
+          ...state.appState,
+          sheets: [
+            ...state.appState.sheets,
+            {
+              id: nanoid(),
+              name: 'New state',
+              columns,
+            },
+          ],
+        },
+      };
+      break;
     }
   }
 
