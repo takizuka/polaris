@@ -2,14 +2,15 @@
 
 import styles from './Canvas.module.scss';
 import '@shopify/polaris/build/esm/styles.css';
-import {AppProvider} from '@shopify/polaris';
+import {AppProvider, Frame} from '@shopify/polaris';
 import enTranslations from '@shopify/polaris/locales/en.json';
 import {Action, AppActionType, PropType, PropValue, State} from '@/types';
 import {components} from '@/components';
 import React, {
   createElement,
   Dispatch,
-  MouseEventHandler,
+  Fragment,
+  ReactNode,
   useEffect,
   useState,
 } from 'react';
@@ -56,62 +57,44 @@ function Canvas() {
       )}
 
       <AppProvider i18n={enTranslations}>
-        <div className={styles.Views}>
-          {Object.values(state.views)
-            .filter((view) => view.type === 'View')
-            .map((view) => {
-              return (
-                <div key={view.id} className={styles.View}>
-                  <div
-                    className={styles.ViewLabel}
-                    onClick={() =>
-                      dispatch({
-                        type: 'SET_SELECTED_VIEW_ID',
-                        viewId: view.id,
-                      })
-                    }
-                  >
-                    {view.name}
+        <Frame>
+          <div className={styles.Views}>
+            {Object.values(state.views)
+              .filter((view) => view.type === 'View')
+              .map((view) => {
+                return (
+                  <div key={view.id} className={styles.View}>
+                    <div
+                      className={styles.ViewLabel}
+                      onClick={() =>
+                        dispatch({
+                          type: 'SET_SELECTED_VIEW_ID',
+                          viewId: view.id,
+                        })
+                      }
+                    >
+                      {view.name}
+                    </div>
+                    <div
+                      className={styles.ViewContent}
+                      data-is-selected={state.selectedViewId === view.id}
+                    >
+                      {Object.values(state.layers)
+                        .filter(({viewId}) => viewId === view.id)
+                        .filter(({parent}) => parent === null)
+                        .map(({id}, iteration) => {
+                          return renderLayer({
+                            layerId: id,
+                            state,
+                            dispatch,
+                          });
+                        })}
+                    </div>
                   </div>
-                  <div
-                    className={styles.ViewContent}
-                    data-is-selected={state.selectedViewId === view.id}
-                  >
-                    {Object.values(state.layers)
-                      .filter(({viewId}) => viewId === view.id)
-                      .filter(({parent}) => parent === null)
-                      .map(({id}) =>
-                        renderLayer({layerId: id, state, dispatch}),
-                      )}
-                  </div>
-                </div>
-              );
-            })}
-        </div>
-
-        {/* <div className={styles.Views}>
-          {Object.values(state.views)
-            .filter((view) => view.type === "CustomComponent")
-            .map((view) => {
-              return (
-                <div
-                  key={view.id}
-                  className={styles.View}
-                  onClick={() =>
-                    dispatch({
-                      type: "SET_SELECTED_VIEW_ID",
-                      viewId: view.id,
-                    })
-                  }
-                >
-                  {Object.values(state.layers)
-                    .filter(({ viewId }) => viewId === view.id)
-                    .filter(({ parentId }) => parentId === null)
-                    .map(({ id }) => render({ layerId: id, state, dispatch }))}
-                </div>
-              );
-            })}
-        </div> */}
+                );
+              })}
+          </div>
+        </Frame>
       </AppProvider>
     </div>
   );
@@ -134,88 +117,79 @@ const parseAppStateKey = (
   };
 };
 
-const injectVariables = (state: State, text: string): string => {
-  return text.replace(sheetRegex, (match, col, row) => {
+const injectVariables = (
+  state: State,
+  text: string,
+  variables?: {[key: string]: string},
+): string => {
+  let output = text;
+
+  if (variables) {
+    Object.entries(variables).forEach(([key, value]) => {
+      output = output.replaceAll(`$${key}`, value);
+    });
+  }
+
+  output = output.replace(sheetRegex, (match, col, row) => {
     const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
     const colIndex = alphabet.indexOf(col);
     const rowIndex = parseInt(row) - 1;
     const value = state.appState.sheets[0].columns[colIndex].rows[rowIndex];
-    return value.temporaryValue || value.value;
+    if (value) {
+      return value.temporaryValue || value.value;
+    } else {
+      return '';
+    }
   });
+
+  return output;
 };
 
 const renderLayer = ({
   layerId,
   state,
   dispatch,
+  iteration,
+  preventRepeat,
+  inheritedVariables,
 }: {
   layerId: string;
   state: State;
   dispatch: Dispatch<Action>;
+  iteration?: number;
+  preventRepeat?: true;
+  inheritedVariables?: {[key: string]: string};
 }): React.ReactNode => {
   const layer = state.layers.find((layer) => layer.id === layerId);
   if (!layer) return null;
-  const {component, props} = layer;
+  const {component} = layer;
 
-  // const childLayers = state.layers.filter(
-  //   (layer) => layer.parent?.layerId === layerId && layer.parent?.type
-  // );
-  // let children = childLayers.map((layer) =>
-  //   renderLayer({ layerId: layer.id, state, dispatch })
-  // );
+  const alphabet = 'ijklmnopqrstuvwxyz'.split('');
+  const iterationKey = inheritedVariables
+    ? alphabet[Object.keys(inheritedVariables).length]
+    : alphabet[0];
 
-  // if (children.length === 0) {
-  //   const component = components[layer.component];
-  //   if (
-  //     component.props.children &&
-  //     component.props.children.type === "ReactNode"
-  //   ) {
-  //     children = [
-  //       <div key="add-layer-hint" className={styles.ChildHint}>
-  //         <button
-  //           onClick={() =>
-  //             dispatch({ type: "SHOW_LAYER_ADDER", parentLayerId: id })
-  //           }
-  //         >
-  //           +
-  //         </button>
-  //       </div>,
-  //     ];
-  //   }
-  // }
-  // const HTMLId = getLayerHTMLId(id);
+  if (layer.repeat > 1 && !preventRepeat) {
+    let children: ReactNode[] = [];
+    [...Array(layer.repeat)].forEach((_, index) => {
+      children.push(
+        renderLayer({
+          layerId: layer.id,
+          state,
+          dispatch,
+          iteration: index + 1,
+          preventRepeat: true,
+          inheritedVariables,
+        }),
+      );
+    });
+    return createElement(Fragment, {}, children);
+  }
 
-  // const eventHandlers: {
-  //   onClick: MouseEventHandler<HTMLDivElement>;
-  //   onMouseEnter: MouseEventHandler<HTMLDivElement>;
-  //   onMouseLeave: MouseEventHandler<HTMLDivElement>;
-  // } = {
-  //   onClick: (event) => {
-  //     dispatch({
-  //       type: "SET_SELECTED_VIEW_ID",
-  //       viewId: layer.viewId,
-  //     });
-  //     dispatch({
-  //       type: "SELECT_LAYER",
-  //       layerId: layer.id,
-  //     });
-  //     event.stopPropagation();
-  //   },
-  //   onMouseEnter: (event) => {
-  //     dispatch({
-  //       type: "SET_HOVERED_LAYER_ID",
-  //       layerId: id,
-  //     });
-  //     event.stopPropagation();
-  //   },
-  //   onMouseLeave: (event) => {
-  //     dispatch({
-  //       type: "SET_HOVERED_LAYER_ID",
-  //       layerId: null,
-  //     });
-  //     event.stopPropagation();
-  //   },
-  // };
+  let variables: {[key: string]: string} = {
+    ...inheritedVariables,
+    [iterationKey]: iteration ? iteration.toString() : '1',
+  };
 
   const reactComponent = components[component].reactComponent;
 
@@ -241,7 +215,8 @@ const renderLayer = ({
           break;
 
         case PropType.String:
-          setProp(propKey, injectVariables(state, propValue.value));
+          setProp(propKey, injectVariables(state, propValue.value, variables));
+
           break;
 
         case PropType.ReactNode:
@@ -252,7 +227,12 @@ const renderLayer = ({
           );
           setProp(propKey, [
             childLayers.map((layer) =>
-              renderLayer({layerId: layer.id, state, dispatch}),
+              renderLayer({
+                layerId: layer.id,
+                state,
+                dispatch,
+                inheritedVariables: variables,
+              }),
             ),
           ]);
           // TODO
@@ -277,14 +257,16 @@ const renderLayer = ({
 
               case AppActionType.SetState:
                 actions.push(() => {
-                  const appStateKey = parseAppStateKey(action.key);
+                  const appStateKey = parseAppStateKey(
+                    injectVariables(state, action.key, variables),
+                  );
                   if (appStateKey) {
                     dispatch({
                       type: 'UPDATE_APP_STATE',
                       sheetId: state.appState.sheets[0].id,
                       columnIndex: appStateKey.columnIndex,
                       rowIndex: appStateKey.rowIndex,
-                      value: action.value,
+                      value: injectVariables(state, action.value, variables),
                       temporaryState: true,
                     });
                   }
@@ -295,9 +277,6 @@ const renderLayer = ({
           break;
 
         case PropType.Group: {
-          Object.entries(propValue.children).forEach(
-            ([subKey, subValue]) => {},
-          );
           recursivelyPrepareProps(propValue.children, [
             ...prevPropPath,
             propKey,

@@ -19,9 +19,6 @@ function LayerList({}: Props) {
 
   return (
     <div className={styles.LayerList}>
-      {topLevelLayers.map((layer) => {
-        return <Item key={layer.id} id={layer.id} />;
-      })}
       <button
         onClick={() =>
           dispatch({
@@ -29,9 +26,13 @@ function LayerList({}: Props) {
             parent: null,
           })
         }
+        className={styles.AddLayer}
       >
         Add layer
       </button>
+      {topLevelLayers.map((layer) => {
+        return <Item key={layer.id} id={layer.id} />;
+      })}
     </div>
   );
 }
@@ -101,6 +102,17 @@ function Item({id}: {id: string}) {
         }
       >
         {layerName}
+        <input
+          type="number"
+          value={layer.repeat}
+          onChange={(evt) =>
+            dispatch({
+              type: 'SET_LAYER_REPEAT',
+              layerId: layer.id,
+              repeat: parseInt(evt.target.value),
+            })
+          }
+        />
       </span>
 
       {propsWithChildren.length > 0 && (
@@ -116,41 +128,39 @@ function Item({id}: {id: string}) {
             return (
               <li key={path}>
                 {path}{' '}
+                <button
+                  className={styles.AddChild}
+                  onClick={() => {
+                    dispatch({
+                      type: 'SHOW_LAYER_ADDER',
+                      parent: {
+                        layerId: layer.id,
+                        propPath: `props.${path}`,
+                      },
+                    });
+                  }}
+                  id={tooltipId}
+                >
+                  +
+                </button>
                 {childLayersForProp.map((layer) => (
                   <Item key={layer.id} id={layer.id} />
                 ))}
-                {childLayersForProp.length === 0 && (
-                  <>
-                    <button
-                      className={styles.AddChild}
-                      onClick={() => {
-                        dispatch({
-                          type: 'SHOW_LAYER_ADDER',
-                          parent: {
-                            layerId: layer.id,
-                            propPath: `props.${path}`,
-                          },
-                        });
-                      }}
-                      id={tooltipId}
-                    >
-                      +
-                    </button>
-                    <Tooltip
-                      anchorId={tooltipId}
-                      style={{
-                        opacity: 1,
-                        backgroundColor: 'white',
-                        color: 'black',
-                        maxWidth: 300,
-                        textAlign: 'center',
-                      }}
-                      delayShow={500}
-                    >
-                      {get(components[layer.component].props, path).description}
-                    </Tooltip>
-                  </>
-                )}
+                <>
+                  <Tooltip
+                    anchorId={tooltipId}
+                    style={{
+                      opacity: 1,
+                      backgroundColor: 'white',
+                      color: 'black',
+                      maxWidth: 300,
+                      textAlign: 'center',
+                    }}
+                    delayShow={500}
+                  >
+                    {get(components[layer.component].props, path).description}
+                  </Tooltip>
+                </>
               </li>
             );
           })}

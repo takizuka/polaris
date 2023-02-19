@@ -76,9 +76,9 @@ interface ActionPropValue {
 }
 
 export enum AppActionType {
-  Alert = 'ALERT',
-  Navigate = 'NAVIGATE',
-  SetState = 'SET_STATE',
+  Alert = 'Alert',
+  Navigate = 'Navigate',
+  SetState = 'Set state',
 }
 
 type AlertAppAction = {
@@ -204,6 +204,12 @@ type SetSelectedViewIdAction = {
   viewId: string;
 };
 
+type SetLayerRepeatAction = {
+  type: 'SET_LAYER_REPEAT';
+  layerId: string;
+  repeat: number;
+};
+
 type SetPropAction = {
   type: 'SET_PROP';
   layerId: string;
@@ -230,15 +236,21 @@ type UpdateAppStateAction = {
   value: string;
 };
 
+type AddAppStateSheetAction = {
+  type: 'ADD_APP_STATE_SHEET';
+};
+
 export type Action =
   | SelectLayerAction
   | AddLayerAction
   | SetHoveredLayerIdAction
   | SetSelectedViewIdAction
+  | SetLayerRepeatAction
   | SetPropAction
   | ShowLayerAdderAction
   | HideLayerAdderAction
-  | UpdateAppStateAction;
+  | UpdateAppStateAction
+  | AddAppStateSheetAction;
 
 export type BaseMessage = {
   source: 'polaris-studio';

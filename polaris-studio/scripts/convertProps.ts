@@ -263,4 +263,4 @@ Object.keys(types).forEach((key) => {
   }
 });
 
-fs.writeFileSync('../../componentProps.json', JSON.stringify(result, null, 2));
+fs.writeFileSync('./componentProps.json', JSON.stringify(result, null, 2));

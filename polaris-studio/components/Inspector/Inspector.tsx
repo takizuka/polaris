@@ -110,11 +110,12 @@ function InspectorFields({
       {props &&
         Object.entries(props)
           .sort((a, b) => {
-            return (
-              (componentUsageSimplified[layer.component].properties[b[0]] ||
-                0) -
-              (componentUsageSimplified[layer.component].properties[a[0]] || 0)
-            );
+            return componentUsageSimplified[layer.component]
+              ? (componentUsageSimplified[layer.component].properties[b[0]] ||
+                  0) -
+                  (componentUsageSimplified[layer.component].properties[a[0]] ||
+                    0)
+              : 0;
           })
           .map(([propKey, propDefinition]) => {
             const propPath = `${prevPropPath}.${propKey}`;
@@ -136,28 +137,31 @@ function InspectorFields({
                   propValue && propValue.type === PropType.String
                     ? propValue.value
                     : propDefinition.defaultValue.value;
-                return (
-                  <div key={key}>
-                    <LabelTooltip tooltipContent={propDefinition.description}>
-                      {label}
-                    </LabelTooltip>
-                    <input
-                      type="text"
-                      placeholder="Lorem ipsum dolor..."
-                      value={value}
-                      onChange={(evt) => {
-                        let value: string | number | boolean = evt.target.value;
 
-                        dispatch({
-                          type: 'SET_PROP',
-                          layerId: layer.id,
-                          propType: PropType.String,
-                          propPath,
-                          value,
-                        });
-                      }}
-                    />
-                  </div>
+                return (
+                  <InspectorRow
+                    label={label}
+                    tooltip={propDefinition.description}
+                    renderField={() => (
+                      <input
+                        type="text"
+                        placeholder="Lorem ipsum dolor..."
+                        value={value}
+                        onChange={(evt) => {
+                          let value: string | number | boolean =
+                            evt.target.value;
+
+                          dispatch({
+                            type: 'SET_PROP',
+                            layerId: layer.id,
+                            propType: PropType.String,
+                            propPath,
+                            value,
+                          });
+                        }}
+                      />
+                    )}
+                  />
                 );
               }
 
@@ -166,27 +170,29 @@ function InspectorFields({
                   propValue && propValue.type === PropType.Number
                     ? propValue.value
                     : propDefinition.defaultValue.value;
-                return (
-                  <div key={key}>
-                    <LabelTooltip tooltipContent={propDefinition.description}>
-                      {label}
-                    </LabelTooltip>
-                    <input
-                      type="number"
-                      value={value.toString()}
-                      onChange={(evt) => {
-                        let value: number = parseInt(evt.target.value);
 
-                        dispatch({
-                          type: 'SET_PROP',
-                          layerId: layer.id,
-                          propType: PropType.Number,
-                          propPath,
-                          value,
-                        });
-                      }}
-                    />
-                  </div>
+                return (
+                  <InspectorRow
+                    label={label}
+                    tooltip={propDefinition.description}
+                    renderField={() => (
+                      <input
+                        type="number"
+                        value={value.toString()}
+                        onChange={(evt) => {
+                          let value: number = parseInt(evt.target.value);
+
+                          dispatch({
+                            type: 'SET_PROP',
+                            layerId: layer.id,
+                            propType: PropType.Number,
+                            propPath,
+                            value,
+                          });
+                        }}
+                      />
+                    )}
+                  />
                 );
               }
 
@@ -196,30 +202,32 @@ function InspectorFields({
                     ? propValue.value
                     : propDefinition.defaultValue.value;
                 const checked = !!value;
+
                 return (
-                  <div key={key}>
-                    <LabelTooltip tooltipContent={propDefinition.description}>
-                      {label}
-                    </LabelTooltip>
-                    <Switch
-                      checked={checked}
-                      onChange={(value: boolean) => {
-                        dispatch({
-                          type: 'SET_PROP',
-                          layerId: layer.id,
-                          propType: PropType.Boolean,
-                          propPath,
-                          value,
-                        });
-                      }}
-                      className={`${checked ? styles.checked : ''} ${
-                        styles.Toggle
-                      }`}
-                    >
-                      <span className="sr-only">{key}</span>
-                      <span className={styles.Handle} />
-                    </Switch>
-                  </div>
+                  <InspectorRow
+                    label={label}
+                    tooltip={propDefinition.description}
+                    renderField={() => (
+                      <Switch
+                        checked={checked}
+                        onChange={(value: boolean) => {
+                          dispatch({
+                            type: 'SET_PROP',
+                            layerId: layer.id,
+                            propType: PropType.Boolean,
+                            propPath,
+                            value,
+                          });
+                        }}
+                        className={`${checked ? styles.checked : ''} ${
+                          styles.Toggle
+                        }`}
+                      >
+                        <span className="sr-only">{key}</span>
+                        <span className={styles.Handle} />
+                      </Switch>
+                    )}
+                  />
                 );
               }
 
@@ -228,30 +236,32 @@ function InspectorFields({
                   propValue && propValue.type === PropType.Enum
                     ? propValue.value
                     : propDefinition.defaultValue.value;
+
                 return (
-                  <div key={key}>
-                    <LabelTooltip tooltipContent={propDefinition.description}>
-                      {label}
-                    </LabelTooltip>
-                    <select
-                      value={value}
-                      onChange={(evt) => {
-                        dispatch({
-                          type: 'SET_PROP',
-                          layerId: layer.id,
-                          propType: PropType.Enum,
-                          propPath,
-                          value: evt.target.value,
-                        });
-                      }}
-                    >
-                      {propDefinition.options.map((value) => (
-                        <option key={value} value={value}>
-                          {value}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                  <InspectorRow
+                    label={label}
+                    tooltip={propDefinition.description}
+                    renderField={() => (
+                      <select
+                        value={value}
+                        onChange={(evt) => {
+                          dispatch({
+                            type: 'SET_PROP',
+                            layerId: layer.id,
+                            propType: PropType.Enum,
+                            propPath,
+                            value: evt.target.value,
+                          });
+                        }}
+                      >
+                        {propDefinition.options.map((value) => (
+                          <option key={value} value={value}>
+                            {value}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  />
                 );
               }
 
@@ -262,212 +272,255 @@ function InspectorFields({
                     : propDefinition.defaultValue.value;
 
                 return (
-                  <div>
-                    <LabelTooltip tooltipContent={propDefinition.description}>
-                      {label}
-                    </LabelTooltip>
-                    {value.length > 0 && (
-                      <ul>
-                        {value.map((action, index) => {
-                          switch (action.type) {
-                            case AppActionType.Alert:
-                              return (
-                                <li key={index}>
-                                  <input
-                                    type="text"
-                                    value={action.message}
-                                    onChange={(evt) => {
-                                      dispatch({
-                                        type: 'SET_PROP',
-                                        layerId: layer.id,
-                                        propPath,
-                                        propType: PropType.Action,
-                                        value: [
-                                          ...value.slice(0, index),
-                                          {
-                                            ...action,
-                                            message: evt.target.value,
-                                          },
-                                          ...value.slice(index + 1),
-                                        ],
-                                      });
-                                    }}
-                                  />
-                                  <button
-                                    onClick={() => {
-                                      dispatch({
-                                        type: 'SET_PROP',
-                                        layerId: layer.id,
-                                        propType: PropType.Action,
-                                        propPath,
-                                        value: [
-                                          ...value.slice(0, index),
-                                          ...value.slice(index + 1),
-                                        ],
-                                      });
-                                    }}
-                                  >
-                                    Delete action
-                                  </button>
-                                </li>
-                              );
+                  <InspectorRow
+                    label={label}
+                    tooltip={propDefinition.description}
+                    renderField={() => {
+                      return (
+                        <select
+                          onChange={(e) => {
+                            let newValue = [...value];
 
-                            case AppActionType.Navigate:
-                              return (
-                                <li key={index}>
-                                  <select
-                                    value={action.viewId}
-                                    onChange={(evt) => {
-                                      dispatch({
-                                        type: 'SET_PROP',
-                                        layerId: layer.id,
-                                        propPath,
-                                        propType: PropType.Action,
-                                        value: [
-                                          ...value.slice(0, index),
-                                          {
-                                            ...action,
-                                            viewId: evt.target.value,
-                                          },
-                                          ...value.slice(index + 1),
-                                        ],
-                                      });
-                                    }}
-                                  >
-                                    {Object.values(views)
-                                      .filter((view) => view.type === 'View')
-                                      .map((view) => (
-                                        <option key={view.id} value={view.id}>
-                                          {view.name}
-                                        </option>
-                                      ))}
-                                  </select>
-                                </li>
-                              );
+                            if (e.target.value === AppActionType.Alert) {
+                              newValue.push({
+                                type: AppActionType.Alert,
+                                message: 'My message',
+                              });
+                            }
 
-                            case AppActionType.SetState:
-                              return (
-                                <li key={index}>
-                                  <label>
-                                    key
-                                    <input
-                                      type="text"
-                                      onChange={(evt) => {
-                                        dispatch({
-                                          type: 'SET_PROP',
-                                          layerId: layer.id,
-                                          propPath,
-                                          propType: PropType.Action,
-                                          value: [
-                                            ...value.slice(0, index),
-                                            {
-                                              ...action,
-                                              key: evt.target.value,
-                                            },
-                                            ...value.slice(index + 1),
-                                          ],
-                                        });
-                                      }}
-                                      value={action.key}
-                                    />
-                                  </label>
-                                  <label>
-                                    value
-                                    <input
-                                      type="text"
-                                      onChange={(evt) => {
-                                        dispatch({
-                                          type: 'SET_PROP',
-                                          layerId: layer.id,
-                                          propPath,
-                                          propType: PropType.Action,
-                                          value: [
-                                            ...value.slice(0, index),
-                                            {
-                                              ...action,
-                                              value: evt.target.value,
-                                            },
-                                            ...value.slice(index + 1),
-                                          ],
-                                        });
-                                      }}
-                                      value={action.value}
-                                    />
-                                  </label>
-                                </li>
-                              );
-                          }
-                        })}
-                      </ul>
-                    )}
+                            if (e.target.value === AppActionType.Navigate) {
+                              newValue.push({
+                                type: AppActionType.Navigate,
+                                viewId: Object.values(views)[0].id,
+                              });
+                            }
 
-                    <select
-                      onChange={(e) => {
-                        if (e.target.value === 'Select an action') return;
+                            if (e.target.value === AppActionType.SetState) {
+                              newValue.push({
+                                type: AppActionType.SetState,
+                                key: '',
+                                value: '',
+                              });
+                            }
 
-                        let newValue = [...value];
+                            dispatch({
+                              type: 'SET_PROP',
+                              layerId: layer.id,
+                              propPath,
+                              propType: PropType.Action,
+                              value: newValue,
+                            });
+                          }}
+                        >
+                          {Object.values(AppActionType).map((type) => (
+                            <option>{type}</option>
+                          ))}
+                        </select>
+                      );
+                    }}
+                    renderChildren={() => {
+                      if (value.length > 0) {
+                        return (
+                          <ul className={styles.ActionList}>
+                            {value.map((action, index) => {
+                              switch (action.type) {
+                                case AppActionType.Alert:
+                                  return (
+                                    <li key={index}>
+                                      <label>Alert </label>
+                                      <input
+                                        type="text"
+                                        value={action.message}
+                                        onChange={(evt) => {
+                                          dispatch({
+                                            type: 'SET_PROP',
+                                            layerId: layer.id,
+                                            propPath,
+                                            propType: PropType.Action,
+                                            value: [
+                                              ...value.slice(0, index),
+                                              {
+                                                ...action,
+                                                message: evt.target.value,
+                                              },
+                                              ...value.slice(index + 1),
+                                            ],
+                                          });
+                                        }}
+                                      />
+                                      {/* <button
+                                        onClick={() => {
+                                          dispatch({
+                                            type: 'SET_PROP',
+                                            layerId: layer.id,
+                                            propType: PropType.Action,
+                                            propPath,
+                                            value: [
+                                              ...value.slice(0, index),
+                                              ...value.slice(index + 1),
+                                            ],
+                                          });
+                                        }}
+                                      >
+                                        Delete action
+                                      </button> */}
+                                    </li>
+                                  );
 
-                        if (e.target.value === AppActionType.Alert) {
-                          newValue.push({
-                            type: AppActionType.Alert,
-                            message: 'My message',
-                          });
-                        }
+                                case AppActionType.Navigate:
+                                  return (
+                                    <li key={index}>
+                                      <label>Navigate to </label>
+                                      <select
+                                        value={action.viewId}
+                                        onChange={(evt) => {
+                                          dispatch({
+                                            type: 'SET_PROP',
+                                            layerId: layer.id,
+                                            propPath,
+                                            propType: PropType.Action,
+                                            value: [
+                                              ...value.slice(0, index),
+                                              {
+                                                ...action,
+                                                viewId: evt.target.value,
+                                              },
+                                              ...value.slice(index + 1),
+                                            ],
+                                          });
+                                        }}
+                                      >
+                                        {Object.values(views)
+                                          .filter(
+                                            (view) => view.type === 'View',
+                                          )
+                                          .map((view) => (
+                                            <option
+                                              key={view.id}
+                                              value={view.id}
+                                            >
+                                              {view.name}
+                                            </option>
+                                          ))}
+                                      </select>
+                                    </li>
+                                  );
 
-                        if (e.target.value === AppActionType.Navigate) {
-                          newValue.push({
-                            type: AppActionType.Navigate,
-                            viewId: Object.values(views)[0].id,
-                          });
-                        }
+                                case AppActionType.SetState:
+                                  return (
+                                    <li key={index} className={styles.setState}>
+                                      <label>Set state </label>
+                                      <InspectorRow
+                                        label="Key"
+                                        tooltip=""
+                                        renderField={() => (
+                                          <input
+                                            type="text"
+                                            onChange={(evt) => {
+                                              dispatch({
+                                                type: 'SET_PROP',
+                                                layerId: layer.id,
+                                                propPath,
+                                                propType: PropType.Action,
+                                                value: [
+                                                  ...value.slice(0, index),
+                                                  {
+                                                    ...action,
+                                                    key: evt.target.value,
+                                                  },
+                                                  ...value.slice(index + 1),
+                                                ],
+                                              });
+                                            }}
+                                            value={action.key}
+                                          />
+                                        )}
+                                      />
 
-                        if (e.target.value === AppActionType.SetState) {
-                          newValue.push({
-                            type: AppActionType.SetState,
-                            key: '',
-                            value: '',
-                          });
-                        }
-
-                        dispatch({
-                          type: 'SET_PROP',
-                          layerId: layer.id,
-                          propPath,
-                          propType: PropType.Action,
-                          value: newValue,
-                        });
-                      }}
-                    >
-                      <option>Select an action</option>
-                      {Object.values(AppActionType).map((type) => (
-                        <option>{type}</option>
-                      ))}
-                    </select>
-                  </div>
+                                      <InspectorRow
+                                        label="Value"
+                                        tooltip=""
+                                        renderField={() => (
+                                          <input
+                                            type="text"
+                                            onChange={(evt) => {
+                                              dispatch({
+                                                type: 'SET_PROP',
+                                                layerId: layer.id,
+                                                propPath,
+                                                propType: PropType.Action,
+                                                value: [
+                                                  ...value.slice(0, index),
+                                                  {
+                                                    ...action,
+                                                    value: evt.target.value,
+                                                  },
+                                                  ...value.slice(index + 1),
+                                                ],
+                                              });
+                                            }}
+                                            value={action.value}
+                                          />
+                                        )}
+                                      />
+                                    </li>
+                                  );
+                              }
+                            })}
+                          </ul>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
                 );
               }
 
               case PropType.Group: {
                 return (
-                  <li key={propKey}>
-                    <>
-                      <span className={styles.GroupTitle}>
-                        {propKey} - {propDefinition.type}
-                      </span>
-                      {propDefinition.type === PropType.Group && (
-                        <ul>
+                  <InspectorRow
+                    label={label}
+                    tooltip={propDefinition.description}
+                    renderChildren={() => {
+                      if (propDefinition.type === PropType.Group) {
+                        return (
                           <InspectorFields
                             groupKeys={[...groupKeys, propKey]}
                             layer={layer}
                           />
-                        </ul>
-                      )}
-                    </>
-                  </li>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
                 );
               }
             }
           })}
+    </div>
+  );
+}
+
+function InspectorRow({
+  label,
+  tooltip,
+  renderField,
+  renderChildren,
+}: {
+  label: string;
+  tooltip: string;
+  renderField?: () => React.ReactNode;
+  renderChildren?: () => React.ReactNode;
+}) {
+  return (
+    <div className={styles.InspectorRow}>
+      <div className={styles.LabelAndField}>
+        <LabelTooltip tooltipContent={tooltip}>{label}</LabelTooltip>
+        {renderField && renderField()}
+      </div>
+      {renderChildren && (
+        <div className={styles.Children}>{renderChildren()}</div>
+      )}
     </div>
   );
 }

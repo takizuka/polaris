@@ -25,39 +25,41 @@ function LayerAdder({}: Props) {
             'reset-non-canvas-styles',
           )}
         >
-          <Dialog.Title>Add layer</Dialog.Title>
+          {/* <Dialog.Title>Add layer</Dialog.Title> */}
 
           <div className={styles.Layers}>
             <>
-              {Object.entries(components).map(([name]) => {
-                const handleClick = () => {
-                  dispatch({
-                    type: 'ADD_LAYER',
-                    componentName: name,
-                    parent: layerAdderVisibility,
-                  });
+              {Object.entries(components)
+                .sort((a, b) => a[0].localeCompare(b[0]))
+                .map(([name]) => {
+                  const handleClick = () => {
+                    dispatch({
+                      type: 'ADD_LAYER',
+                      componentName: name,
+                      parent: layerAdderVisibility,
+                    });
 
-                  dispatch({type: 'HIDE_LAYER_ADDER'});
-                };
+                    dispatch({type: 'HIDE_LAYER_ADDER'});
+                  };
 
-                return (
-                  <div key={name} style={{position: 'relative'}}>
-                    <button onClick={handleClick}>{name}</button>
-                    {/* <iframe
+                  return (
+                    <div key={name} style={{position: 'relative'}}>
+                      <button onClick={handleClick}>{name}</button>
+                      {/* <iframe
                       src={`/polaris-component-preview/${name}`}
                       width={400}
                       height={300}
                       style={{ border: "none" }}
                     /> */}
-                  </div>
-                );
-              })}
+                    </div>
+                  );
+                })}
             </>
           </div>
-
+          {/*
           <button onClick={() => dispatch({type: 'HIDE_LAYER_ADDER'})}>
             Cancel
-          </button>
+          </button> */}
         </Dialog.Panel>
       </Dialog>
     </div>
