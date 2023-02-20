@@ -25,6 +25,8 @@ export type {
   MenuGroupDescriptor,
   ConnectedDisclosure,
   CheckboxHandles,
+  AppliedFilterInterface,
+  FilterInterface,
 } from './types';
 
 // AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
@@ -168,11 +170,7 @@ export {ExceptionList} from './components/ExceptionList';
 export type {ExceptionListProps} from './components/ExceptionList';
 
 export {Filters} from './components/Filters';
-export type {
-  FiltersProps,
-  AppliedFilterInterface,
-  FilterInterface,
-} from './components/Filters';
+export type {FiltersProps} from './components/Filters';
 
 export {Focus} from './components/Focus';
 export type {FocusProps} from './components/Focus';
@@ -248,6 +246,9 @@ export type {
   LegacyCardHeaderProps,
   LegacyCardSubsectionProps,
 } from './components/LegacyCard';
+
+export {LegacyFilters} from './components/LegacyFilters';
+export type {LegacyFiltersProps} from './components/LegacyFilters';
 
 export {LegacyStack} from './components/LegacyStack';
 export type {LegacyStackProps} from './components/LegacyStack';
