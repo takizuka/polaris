@@ -543,8 +543,8 @@ const selectionAndInput = [
     permanent: false,
   },
   {
-    source: '/components/filters',
-    destination: '/components/selection-and-input/filters',
+    source: '/components/legacy-filters',
+    destination: '/components/selection-and-input/legacy-filters',
     permanent: false,
   },
   {

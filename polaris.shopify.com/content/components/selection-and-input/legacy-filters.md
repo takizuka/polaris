@@ -1,6 +1,6 @@
 ---
-title: Filters
-description: Filters is a composite component that filters the items of a list or table.
+title: LegacyFilters
+description: LegacyFilters is a composite component that filters the items of a list or table.
 category: Selection and input
 keywords:
   - filters
@@ -11,23 +11,23 @@ keywords:
   - list filter
   - table
 examples:
-  - fileName: filters-with-a-resource-list.tsx
+  - fileName: legacy-filters-with-a-resource-list.tsx
     title: With a resource list
-  - fileName: filters-with-a-data-table.tsx
+  - fileName: legacy-filters-with-a-data-table.tsx
     title: With a data table
-  - fileName: filters-with-children-content.tsx
+  - fileName: legacy-filters-with-children-content.tsx
     title: With children content
-  - fileName: filters-disabled.tsx
+  - fileName: legacy-filters-disabled.tsx
     title: Disabled
-  - fileName: filters-some-disabled.tsx
+  - fileName: legacy-filters-some-disabled.tsx
     title: Some disabled
-  - fileName: filters-without-clear-button.tsx
+  - fileName: legacy-filters-without-clear-button.tsx
     title: Without clear button
-  - fileName: filters-with-help-text.tsx
+  - fileName: legacy-filters-with-help-text.tsx
     title: With help text
-  - fileName: filters-with-query-field-hidden.tsx
+  - fileName: legacy-filters-with-query-field-hidden.tsx
     title: With query field hidden
-  - fileName: filters-with-query-field-disabled.tsx
+  - fileName: legacy-filters-with-query-field-disabled.tsx
     title: With query field disabled
 ---
 

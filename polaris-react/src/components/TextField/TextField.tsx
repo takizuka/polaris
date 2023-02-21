@@ -162,6 +162,8 @@ interface NonMutuallyExclusiveProps {
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
+  /** Removes the border around the input. Used in the IndexFilters component. */
+  borderless?: boolean;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -225,6 +227,7 @@ export function TextField({
   onChange,
   onFocus,
   onBlur,
+  borderless,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -276,6 +279,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && styles.focus,
+    borderless && styles.borderless,
   );
 
   const inputType = type === 'currency' ? 'text' : type;

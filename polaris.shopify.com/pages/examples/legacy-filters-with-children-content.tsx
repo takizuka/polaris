@@ -2,7 +2,7 @@ import {
   TextField,
   LegacyCard,
   ResourceList,
-  Filters,
+  LegacyFilters,
   Button,
   Avatar,
   Text,
@@ -10,9 +10,8 @@ import {
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function DisableSomeFiltersExample() {
+function FiltersExample() {
   const [taggedWith, setTaggedWith] = useState(null);
-  const [vendor, setVendor] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
 
   const handleTaggedWithChange = useCallback(
@@ -23,17 +22,13 @@ function DisableSomeFiltersExample() {
     (value) => setQueryValue(value),
     [],
   );
-  const handleVendorChange = useCallback((value) => setVendor(value), []);
-
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
-  const handleVendorRemove = useCallback(() => setVendor(null), []);
 
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
     handleQueryValueRemove();
-    handleVendorRemove();
-  }, [handleQueryValueRemove, handleTaggedWithRemove, handleVendorRemove]);
+  }, [handleQueryValueRemove, handleTaggedWithRemove]);
 
   const filters = [
     {
@@ -49,21 +44,6 @@ function DisableSomeFiltersExample() {
         />
       ),
       shortcut: true,
-    },
-    {
-      key: 'vendor',
-      label: 'Vendor',
-      filter: (
-        <TextField
-          label="Vendor"
-          value={vendor}
-          onChange={handleVendorChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      shortcut: true,
-      disabled: true,
     },
   ];
 
@@ -83,7 +63,7 @@ function DisableSomeFiltersExample() {
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
-            <Filters
+            <LegacyFilters
               queryValue={queryValue}
               filters={filters}
               appliedFilters={appliedFilters}
@@ -92,14 +72,11 @@ function DisableSomeFiltersExample() {
               onClearAll={handleClearAll}
             >
               <div style={{paddingLeft: '8px'}}>
-                <Button
-                  disabled
-                  onClick={() => console.log('New filter saved')}
-                >
+                <Button onClick={() => console.log('New filter saved')}>
                   Save
                 </Button>
               </div>
-            </Filters>
+            </LegacyFilters>
           }
           items={[
             {
@@ -156,4 +133,4 @@ function DisableSomeFiltersExample() {
   }
 }
 
-export default withPolarisExample(DisableSomeFiltersExample);
+export default withPolarisExample(FiltersExample);

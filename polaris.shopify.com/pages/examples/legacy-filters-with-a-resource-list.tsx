@@ -4,7 +4,7 @@ import {
   RangeSlider,
   LegacyCard,
   ResourceList,
-  Filters,
+  LegacyFilters,
   Avatar,
   Text,
 } from '@shopify/polaris';
@@ -138,14 +138,13 @@ function ResourceListFiltersExample() {
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
-            <Filters
+            <LegacyFilters
               queryValue={queryValue}
               filters={filters}
               appliedFilters={appliedFilters}
               onQueryChange={handleFiltersQueryChange}
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleFiltersClearAll}
-              hideQueryField
             />
           }
           items={[

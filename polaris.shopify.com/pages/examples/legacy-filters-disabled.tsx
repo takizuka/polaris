@@ -2,7 +2,7 @@ import {
   TextField,
   LegacyCard,
   ResourceList,
-  Filters,
+  LegacyFilters,
   Button,
   Avatar,
   Text,
@@ -10,7 +10,7 @@ import {
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function Playground() {
+function DisableAllFiltersExample() {
   const [taggedWith, setTaggedWith] = useState(null);
   const [queryValue, setQueryValue] = useState(null);
 
@@ -22,7 +22,6 @@ function Playground() {
     (value) => setQueryValue(value),
     [],
   );
-
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
 
@@ -45,7 +44,6 @@ function Playground() {
         />
       ),
       shortcut: true,
-      hideClearButton: true,
     },
   ];
 
@@ -65,13 +63,14 @@ function Playground() {
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
-            <Filters
+            <LegacyFilters
               queryValue={queryValue}
               filters={filters}
               appliedFilters={appliedFilters}
               onQueryChange={handleQueryValueChange}
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleClearAll}
+              disabled
             >
               <div style={{paddingLeft: '8px'}}>
                 <Button
@@ -81,7 +80,7 @@ function Playground() {
                   Save
                 </Button>
               </div>
-            </Filters>
+            </LegacyFilters>
           }
           items={[
             {
@@ -138,4 +137,4 @@ function Playground() {
   }
 }
 
-export default withPolarisExample(Playground);
+export default withPolarisExample(DisableAllFiltersExample);
