@@ -48,3 +48,7 @@ Cards should:
 
 - Group related information
 - Display information in a way that prioritizes what the merchant needs to know most first
+
+## Related components
+
+- For more general use cases, [use the Box component](https://polaris.shopify.com/components/layout-and-structure/box)
