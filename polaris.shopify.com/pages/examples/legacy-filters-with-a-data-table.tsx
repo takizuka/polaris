@@ -127,8 +127,8 @@ function DataTableFiltersExample() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
-        <Card.Section>
+      <LegacyCard>
+        <LegacyCard.Section>
           <LegacyFilters
             queryValue={queryValue}
             filters={filters}
@@ -137,7 +137,7 @@ function DataTableFiltersExample() {
             onQueryClear={handleQueryValueRemove}
             onClearAll={handleFiltersClearAll}
           />
-        </Card.Section>
+        </LegacyCard.Section>
         <DataTable
           columnContentTypes={[
             'text',
@@ -166,7 +166,7 @@ function DataTableFiltersExample() {
           ]}
           totals={['', '', '', 255, '$155,830.00']}
         />
-      </LEgacyCard>
+      </LegacyCard>
     </div>
   );
 
