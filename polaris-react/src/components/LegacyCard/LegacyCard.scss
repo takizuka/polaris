@@ -13,6 +13,7 @@
     }
   }
 
+  // stylelint-disable-next-line polaris/conventions/selector-disallowed-list -- allow override
   + [class^='Polaris-Card'] {
     margin-top: var(--p-space-4);
 
