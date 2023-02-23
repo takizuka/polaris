@@ -120,7 +120,7 @@ function SmallScreenIndexTableWithAllElementsExample() {
           </Text>
           <p>{location}</p>
           <Text variant="bodyMd" as="p" alignment="end">{orders}</Text>
-          <Text variant="bodyMd" as="p" alignment="end"></Text>{amountSpent}</Text>
+          <Text variant="bodyMd" as="p" alignment="end">{amountSpent}</Text>
         </div>
       </IndexTable.Row>
     ),
