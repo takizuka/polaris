@@ -194,7 +194,9 @@ function NavItem({
   return (
     <>
       {nav.children &&
+        !nav.hideFromNav &&
         Object.entries(nav.children)
+          .filter(([, child]) => !child.hideFromNav)
           .sort((_a, _b) => {
             const [, a] = _a as [string, NavItem];
             const [, b] = _b as [string, NavItem];
@@ -219,10 +221,11 @@ function NavItem({
             const segments = asPath.slice(1).split('/');
             const keyAndLevelMatchUrl = !!(segments[level] === key);
             const manuallyExpandedStatus = manuallyExpandedSections[key];
-            const isExpanded =
-              manuallyExpandedStatus === undefined
-                ? keyAndLevelMatchUrl
-                : manuallyExpandedStatus;
+            const isExpanded = child.expanded
+              ? child.expanded
+              : manuallyExpandedStatus === undefined
+              ? keyAndLevelMatchUrl
+              : manuallyExpandedStatus;
 
             const removeParams = (path: string) => path.replace(/\?.+$/gi, '');
             const isCurrent = removeParams(asPath) === child.slug;
@@ -253,14 +256,14 @@ function NavItem({
                     {child.status && <StatusBadge status={child.status} />}
                   </Link>
 
-                  {isExpandable && (
+                  {isExpandable && !child.expanded && (
                     <button
                       className={styles.Toggle}
                       onClick={() => manuallyToggleSection(key, !isExpanded)}
                       aria-label="Toggle section"
                       aria-expanded={isExpanded}
                       aria-controls={isExpanded ? navAriaId : undefined}
-                    ></button>
+                    />
                   )}
                 </span>
 

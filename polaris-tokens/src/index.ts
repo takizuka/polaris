@@ -25,6 +25,15 @@ export type {
 } from './token-groups/colors';
 
 export type {
+  ColorTokenGroup,
+  ColorTokenName,
+  ColorBackgroundAlias,
+  ColorBorderAlias,
+  ColorIconAlias,
+  ColorTextAlias,
+} from './token-groups/color';
+
+export type {
   DepthTokenGroup,
   DepthTokenName,
   DepthShadowAlias,

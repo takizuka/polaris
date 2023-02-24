@@ -4,6 +4,35 @@ const {
   tokens,
 } = require('@shopify/polaris-tokens');
 
+const disallowedUnits = [
+  'px',
+  'rem',
+  'em',
+  '%',
+  'ex',
+  'ch',
+  'lh',
+  'rlh',
+  'vw',
+  'vh',
+  'vmin',
+  'vmax',
+  'vb',
+  'vi',
+  'svw',
+  'svh',
+  'lvw',
+  'lvh',
+  'dvw',
+  'dvh',
+  'cm',
+  'mm',
+  'Q',
+  'in',
+  'pc',
+  'pt',
+];
+
 /**
  * @type {import('./plugins/coverage').PrimaryOptions} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
@@ -93,10 +122,11 @@ const stylelintPolarisCoverageOptions = {
       },
       'declaration-property-unit-disallowed-list': [
         {
-          '/^font/': ['px', 'rem', 'em'],
-          'line-height': ['px', 'rem', 'em'],
+          '/^font/': disallowedUnits,
+          'line-height': disallowedUnits,
         },
       ],
+      'property-disallowed-list': ['text-transform'],
       'function-disallowed-list': [
         'font-family',
         'font-size',
@@ -223,9 +253,9 @@ const stylelintPolarisCoverageOptions = {
       ),
       'declaration-property-unit-disallowed-list': [
         {
-          '/^padding/': ['px', 'rem', 'em'],
-          '/^margin/': ['px', 'rem', 'em'],
-          '/^gap/': ['px', 'rem', 'em'],
+          '/^padding/': disallowedUnits,
+          '/^margin/': disallowedUnits,
+          '/^gap/': disallowedUnits,
         },
       ],
       'polaris/global-disallowed-list': [
@@ -252,11 +282,11 @@ const stylelintPolarisCoverageOptions = {
       ].map(matchNameRegExp),
       'declaration-property-unit-disallowed-list': [
         {
-          'border-width': ['px', 'rem', 'em'],
-          border: ['px', 'rem', 'em'],
-          'border-radius': ['px', 'rem', 'em'],
-          'outline-offset': ['px', 'rem', 'em'],
-          outline: ['px', 'rem', 'em'],
+          'border-width': disallowedUnits,
+          border: disallowedUnits,
+          'border-radius': disallowedUnits,
+          'outline-offset': disallowedUnits,
+          outline: disallowedUnits,
         },
       ],
       'polaris/at-rule-disallowed-list': {
@@ -276,7 +306,7 @@ const stylelintPolarisCoverageOptions = {
         // Legacy custom properties
         // /--p-border-radius-base/,
         /--p-border-radius-wide/,
-        /--p-border-radius-full/,
+        // /--p-border-radius-full/,
         /--p-control-border-width/,
         /--p-thin-border-subdued/,
         /--p-banner-border-default/,
@@ -297,7 +327,7 @@ const stylelintPolarisCoverageOptions = {
       'function-disallowed-list': ['shadow'].map(matchNameRegExp),
       'declaration-property-unit-disallowed-list': [
         {
-          'box-shadow': ['px', 'rem', 'em'],
+          'box-shadow': disallowedUnits,
         },
       ],
       'property-disallowed-list': ['text-shadow'],
@@ -340,28 +370,29 @@ const stylelintPolarisCoverageOptions = {
       message: 'Please use a Polaris z-index token',
     },
   ],
-  conventions: [
-    {
-      'polaris/custom-property-allowed-list': {
-        // Allow any custom property not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
-        allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
-        allowedValues: {
-          '/.+/': [
-            // Note: Order is important.
-            // The first pattern validates `--p-*`
-            // custom properties are valid Polaris tokens
-            ...getCustomPropertyNames(tokens),
-            // and the second pattern flags unknown `--p-*` custom properties
-            // or usages of our "private" `--pc-*` custom properties
-            /--(?!(p|pc)-).+/,
-          ],
-        },
+  conventions: {
+    'selector-disallowed-list': [
+      [/class[*^~]?='Polaris-[a-z_-]+'/gi],
+      {
+        message:
+          'Overriding Polaris styles is disallowed. Please consider contributing instead',
+      },
+    ],
+    'polaris/custom-property-allowed-list': {
+      // Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
+      allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
+      // Allows use of custom properties prefixed with `--p-` that are valid Polaris tokens
+      allowedValues: {
+        '/.+/': [
+          // Note: Order is important
+          // This pattern allows use of `--p-*` custom properties that are valid Polaris tokens
+          ...getCustomPropertyNames(tokens),
+          // This pattern flags unknown `--p-*` custom properties or usage of deprecated `--pc-*` custom properties private to polaris-react
+          /--(?!(p|pc)-).+/,
+        ],
       },
     },
-    {
-      message: 'Please use a Polaris token or component',
-    },
-  ],
+  },
   'media-queries': [
     {
       'polaris/media-query-allowed-list': {
@@ -472,6 +503,16 @@ const stylelintPolarisCoverageOptions = {
 /** @type {import('stylelint').Config} */
 module.exports = {
   customSyntax: 'postcss-scss',
+  reportDescriptionlessDisables: true,
+  reportNeedlessDisables: [
+    true,
+    {
+      // Report needless disables for all rules except layout coverage rules
+      // Note: This doesn't affect the default Stylelint behavior/reporting
+      // and is only need because we dynamically create these rule names
+      except: ['all', /^polaris\/layout\/.+$/],
+    },
+  ],
   reportInvalidScopeDisables: [
     true,
     {

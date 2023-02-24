@@ -1,5 +1,23 @@
 # Changelog
 
+## 6.11.2
+
+### Patch Changes
+
+- [#8320](https://github.com/Shopify/polaris/pull/8320) [`29e9004ff`](https://github.com/Shopify/polaris/commit/29e9004ff8a5e5e2feaaf13b7d37963a1db206fd) Thanks [@leileu](https://github.com/leileu)! - Fixed typo in set type for ContentMinor
+
+## 6.11.1
+
+### Patch Changes
+
+- [#8276](https://github.com/Shopify/polaris/pull/8276) [`9eb9e47b9`](https://github.com/Shopify/polaris/commit/9eb9e47b9154f2df770916a4d94bd0e630ee261a) Thanks [@leileu](https://github.com/leileu)! - Corrected some types with Metaobjects and Metafields
+
+## 6.11.0
+
+### Minor Changes
+
+- [#8159](https://github.com/Shopify/polaris/pull/8159) [`977e70a84`](https://github.com/Shopify/polaris/commit/977e70a847cdc446c28c2b06dc771e5970aa0f4f) Thanks [@kmeleta](https://github.com/kmeleta)! - Added Rows2Major icon
+
 ## 6.10.0
 
 ### Minor Changes

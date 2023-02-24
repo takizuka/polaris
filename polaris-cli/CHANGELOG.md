@@ -1,4 +1,76 @@
-# @shopify/plugin-polaris
+# @shopify/polaris-cli
+
+## 0.1.12
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.13.4
+
+## 0.1.11
+
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.13.3
+
+## 0.1.9
+
+### Patch Changes
+
+- Updated dependencies [[`40ff13451`](https://github.com/Shopify/polaris/commit/40ff1345148a6f77ced213b92137269711925ae2)]:
+  - @shopify/polaris-migrator@0.13.2
+
+## 0.1.8
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.13.1
+
+## 0.1.7
+
+### Patch Changes
+
+- Updated dependencies [[`8a15048e3`](https://github.com/Shopify/polaris/commit/8a15048e333a5e01ddf4352cf07b6d806bcc05f0)]:
+  - @shopify/polaris-migrator@0.13.0
+
+## 0.1.6
+
+### Patch Changes
+
+- Updated dependencies [[`f5afc40d2`](https://github.com/Shopify/polaris/commit/f5afc40d2bed7dd63d771f1f8ee87ceb7ff9d05b)]:
+  - @shopify/polaris-migrator@0.12.0
+
+## 0.1.5
+
+## 0.1.4
+
+## 0.1.3
+
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.11.4
+
+## 0.1.1
+
+## 0.1.0
+
+### Minor Changes
+
+- [#8223](https://github.com/Shopify/polaris/pull/8223) [`de7987c42`](https://github.com/Shopify/polaris/commit/de7987c426174b73d67e54eacf197da9490c76ec) Thanks [@samrose3](https://github.com/samrose3)! - Renamed Polaris CLI package and add docs to website
+
+## 0.0.32
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.11.3
 
 ## 0.0.31
 

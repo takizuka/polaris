@@ -20,11 +20,11 @@ const FoundationsCategory = ({title, description, content}: RulesProps) => {
   return (
     <>
       <PageMeta description={description} />
-      <Page>
+      <Page isContentPage>
         <Longform>
           <h1>{title}</h1>
           <p>{description}</p>
-          <Markdown text={content} />
+          <Markdown>{content}</Markdown>
         </Longform>
       </Page>
     </>
@@ -84,13 +84,18 @@ function ruleListMarkdown(): string {
         content[category] = ['', `## ${category}`, ''];
       }
 
+      // Temporary removal of layout rules until it is re-enabled
+      // https://github.com/Shopify/polaris/issues/8188
+      if (
+        title.includes('layout/declaration-property-value-disallowed-list') ||
+        title.includes('layout/property-disallowed-list')
+      ) {
+        return;
+      }
+
       content[category].push(`- [${title}](${url}): ${description}`);
     }
   });
-
-  // Temporary removal of layout rules until it is re-enabled
-  // https://github.com/Shopify/polaris/issues/8188
-  delete content['Layout'];
 
   const ruleList: string[] = Object.keys(content).reduce(
     (prev: string[], key: string) => [...prev, ...content[key]],

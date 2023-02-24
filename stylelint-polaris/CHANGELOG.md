@@ -1,5 +1,58 @@
 # Changelog
 
+## 7.0.0
+
+### Major Changes
+
+- [#8451](https://github.com/Shopify/polaris/pull/8451) [`581f33144`](https://github.com/Shopify/polaris/commit/581f33144561f4cbcc2de0d6301e49693d43e05c) Thanks [@qt314](https://github.com/qt314)! - report descriptionless disables
+
+## 6.0.2
+
+### Patch Changes
+
+- [#7877](https://github.com/Shopify/polaris/pull/7877) [`065df230a`](https://github.com/Shopify/polaris/commit/065df230a279d9dd1503337a523ca5c9a94acce9) Thanks [@chloerice](https://github.com/chloerice)! - - Updated the `polaris/custom-property-allowed-list` plugin tests for unified config
+  - Updated `polaris/custom-property-allowed-list` to report problems with tailored messages for each of the two configuration options
+  - Fixed metadata URLs for `polaris/*` plugins
+- Updated dependencies [[`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954), [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8), [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8)]:
+  - @shopify/polaris-tokens@6.6.0
+
+## 6.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`7a9977b4d`](https://github.com/Shopify/polaris/commit/7a9977b4dfe29217279d4988a60cf056d8404419)]:
+  - @shopify/polaris-tokens@6.5.1
+
+## 6.0.0
+
+### Major Changes
+
+- [#8360](https://github.com/Shopify/polaris/pull/8360) [`fd28b3a7a`](https://github.com/Shopify/polaris/commit/fd28b3a7ae0b81bb33f0497c65c348e5b04f7040) Thanks [@alex-page](https://github.com/alex-page)! - Disallows percentage and other CSS values as a unit
+
+## 5.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`60ef0dffc`](https://github.com/Shopify/polaris/commit/60ef0dffc9f6064d1d42793f5d2bd96f35b14489), [`4bff95206`](https://github.com/Shopify/polaris/commit/4bff95206877cc24c261f1103589464314ca8cb7)]:
+  - @shopify/polaris-tokens@6.5.0
+
+## 5.2.0
+
+### Minor Changes
+
+- [#8244](https://github.com/Shopify/polaris/pull/8244) [`0ee432500`](https://github.com/Shopify/polaris/commit/0ee43250031ddaa03ffab06ae24197c91c2328d9) Thanks [@samrose3](https://github.com/samrose3)! - Disallow text-transform property in Stylelint Polaris
+
+### Patch Changes
+
+- Updated dependencies [[`1b1394d32`](https://github.com/Shopify/polaris/commit/1b1394d32ecb122bcb77b6cb38b6106631ff8afd)]:
+  - @shopify/polaris-tokens@6.4.0
+
+## 5.1.3
+
+### Patch Changes
+
+- [#8208](https://github.com/Shopify/polaris/pull/8208) [`69d27dbf6`](https://github.com/Shopify/polaris/commit/69d27dbf63d360a7cb3722fa8cd16e605288b3b9) Thanks [@qt314](https://github.com/qt314)! - Re-enable non layout component related layout rules
+
 ## 5.1.2
 
 ### Patch Changes

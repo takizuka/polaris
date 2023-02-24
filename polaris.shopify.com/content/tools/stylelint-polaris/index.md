@@ -3,7 +3,7 @@ title: Stylelint Polaris
 description: A configuration of Stylelint rules that promote adoption of the Polaris design system in consuming apps.
 icon: WandMajor
 collapseChildren: true
-order: 3
+order: 4
 keywords:
   - stylelint
   - dev tools
@@ -63,7 +63,7 @@ npx stylelint --fix '**/*.{css,scss}'
 
 ### Ignoring existing failures
 
-Enabling the linter could result in a large amount of warnings and errors in existing codebases. It is important to fix as many failures upfront as possible, but that shouldn't block the linter from being added. The [styles-insert-stylelint-disable](https://github.com/Shopify/polaris/tree/main/polaris-migrator#v10) migration inserts [ignore comments](https://stylelint.io/user-guide/ignore-code/) so that enabling `stylelint-polaris` can be unblocked.
+Enabling the linter could result in a large amount of warnings and errors in existing codebases. It is important to fix as many failures upfront as possible, but that shouldn't block the linter from being added. The [styles-insert-stylelint-disable](https://github.com/Shopify/polaris/tree/main/polaris-migrator#generic-migrations) migration inserts [ignore comments](https://stylelint.io/user-guide/ignore-code/) so that enabling `stylelint-polaris` can be unblocked.
 
 The migration will insert comments as follows:
 
@@ -122,7 +122,7 @@ module.exports = {
 ### Build custom rules
 
 1. Refer to the [Writing plugins](https://stylelint.io/developer-guide/plugins) guide of the Stylelint documentation
-1. Create your rule in the [plugins](plugins) directory
+1. Create your rule in the [plugins](https://github.com/shopify/polaris/tree/main/stylelint-polaris/plugins) directory
 1. Validate your plugin with [tests](https://github.com/stylelint/jest-preset-stylelint#usage) (reference sibling plugins for examples)
 1. Refer to the [Add new rules](#add-new-rules) section to add your custom rule to the `stylelint-polaris` config
 

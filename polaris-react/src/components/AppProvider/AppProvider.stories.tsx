@@ -3,7 +3,7 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   AppProvider,
   Avatar,
-  Card,
+  LegacyCard,
   ContextualSaveBar,
   Layout,
   Page,
@@ -39,19 +39,19 @@ export function Default() {
       }}
     >
       <Page>
-        <Card>
+        <LegacyCard>
           <ResourceList
             showHeader
             items={[
               {
                 id: 341,
-                url: 'customers/341',
+                url: '#',
                 name: 'Mae Jemison',
                 location: 'Decatur, USA',
               },
               {
                 id: 256,
-                url: 'customers/256',
+                url: '#',
                 name: 'Ellen Ochoa',
                 location: 'Los Angeles, USA',
               },
@@ -72,7 +72,7 @@ export function Default() {
               );
             }}
           />
-        </Card>
+        </LegacyCard>
       </Page>
     </AppProvider>
   );
@@ -99,19 +99,19 @@ export function WithI18n() {
       }}
     >
       <Page>
-        <Card>
+        <LegacyCard>
           <ResourceList
             showHeader
             items={[
               {
                 id: 341,
-                url: 'customers/341',
+                url: '#',
                 name: 'Mae Jemison',
                 location: 'Decatur, USA',
               },
               {
                 id: 256,
-                url: 'customers/256',
+                url: '#',
                 name: 'Ellen Ochoa',
                 location: 'Los Angeles, USA',
               },
@@ -132,7 +132,7 @@ export function WithI18n() {
               );
             }}
           />
-        </Card>
+        </LegacyCard>
       </Page>
     </AppProvider>
   );

@@ -30,13 +30,13 @@ export interface AlphaStackProps extends React.AriaAttributes {
    * @default false
    */
   fullWidth?: boolean;
-  /** The spacing between children
-   * @default '4'
-   */
+  /** The spacing between children */
   gap?: Gap;
   /** HTML id attribute */
   id?: string;
-  /** Toggle order of child items */
+  /** Reverse the render order of child items
+   * @default false
+   */
   reverseOrder?: boolean;
 }
 
@@ -45,7 +45,7 @@ export const AlphaStack = ({
   children,
   align = 'start',
   fullWidth = false,
-  gap = '4',
+  gap,
   id,
   reverseOrder = false,
   ...restProps

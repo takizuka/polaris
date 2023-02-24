@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
-import {SkeletonDisplayText} from '../SkeletonDisplayText';
 import {SkeletonBodyText} from '../SkeletonBodyText';
 import {Box} from '../Box';
 import {Inline} from '../Inline';
@@ -42,15 +41,19 @@ export function SkeletonPage({
         background="surface-neutral"
         minWidth="120px"
         minHeight="28px"
-        borderRadius="base"
+        borderRadius="1"
       />
     </div>
   );
 
   const primaryActionMarkup = primaryAction ? (
-    <div className={styles.PrimaryAction}>
-      <SkeletonDisplayText size="large" />
-    </div>
+    <Box
+      id="SkeletonPage-PrimaryAction"
+      borderRadius="1"
+      background="surface-neutral"
+      minHeight="2.25rem"
+      minWidth="6.25rem"
+    />
   ) : null;
 
   const breadcrumbMarkup = breadcrumbs ? (
@@ -60,7 +63,7 @@ export function SkeletonPage({
   ) : null;
 
   return (
-    <AlphaStack align="center" fullWidth>
+    <AlphaStack gap="4" align="center" fullWidth>
       <Box
         padding="0"
         paddingInlineStart={{sm: '6'}}
@@ -75,7 +78,7 @@ export function SkeletonPage({
           maxWidth: 'none',
         })}
       >
-        <AlphaStack gap="0" fullWidth>
+        <AlphaStack fullWidth>
           <Box
             paddingBlockStart={{xs: '4', md: '5'}}
             paddingBlockEnd={{xs: '4', md: '5'}}
@@ -83,7 +86,7 @@ export function SkeletonPage({
             paddingInlineEnd={{xs: '4', sm: '0'}}
           >
             {breadcrumbMarkup}
-            <Inline align="space-between" blockAlign="center">
+            <Inline gap="4" align="space-between" blockAlign="center">
               <Box paddingBlockStart="1" paddingBlockEnd="1">
                 {titleContent}
               </Box>

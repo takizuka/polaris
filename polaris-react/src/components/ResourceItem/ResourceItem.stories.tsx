@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Avatar,
-  Card,
+  LegacyCard,
   ResourceItem,
   ResourceList,
   ResourceListProps,
@@ -19,13 +19,13 @@ export function Default() {
   >([]);
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'blog post', plural: 'blog posts'}}
         items={[
           {
             id: '6',
-            url: 'posts/6',
+            url: '#',
             title: 'How To Get Value From Wireframes',
             author: 'Jonathan Mangrove',
           },
@@ -53,19 +53,19 @@ export function Default() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithMedia() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
             id: '145',
-            url: 'customers/145',
+            url: '#',
             avatarSource:
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',
@@ -100,24 +100,24 @@ export function WithMedia() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithShortcutActions() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
             id: '145',
-            url: 'customers/145',
+            url: '#',
             avatarSource:
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',
             location: 'Gwangju, South Korea',
-            latestOrderUrl: 'orders/1456',
+            latestOrderUrl: '#',
           },
         ]}
         renderItem={(item) => {
@@ -151,24 +151,24 @@ export function WithShortcutActions() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithPersistedShortcutActions() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
             id: '145',
-            url: 'customers/145',
+            url: '#',
             avatarSource:
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',
             location: 'Gwangju, South Korea',
-            latestOrderUrl: 'orders/1456',
+            latestOrderUrl: '#',
           },
         ]}
         renderItem={(item) => {
@@ -204,19 +204,19 @@ export function WithPersistedShortcutActions() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithVerticalAlignment() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
             id: '145',
-            url: 'customers/145',
+            url: '#',
             avatarSource:
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',
@@ -253,6 +253,6 @@ export function WithVerticalAlignment() {
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }

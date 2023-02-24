@@ -1,5 +1,72 @@
 # @shopify/polaris-migrator
 
+## 0.13.4
+
+### Patch Changes
+
+- Updated dependencies [[`581f33144`](https://github.com/Shopify/polaris/commit/581f33144561f4cbcc2de0d6301e49693d43e05c)]:
+  - @shopify/stylelint-polaris@7.0.0
+
+## 0.13.3
+
+### Patch Changes
+
+- Updated dependencies [[`065df230a`](https://github.com/Shopify/polaris/commit/065df230a279d9dd1503337a523ca5c9a94acce9), [`952ce97ea`](https://github.com/Shopify/polaris/commit/952ce97eacb675bd145ca049b41c91bf270e5954), [`48dffd03d`](https://github.com/Shopify/polaris/commit/48dffd03da4e4fd5ebbaf133725b01aecfa2d9b8), [`7c434b257`](https://github.com/Shopify/polaris/commit/7c434b257c308a6f80216c360faff6bfb7bb07c8)]:
+  - @shopify/stylelint-polaris@6.0.2
+  - @shopify/polaris-tokens@6.6.0
+
+## 0.13.2
+
+### Patch Changes
+
+- [#8393](https://github.com/Shopify/polaris/pull/8393) [`40ff13451`](https://github.com/Shopify/polaris/commit/40ff1345148a6f77ced213b92137269711925ae2) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Removed version from generic migrations
+
+## 0.13.1
+
+### Patch Changes
+
+- Updated dependencies [[`7a9977b4d`](https://github.com/Shopify/polaris/commit/7a9977b4dfe29217279d4988a60cf056d8404419)]:
+  - @shopify/polaris-tokens@6.5.1
+  - @shopify/stylelint-polaris@6.0.1
+
+## 0.13.0
+
+### Minor Changes
+
+- [#8337](https://github.com/Shopify/polaris/pull/8337) [`8a15048e3`](https://github.com/Shopify/polaris/commit/8a15048e333a5e01ddf4352cf07b6d806bcc05f0) Thanks [@alex-page](https://github.com/alex-page)! - Rename migrations so they are prefixed with the relevant version number
+
+### Patch Changes
+
+- Updated dependencies [[`fd28b3a7a`](https://github.com/Shopify/polaris/commit/fd28b3a7ae0b81bb33f0497c65c348e5b04f7040)]:
+  - @shopify/stylelint-polaris@6.0.0
+
+## 0.12.0
+
+### Minor Changes
+
+- [#8265](https://github.com/Shopify/polaris/pull/8265) [`f5afc40d2`](https://github.com/Shopify/polaris/commit/f5afc40d2bed7dd63d771f1f8ee87ceb7ff9d05b) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Create generic codemod to replace custom properties
+
+### Patch Changes
+
+- Updated dependencies [[`60ef0dffc`](https://github.com/Shopify/polaris/commit/60ef0dffc9f6064d1d42793f5d2bd96f35b14489), [`4bff95206`](https://github.com/Shopify/polaris/commit/4bff95206877cc24c261f1103589464314ca8cb7)]:
+  - @shopify/polaris-tokens@6.5.0
+  - @shopify/stylelint-polaris@5.2.1
+
+## 0.11.4
+
+### Patch Changes
+
+- Updated dependencies [[`1b1394d32`](https://github.com/Shopify/polaris/commit/1b1394d32ecb122bcb77b6cb38b6106631ff8afd), [`0ee432500`](https://github.com/Shopify/polaris/commit/0ee43250031ddaa03ffab06ae24197c91c2328d9)]:
+  - @shopify/polaris-tokens@6.4.0
+  - @shopify/stylelint-polaris@5.2.0
+
+## 0.11.3
+
+### Patch Changes
+
+- Updated dependencies [[`69d27dbf6`](https://github.com/Shopify/polaris/commit/69d27dbf63d360a7cb3722fa8cd16e605288b3b9)]:
+  - @shopify/stylelint-polaris@5.1.3
+
 ## 0.11.2
 
 ### Patch Changes
