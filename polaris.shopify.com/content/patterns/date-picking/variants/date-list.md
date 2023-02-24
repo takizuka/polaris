@@ -10,7 +10,7 @@ This enables merchants to select a date or a date range from a list of preset da
 
 ## How it helps merchants
 
-![](/images/patterns/date-list-cover-image.png)
+![Option list with common suggested dates, such as “Today” and “Last 30 days”](/images/patterns/date-list-cover-image.png)
 
 1. The date list provides merchants with suggested dates. This makes date picking simpler when useful dates are predictable and custom dates aren’t necessary.
 
@@ -19,7 +19,7 @@ This enables merchants to select a date or a date range from a list of preset da
 ### Use when merchants need to:
 
 **Select from templated dates**
-: When a templated list of dates is sufficient for the merchant task, use the date list because it is a task that does not require in-depth filtering of historical information. Found in: Inbox app / Overview
+:   When a templated list of dates is sufficient for the merchant task, use the date list because it is a task that does not require in-depth filtering of historical information. Found in: Inbox app / Overview
 
 </div>
 </div>
@@ -27,12 +27,149 @@ This enables merchants to select a date or a date range from a list of preset da
 
 ## Using this pattern
 
-This pattern uses the [`Date picker`](/components/date-picker), [`Option list`](/components/option-list), and [`Text field`](/components/text-field) components.
+This pattern uses the [`Button`](/components/button), [`OptionList`](/components/option-list), [`Popover`](/components/popover) components.
 
-```javascript {"type":"livePreview"}
-<Page divider>
-  <AlphaStack gap="16">Coming Soon</AlphaStack>
-</Page>
+```javascript {"type":"sandboxContext","for":"example"}'
+{(function DateListPicker () {
+  const ranges = [{
+    title: "No Date",
+    alias: "no-date",
+    period: null
+  },
+  {
+    title: "Today",
+    alias: "today",
+    period: {
+      since: "today",
+      until: "today"
+    }
+  },
+  {
+    title: "Yesterday",
+    alias: "yesterday",
+    period: {
+      since: "yesterday",
+      until: "yesterday"
+    }
+  },
+  {
+    title: "Last 7 days",
+    alias: "last7days",
+    period: {
+      since: "-7d",
+      until: "-1d"
+    }
+  }
+];
+const [selected, setSelected] = useState(ranges[0]);
+const [popoverActive, setPopoverActive] = useState(false);
+return (
+  <Popover
+    autofocusTarget="none"
+    preferredAlignment="left"
+    preferInputActivator={false}
+    preferredPosition="below"
+    activator={
+      <Button
+        onClick={() => setPopoverActive(!popoverActive)}
+        icon={CalendarMinor}
+      >
+        {selected.title}
+      </Button>
+    }
+    active={popoverActive}
+  >
+    <OptionList
+      options={ranges.map((range) => ({
+        value: range.alias,
+        label: range.title
+      }))}
+      selected={selected.alias}
+      onChange={(value) => {
+        setSelected(ranges.find((range) => range.alias === value[0]));
+        setPopoverActive(false);
+      }}
+    />
+  </Popover>
+)})()}
+```
+
+```javascript {"type":"previewContext","for":"example"}'
+<div style={{
+  display: 'flex',
+  paddingTop: "2rem",
+  flexDirection: 'column',
+  minHeight: '100vh',
+  alignItems: 'center',
+  justifyContent: 'start',
+}}>
+    ____CODE____
+</div>
+```
+
+```javascript {"type":"livePreview","id":"example"}'
+function DateListPicker () {
+  const ranges = [{
+      title: "No Date",
+      alias: "no-date",
+      period: null
+    },
+    {
+      title: "Today",
+      alias: "today",
+      period: {
+        since: "today",
+        until: "today"
+      }
+    },
+    {
+      title: "Yesterday",
+      alias: "yesterday",
+      period: {
+        since: "yesterday",
+        until: "yesterday"
+      }
+    },
+    {
+      title: "Last 7 days",
+      alias: "last7days",
+      period: {
+        since: "-7d",
+        until: "-1d"
+      }
+    }
+  ];
+  const [selected, setSelected] = useState(ranges[0]);
+  const [popoverActive, setPopoverActive] = useState(false);
+  return (
+    <Popover
+      autofocusTarget="none"
+      preferredAlignment="left"
+      preferInputActivator={false}
+      preferredPosition="below"
+      activator={
+        <Button
+          onClick={() => setPopoverActive(!popoverActive)}
+          icon={CalendarMinor}
+        >
+          {selected.title}
+        </Button>
+      }
+      active={popoverActive}
+    >
+      <OptionList
+        options={ranges.map((range) => ({
+          value: range.alias,
+          label: range.title
+        }))}
+        selected={selected.alias}
+        onChange={(value) => {
+          setSelected(ranges.find((range) => range.alias === value[0]));
+          setPopoverActive(false);
+        }}
+      />
+  </Popover>
+)}
 ```
 
 </div>
@@ -40,10 +177,10 @@ This pattern uses the [`Date picker`](/components/date-picker), [`Option list`](
 
 ### Useful to know
 
-|                                                                                                                                 |                                             |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| In the button preview, set a default date range that a merchant will most likely use.                                           | ![](/images/patterns/date-list-usage-1.png) |
-| Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.                         | ![](/images/patterns/date-list-usage-2.png) |
-| A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor. | ![](/images/patterns/date-list-usage-3.png) |
+| | |
+|-|-|
+|In the button preview, set a default date range that a merchant will most likely use.|![Button showing a calendar icon labeled “Today”](/images/patterns/date-list-usage-1.png)|
+|Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.|![Option list with common suggested dates followed by ranges](/images/patterns/date-list-usage-2.png)|
+|A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.|![Customer segment editor with a date list showing common ranges and related code snippets](/images/patterns/date-list-usage-3.png)|
 
 </div>

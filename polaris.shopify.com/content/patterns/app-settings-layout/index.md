@@ -1,11 +1,10 @@
 ---
 title: App settings layout
-description: Makes it easy for merchants to scan and find setting groups.
-lede: Lets merchants easily scan many groups of settings and find the ones they want to change.
+description: Scan and find groups of settings in apps
+lede: Lets merchants scan and find groups of settings in apps.
 url: /patterns/app-settings-layout
 previewImg: /images/patterns/pattern-thumbnail-app-settings.png
-order: 10
-githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/7852
+githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/8217
 variants:
   - 'variants/default.md'
 ---
@@ -14,7 +13,7 @@ variants:
 
 ## Related resources
 
-- See another two-column layout in use in the [Resource detail layout](/patterns/resource-details-layout) pattern.
-- See a single-column layout in use in the [Resource index layout](/patterns/resource-index-layout) pattern.
-- Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
-- Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.
+* See another two-column layout in use in the [Resource detail layout](/patterns/resource-details-layout) pattern.
+* See a single-column layout in use in the [Resource index layout](/patterns/resource-index-layout) pattern.
+* Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
+* Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.

@@ -10,7 +10,7 @@ This enables merchants to type a specific date or pick it from a calendar.
 
 ## How it helps merchants
 
-![A labeled diagram of an active input field displaying a calendar beneath it. The input field is labeled "1". The calendar is labeled "2".](/images/patterns/single-list-cover-image.png)
+![Date text input and a single-month calendar](/images/patterns/single-list-cover-image.png)
 
 1. The text input gives merchants the option to use the keyboard to enter a date.
 2. A single month calendar allows merchants to select a date while seeing its relationship to other days.
@@ -20,10 +20,10 @@ This enables merchants to type a specific date or pick it from a calendar.
 ### Use when merchants need to:
 
 **Schedule an event on a specific day**
-: Some examples of this are setting a visibility date for a new online store page, or an estimated arrival date for a shipment. Found in: Product / transfers
+:   Some examples of this are setting a visibility date for a new online store page, or an estimated arrival date for a shipment. Found in: Product / transfers
 
 **Input memorable dates to forms**
-: An example of this is entering a birthdate.
+:   An example of this is entering a birthdate.
 
 </div>
 </div>
@@ -31,54 +31,100 @@ This enables merchants to type a specific date or pick it from a calendar.
 
 ## Using this pattern
 
-This pattern uses the [`Date Picker`](/components/date-picker), and [`TextField`](/components/text-field) components.
+This pattern uses the [`AlphaCard`](/components/layout-and-structure/alpha-card), [`DatePicker`](/components/selection-and-input/date-picker), [`Popover`](/components/overlays/popover), [`TextField`](/components/selection-and-input/text-field) components.
 
-```javascript {"type":"previewContext","for":"example"}
-<div
-  style={{
-    display: 'flex',
-    minHeight: '100vh',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingLeft: '32px',
-    paddingRight: '32px',
-  }}
->
-  <div style={{maxWidth: '300px'}}>
-    {(function DatePickerPattern() {
-      ____CODE____;
-    })()}
-  </div>
-</div>
+```javascript {"type":"sandboxContext","for":"example"}'
+{(____CODE____)()}
 ```
 
-```javascript {"type":"sandboxContext","for":"example"}
-<>
-  {(() => {
-    ____CODE____;
-  })()}
-</>
-```
 
-```javascript {"type":"livePreview","id":"example"}
-const [{month, year}, setDate] = useState({month: 1, year: 2018});
-const [selectedDates, setSelectedDates] = useState({
-  start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-  end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-});
-const handleMonthChange = useCallback(
-  (month, year) => setDate({month, year}),
-  [],
-);
-return (
-  <DatePicker
-    month={month}
-    year={year}
-    onChange={setSelectedDates}
-    onMonthChange={handleMonthChange}
-    selected={selectedDates}
-  />
-);
+```javascript {"type":"livePreview","id":"example"}'
+function DatePickerExample() {
+  function nodeContainsDescendant(rootNode, descendant) {
+    if (rootNode === descendant) {
+      return true;
+    }
+    let parent = descendant.parentNode;
+    while (parent != null) {
+      if (parent === rootNode) {
+        return true;
+      }
+      parent = parent.parentNode;
+    }
+    return false;
+  }
+  const [visible, setVisible] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [{ month, year }, setDate] = useState({
+    month: selectedDate.getMonth(),
+    year: selectedDate.getFullYear(),
+  });
+  const formattedValue = selectedDate.toISOString().slice(0,10);
+  const datePickerRef = useRef(null);
+  function isNodeWithinPopover(node) {
+    return datePickerRef?.current
+      ? nodeContainsDescendant(datePickerRef.current, node)
+      : false;
+  }
+  function handleInputValueChange() {
+    console.log("handleInputValueChange");
+  }
+  function handleOnClose({ relatedTarget }) {
+    setVisible(false);
+  }
+  function handleMonthChange(month, year) {
+    setDate({ month, year });
+  }
+  function handleDateSelection({ end: newSelectedDate }) {
+    setSelectedDate(newSelectedDate);
+    setVisible(false);
+  }
+  useEffect(() => {
+    if (selectedDate) {
+      setDate({
+        month: selectedDate.getMonth(),
+        year: selectedDate.getFullYear(),
+      });
+    }
+  }, [selectedDate]);
+  return (
+    <AlphaStack align="center" gap="4">
+      <Box minWidth="276px" padding={{ xs: 2 }}>
+        <Popover
+          active={visible}
+          autofocusTarget="none"
+          preferredAlignment="left"
+          fullWidth
+          preferInputActivator={false}
+          preferredPosition="below"
+          preventCloseOnChildOverlayClick
+          onClose={handleOnClose}
+          activator={
+            <TextField
+              role="combobox"
+              label={"Start date"}
+              prefix={<Icon source={CalendarMinor} />}
+              value={formattedValue}
+              onFocus={() => setVisible(true)}
+              onChange={handleInputValueChange}
+              autoComplete="off"
+            />
+          }
+        >
+          <AlphaCard ref={datePickerRef}>
+            <DatePicker
+              month={month}
+              year={year}
+              selected={selectedDate}
+              onMonthChange={handleMonthChange}
+              onChange={handleDateSelection}
+            />
+          </AlphaCard>
+        </Popover>
+      </Box>
+    </AlphaStack>
+  );
+}
 ```
 
 </div>
@@ -86,9 +132,9 @@ return (
 
 ### Useful to know
 
-|                                                                                                        |                                               |
-| ------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
-| Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc. | ![](/images/patterns/single-list-usage-1.png) |
-| This pattern can be duplicated to allow users to add an end date or time.                              | ![](/images/patterns/single-list-usage-2.png) |
+| | |
+|-|-|
+|Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.|![Date input labeled “Expiry date”](/images/patterns/single-list-usage-1.png)|
+|This pattern can be duplicated to allow users to add an end date or time.|![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/single-list-usage-2.png)|
 
 </div>

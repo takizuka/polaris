@@ -1,12 +1,14 @@
 ---
+
 hideFromNav: true
 ---
+
 
 <div as="HowItHelps">
 
 ## How it helps merchants
 
-![A labeled diagram of an app settings page layout. The left column is labeled "1" it contains glanceable labels and descriptions. The right column is labeled "2" and contains a list of cards.](/images/patterns/app-settings-cover-image.png)
+![App settings page with two columns](/images/patterns/app-settings-cover-image.png)
 
 1. In the left column, glanceable labels and descriptions are listed to make it easier for merchants to scan the page and quickly find what they are looking for.
 2. In the right column, settings are grouped in cards to make it easier for merchants to configure a setting after it's been found, or to configure multiple settings that might belong together.
@@ -16,7 +18,7 @@ hideFromNav: true
 ### Use when merchants need to:
 
 **Find and change app settings**
-: This pattern is used specifically for finding and updating individual app settings within the Shopify admin.
+:   This pattern is used specifically for finding and updating individual app settings within the Shopify admin.
 
 </div>
 </div>
@@ -24,32 +26,30 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`AlphaStack`](/components/alpha-stack), [`AlphaCard`](/components/alpha-card), [`Columns`](/components/columns), and [`Box`](/components/box) components.
+This pattern uses the [`AlphaStack`](/components/layout-and-structure/alpha-stack), [`AlphaCard`](/components/layout-and-structure/alpha-card), [`Columns`](/components/layout-and-structure/columns), [`Box`](/components/layout-and-structure/box) components.
 
-```javascript {"type":"previewContext","for":"example"}
-<div style={{paddingBottom: '2rem'}}>____CODE____</div>
+```javascript {"type":"previewContext","for":"example"}'
+<div style={{ paddingBottom: '2rem' }}>
+  ____CODE____
+</div>
 ```
 
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example"}'
 <Page
   divider
-  primaryAction={{content: 'View on your store', disabled: true}}
+  primaryAction={{ content: "View on your store", disabled: true }}
   secondaryActions={[
     {
-      content: 'Duplicate',
-      accessibilityLabel: 'Secondary action label',
-      onAction: () => alert('Duplicate action'),
+      content: "Duplicate",
+      accessibilityLabel: "Secondary action label",
+      onAction: () => alert("Duplicate action"),
     },
   ]}
 >
   <AlphaStack gap="16" align="center">
-    <Columns columns={{xs: '1fr', md: '2fr 5fr'}}>
-      <Box
-        as="section"
-        paddingInlineStart={{xs: 4, sm: 0}}
-        paddingInlineEnd={{xs: 2, sm: 0}}
-      >
-        <AlphaStack>
+    <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
+      <Box as="section" paddingInlineStart={{ xs: 4, sm: 0 }} paddingInlineEnd={{ xs: 2, sm: 0 }}>
+        <AlphaStack gap="4">
           <Text as="h3" variant="headingMd">
             InterJambs
           </Text>
@@ -59,19 +59,15 @@ This pattern uses the [`AlphaStack`](/components/alpha-stack), [`AlphaCard`](/co
         </AlphaStack>
       </Box>
       <AlphaCard roundedAbove="sm">
-        <AlphaStack fullWidth>
+        <AlphaStack gap="4" fullWidth>
           <TextField label="Interjamb style" />
           <TextField label="Interjamb ratio" />
         </AlphaStack>
       </AlphaCard>
     </Columns>
-    <Columns columns={{xs: '1fr', md: '2fr 5fr'}}>
-      <Box
-        as="section"
-        paddingInlineStart={{xs: 2, sm: 0}}
-        paddingInlineEnd={{xs: 2, sm: 0}}
-      >
-        <AlphaStack>
+    <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
+    <Box as="section" paddingInlineStart={{ xs: 2, sm: 0 }} paddingInlineEnd={{ xs: 2, sm: 0 }}>
+        <AlphaStack gap="4">
           <Text as="h3" variant="headingMd">
             Dimensions
           </Text>
@@ -81,7 +77,7 @@ This pattern uses the [`AlphaStack`](/components/alpha-stack), [`AlphaCard`](/co
         </AlphaStack>
       </Box>
       <AlphaCard roundedAbove="sm">
-        <AlphaStack fullWidth>
+        <AlphaStack gap="4" fullWidth>
           <TextField label="Horizontal" />
           <TextField label="Interjamb ratio" />
         </AlphaStack>
@@ -96,10 +92,10 @@ This pattern uses the [`AlphaStack`](/components/alpha-stack), [`AlphaCard`](/co
 
 ### Useful to know
 
-|                                                  |                                                |
-| ------------------------------------------------ | ---------------------------------------------- |
-| Don't include a description unless it's helpful. | ![](/images/patterns/app-settings-usage-1.png) |
-| Place grouped settings within cards.             | ![](/images/patterns/app-settings-usage-2.png) |
-| Stack all setting groups vertically on the page. | ![](/images/patterns/app-settings-usage-3.png) |
+| | |
+|-|-|
+|Don't include a description unless it's helpful.|![Section header with no description on an app settings page](/images/patterns/app-settings-usage-1.png)|
+|Place grouped settings within cards.|![App settings page with section headings and grouped settings](/images/patterns/app-settings-usage-2.png)|
+|Stack all setting groups vertically on the page.|![App settings page with two vertically stacked sections](/images/patterns/app-settings-usage-3.png)|
 
 </div>
